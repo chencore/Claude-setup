@@ -1,0 +1,26 @@
+{
+  "claude-code-plugins": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-code"
+    },
+    "installLocation": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins",
+    "lastUpdated": "2025-10-18T06:54:50.609Z"
+  },
+  "claude-code-templates": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/davila7/claude-code-templates.git"
+    },
+    "installLocation": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-templates",
+    "lastUpdated": "2025-10-18T06:54:38.461Z"
+  },
+  "anthropic-agent-skills": {
+    "source": {
+      "source": "directory",
+      "path": "/Users/samarthgupta/.claude/plugins/marketplaces/skills"
+    },
+    "installLocation": "/Users/samarthgupta/.claude/plugins/marketplaces/skills",
+    "lastUpdated": "2025-10-18T06:54:58.350Z"
+  }
+}
