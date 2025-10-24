@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "plugins": {
+    "agent-sdk-dev@claude-code-plugins": {
+      "version": "1.0.0",
+      "installedAt": "2025-10-24T09:53:34.464Z",
+      "lastUpdated": "2025-10-24T09:53:34.464Z",
+      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/agent-sdk-dev",
+      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "isLocal": true
+    },
+    "pr-review-toolkit@claude-code-plugins": {
+      "version": "1.0.0",
+      "installedAt": "2025-10-24T09:53:34.464Z",
+      "lastUpdated": "2025-10-24T09:53:34.464Z",
+      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/pr-review-toolkit",
+      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "isLocal": true
+    },
+    "commit-commands@claude-code-plugins": {
+      "version": "unknown",
+      "installedAt": "2025-10-24T09:53:34.464Z",
+      "lastUpdated": "2025-10-24T09:53:34.464Z",
+      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/commit-commands",
+      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "isLocal": true
+    },
+    "feature-dev@claude-code-plugins": {
+      "version": "1.0.0",
+      "installedAt": "2025-10-24T09:53:34.464Z",
+      "lastUpdated": "2025-10-24T09:53:34.464Z",
+      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/feature-dev",
+      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "isLocal": true
+    },
+    "security-guidance@claude-code-plugins": {
+      "version": "1.0.0",
+      "installedAt": "2025-10-24T09:53:34.464Z",
+      "lastUpdated": "2025-10-24T09:53:34.464Z",
+      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/security-guidance",
+      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "isLocal": true
+    }
+  }
+}
