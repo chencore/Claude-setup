@@ -40,6 +40,22 @@
       "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/security-guidance",
       "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
       "isLocal": true
+    },
+    "example-skills@anthropic-agent-skills": {
+      "version": "unknown",
+      "installedAt": "2025-10-26T05:07:23.618Z",
+      "lastUpdated": "2025-10-26T05:07:23.618Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
+      "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
+      "isLocal": true
+    },
+    "document-skills@anthropic-agent-skills": {
+      "version": "unknown",
+      "installedAt": "2025-10-26T05:07:23.618Z",
+      "lastUpdated": "2025-10-26T05:07:23.618Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
+      "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
+      "isLocal": true
     }
   }
 }
