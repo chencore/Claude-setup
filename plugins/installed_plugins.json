@@ -3,56 +3,64 @@
   "plugins": {
     "agent-sdk-dev@claude-code-plugins": {
       "version": "1.0.0",
-      "installedAt": "2025-10-24T09:53:34.464Z",
-      "lastUpdated": "2025-10-24T09:53:34.464Z",
-      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/agent-sdk-dev",
-      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "installedAt": "2025-10-29T08:34:46.697Z",
+      "lastUpdated": "2025-10-29T08:34:46.697Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/agent-sdk-dev",
+      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
       "isLocal": true
     },
     "pr-review-toolkit@claude-code-plugins": {
       "version": "1.0.0",
-      "installedAt": "2025-10-24T09:53:34.464Z",
-      "lastUpdated": "2025-10-24T09:53:34.464Z",
-      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/pr-review-toolkit",
-      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "installedAt": "2025-10-29T08:34:46.697Z",
+      "lastUpdated": "2025-10-29T08:34:46.697Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/pr-review-toolkit",
+      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
       "isLocal": true
     },
     "commit-commands@claude-code-plugins": {
       "version": "unknown",
-      "installedAt": "2025-10-24T09:53:34.464Z",
-      "lastUpdated": "2025-10-24T09:53:34.464Z",
-      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/commit-commands",
-      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "installedAt": "2025-10-29T08:34:46.697Z",
+      "lastUpdated": "2025-10-29T08:34:46.697Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/commit-commands",
+      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
       "isLocal": true
     },
     "feature-dev@claude-code-plugins": {
       "version": "1.0.0",
-      "installedAt": "2025-10-24T09:53:34.464Z",
-      "lastUpdated": "2025-10-24T09:53:34.464Z",
-      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/feature-dev",
-      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "installedAt": "2025-10-29T08:34:46.697Z",
+      "lastUpdated": "2025-10-29T08:34:46.697Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/feature-dev",
+      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
       "isLocal": true
     },
     "security-guidance@claude-code-plugins": {
       "version": "1.0.0",
-      "installedAt": "2025-10-24T09:53:34.464Z",
-      "lastUpdated": "2025-10-24T09:53:34.464Z",
-      "installPath": "/Users/samarthgupta/Documents/GitHub/fork_exp/claude-code/plugins/security-guidance",
-      "gitCommitSha": "3be721535492b619173aaa2e794f771646a2932f",
+      "installedAt": "2025-10-29T08:34:46.697Z",
+      "lastUpdated": "2025-10-29T08:34:46.697Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/security-guidance",
+      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
       "isLocal": true
     },
-    "example-skills@anthropic-agent-skills": {
+    "code-review@claude-code-plugins": {
       "version": "unknown",
-      "installedAt": "2025-10-26T05:07:23.618Z",
-      "lastUpdated": "2025-10-26T05:07:23.618Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
-      "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
+      "installedAt": "2025-10-29T08:34:46.697Z",
+      "lastUpdated": "2025-10-29T08:34:46.697Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/code-review",
+      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
       "isLocal": true
     },
     "document-skills@anthropic-agent-skills": {
       "version": "unknown",
-      "installedAt": "2025-10-26T05:07:23.618Z",
-      "lastUpdated": "2025-10-26T05:07:23.618Z",
+      "installedAt": "2025-10-29T08:36:25.941Z",
+      "lastUpdated": "2025-10-29T08:36:25.941Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
+      "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
+      "isLocal": true
+    },
+    "example-skills@anthropic-agent-skills": {
+      "version": "unknown",
+      "installedAt": "2025-10-29T08:36:25.941Z",
+      "lastUpdated": "2025-10-29T08:36:25.941Z",
       "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
       "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
       "isLocal": true
