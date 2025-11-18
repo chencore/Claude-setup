@@ -5,7 +5,7 @@
       "url": "https://github.com/anthropics/claude-code.git"
     },
     "installLocation": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins",
-    "lastUpdated": "2025-10-29T08:34:18.152Z"
+    "lastUpdated": "2025-11-13T05:08:56.642Z"
   },
   "anthropic-agent-skills": {
     "source": {
@@ -13,6 +13,6 @@
       "url": "https://github.com/anthropics/skills.git"
     },
     "installLocation": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills",
-    "lastUpdated": "2025-10-29T08:35:35.445Z"
+    "lastUpdated": "2025-11-13T05:08:53.395Z"
   }
 }

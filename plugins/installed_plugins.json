@@ -64,6 +64,30 @@
       "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
       "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
       "isLocal": true
+    },
+    "explanatory-output-style@claude-code-plugins": {
+      "version": "1.0.0",
+      "installedAt": "2025-11-13T05:16:44.066Z",
+      "lastUpdated": "2025-11-13T05:16:44.066Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/explanatory-output-style",
+      "gitCommitSha": "2b535344fc6d20c93209a44a950cc62695400c50",
+      "isLocal": true
+    },
+    "learning-output-style@claude-code-plugins": {
+      "version": "1.0.0",
+      "installedAt": "2025-11-13T05:16:44.066Z",
+      "lastUpdated": "2025-11-13T05:16:44.066Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/learning-output-style",
+      "gitCommitSha": "2b535344fc6d20c93209a44a950cc62695400c50",
+      "isLocal": true
+    },
+    "frontend-design@claude-code-plugins": {
+      "version": "1.0.0",
+      "installedAt": "2025-11-13T05:16:44.066Z",
+      "lastUpdated": "2025-11-13T05:16:44.066Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/frontend-design",
+      "gitCommitSha": "2b535344fc6d20c93209a44a950cc62695400c50",
+      "isLocal": true
     }
   }
 }
