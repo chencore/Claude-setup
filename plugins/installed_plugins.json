@@ -57,14 +57,6 @@
       "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
       "isLocal": true
     },
-    "example-skills@anthropic-agent-skills": {
-      "version": "unknown",
-      "installedAt": "2025-10-29T08:36:25.941Z",
-      "lastUpdated": "2025-10-29T08:36:25.941Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
-      "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
-      "isLocal": true
-    },
     "explanatory-output-style@claude-code-plugins": {
       "version": "1.0.0",
       "installedAt": "2025-11-13T05:16:44.066Z",
@@ -87,6 +79,78 @@
       "lastUpdated": "2025-11-13T05:16:44.066Z",
       "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/frontend-design",
       "gitCommitSha": "2b535344fc6d20c93209a44a950cc62695400c50",
+      "isLocal": true
+    },
+    "plugin-dev@claude-code-plugins": {
+      "version": "unknown",
+      "installedAt": "2025-11-24T04:29:08.152Z",
+      "lastUpdated": "2025-11-24T04:29:08.152Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/plugin-dev",
+      "gitCommitSha": "eb39543260fee429664d669af3dc675e0034ce65",
+      "isLocal": true
+    },
+    "ralph-wiggum@claude-code-plugins": {
+      "version": "1.0.0",
+      "installedAt": "2025-11-24T04:29:08.152Z",
+      "lastUpdated": "2025-11-24T04:29:08.152Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/ralph-wiggum",
+      "gitCommitSha": "eb39543260fee429664d669af3dc675e0034ce65",
+      "isLocal": true
+    },
+    "hookify@claude-code-plugins": {
+      "version": "0.1.0",
+      "installedAt": "2025-11-24T04:29:08.152Z",
+      "lastUpdated": "2025-11-24T04:29:08.152Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/hookify",
+      "gitCommitSha": "eb39543260fee429664d669af3dc675e0034ce65",
+      "isLocal": true
+    },
+    "superpowers@superpowers-marketplace": {
+      "version": "3.5.0",
+      "installedAt": "2025-11-24T04:45:18.199Z",
+      "lastUpdated": "2025-11-24T04:45:18.199Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/cache/superpowers",
+      "gitCommitSha": "94089bdce57c7df7c0c8bdbc94aa204e360f6e17",
+      "isLocal": false
+    },
+    "superpowers-chrome@superpowers-marketplace": {
+      "version": "1.5.2",
+      "installedAt": "2025-11-24T04:45:21.859Z",
+      "lastUpdated": "2025-11-24T04:45:21.859Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/cache/superpowers-chrome",
+      "gitCommitSha": "3331a73a28c170da8e476abb307f06908f4e8748",
+      "isLocal": false
+    },
+    "elements-of-style@superpowers-marketplace": {
+      "version": "1.0.0",
+      "installedAt": "2025-11-24T04:45:25.099Z",
+      "lastUpdated": "2025-11-24T04:45:25.099Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/cache/elements-of-style",
+      "gitCommitSha": "6099c505c2a8eb066f3777f83a97d9d828f7954c",
+      "isLocal": false
+    },
+    "episodic-memory@superpowers-marketplace": {
+      "version": "1.0.13",
+      "installedAt": "2025-11-24T04:45:29.161Z",
+      "lastUpdated": "2025-11-24T04:45:29.161Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/cache/episodic-memory",
+      "gitCommitSha": "911b1c7a0bc31931a2883f7be807a5faf29e39e3",
+      "isLocal": false
+    },
+    "superpowers-developing-for-claude-code@superpowers-marketplace": {
+      "version": "0.2.1",
+      "installedAt": "2025-11-24T04:45:29.203Z",
+      "lastUpdated": "2025-11-24T04:45:29.203Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/cache/superpowers-developing-for-claude-code",
+      "gitCommitSha": "c5f70a5f34380a0214c0e510ff0feef73aec8de8",
+      "isLocal": false
+    },
+    "example-skills@anthropic-agent-skills": {
+      "version": "unknown",
+      "installedAt": "2025-11-24T04:46:41.231Z",
+      "lastUpdated": "2025-11-24T04:46:41.231Z",
+      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
+      "gitCommitSha": "0f77e501e6506235956d953cd2d7a2a4aa9ba133",
       "isLocal": true
     }
   }
