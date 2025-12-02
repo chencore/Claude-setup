@@ -33,14 +33,6 @@
       "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
       "isLocal": true
     },
-    "security-guidance@claude-code-plugins": {
-      "version": "1.0.0",
-      "installedAt": "2025-10-29T08:34:46.697Z",
-      "lastUpdated": "2025-10-29T08:34:46.697Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/security-guidance",
-      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
-      "isLocal": true
-    },
     "code-review@claude-code-plugins": {
       "version": "unknown",
       "installedAt": "2025-10-29T08:34:46.697Z",
@@ -127,14 +119,6 @@
       "lastUpdated": "2025-11-24T04:45:25.099Z",
       "installPath": "/Users/samarthgupta/.claude/plugins/cache/elements-of-style",
       "gitCommitSha": "6099c505c2a8eb066f3777f83a97d9d828f7954c",
-      "isLocal": false
-    },
-    "episodic-memory@superpowers-marketplace": {
-      "version": "1.0.13",
-      "installedAt": "2025-11-24T04:45:29.161Z",
-      "lastUpdated": "2025-11-24T04:45:29.161Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/cache/episodic-memory",
-      "gitCommitSha": "911b1c7a0bc31931a2883f7be807a5faf29e39e3",
       "isLocal": false
     },
     "superpowers-developing-for-claude-code@superpowers-marketplace": {
