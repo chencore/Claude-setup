@@ -1,141 +1,203 @@
 {
-  "version": 1,
+  "version": 2,
   "plugins": {
-    "agent-sdk-dev@claude-code-plugins": {
-      "version": "1.0.0",
-      "installedAt": "2025-10-29T08:34:46.697Z",
-      "lastUpdated": "2025-10-29T08:34:46.697Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/agent-sdk-dev",
-      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
-      "isLocal": true
-    },
-    "pr-review-toolkit@claude-code-plugins": {
-      "version": "1.0.0",
-      "installedAt": "2025-10-29T08:34:46.697Z",
-      "lastUpdated": "2025-10-29T08:34:46.697Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/pr-review-toolkit",
-      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
-      "isLocal": true
-    },
-    "commit-commands@claude-code-plugins": {
-      "version": "unknown",
-      "installedAt": "2025-10-29T08:34:46.697Z",
-      "lastUpdated": "2025-10-29T08:34:46.697Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/commit-commands",
-      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
-      "isLocal": true
-    },
-    "feature-dev@claude-code-plugins": {
-      "version": "1.0.0",
-      "installedAt": "2025-10-29T08:34:46.697Z",
-      "lastUpdated": "2025-10-29T08:34:46.697Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/feature-dev",
-      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
-      "isLocal": true
-    },
-    "code-review@claude-code-plugins": {
-      "version": "unknown",
-      "installedAt": "2025-10-29T08:34:46.697Z",
-      "lastUpdated": "2025-10-29T08:34:46.697Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/code-review",
-      "gitCommitSha": "7add6863a02b2fff2ce9b92ae6445af5292625df",
-      "isLocal": true
-    },
-    "document-skills@anthropic-agent-skills": {
-      "version": "unknown",
-      "installedAt": "2025-10-29T08:36:25.941Z",
-      "lastUpdated": "2025-10-29T08:36:25.941Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
-      "gitCommitSha": "c74d647e56e6daa12029b6acb11a821348ad044b",
-      "isLocal": true
-    },
-    "explanatory-output-style@claude-code-plugins": {
-      "version": "1.0.0",
-      "installedAt": "2025-11-13T05:16:44.066Z",
-      "lastUpdated": "2025-11-13T05:16:44.066Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/explanatory-output-style",
-      "gitCommitSha": "2b535344fc6d20c93209a44a950cc62695400c50",
-      "isLocal": true
-    },
-    "learning-output-style@claude-code-plugins": {
-      "version": "1.0.0",
-      "installedAt": "2025-11-13T05:16:44.066Z",
-      "lastUpdated": "2025-11-13T05:16:44.066Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/learning-output-style",
-      "gitCommitSha": "2b535344fc6d20c93209a44a950cc62695400c50",
-      "isLocal": true
-    },
-    "frontend-design@claude-code-plugins": {
-      "version": "1.0.0",
-      "installedAt": "2025-11-13T05:16:44.066Z",
-      "lastUpdated": "2025-11-13T05:16:44.066Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/frontend-design",
-      "gitCommitSha": "2b535344fc6d20c93209a44a950cc62695400c50",
-      "isLocal": true
-    },
-    "plugin-dev@claude-code-plugins": {
-      "version": "unknown",
-      "installedAt": "2025-11-24T04:29:08.152Z",
-      "lastUpdated": "2025-11-24T04:29:08.152Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/plugin-dev",
-      "gitCommitSha": "eb39543260fee429664d669af3dc675e0034ce65",
-      "isLocal": true
-    },
-    "ralph-wiggum@claude-code-plugins": {
-      "version": "1.0.0",
-      "installedAt": "2025-11-24T04:29:08.152Z",
-      "lastUpdated": "2025-11-24T04:29:08.152Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/ralph-wiggum",
-      "gitCommitSha": "eb39543260fee429664d669af3dc675e0034ce65",
-      "isLocal": true
-    },
-    "hookify@claude-code-plugins": {
-      "version": "0.1.0",
-      "installedAt": "2025-11-24T04:29:08.152Z",
-      "lastUpdated": "2025-11-24T04:29:08.152Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/claude-code-plugins/plugins/hookify",
-      "gitCommitSha": "eb39543260fee429664d669af3dc675e0034ce65",
-      "isLocal": true
-    },
-    "superpowers@superpowers-marketplace": {
-      "version": "3.5.0",
-      "installedAt": "2025-11-24T04:45:18.199Z",
-      "lastUpdated": "2025-11-24T04:45:18.199Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/cache/superpowers",
-      "gitCommitSha": "94089bdce57c7df7c0c8bdbc94aa204e360f6e17",
-      "isLocal": false
-    },
-    "superpowers-chrome@superpowers-marketplace": {
-      "version": "1.5.2",
-      "installedAt": "2025-11-24T04:45:21.859Z",
-      "lastUpdated": "2025-11-24T04:45:21.859Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/cache/superpowers-chrome",
-      "gitCommitSha": "3331a73a28c170da8e476abb307f06908f4e8748",
-      "isLocal": false
-    },
-    "elements-of-style@superpowers-marketplace": {
-      "version": "1.0.0",
-      "installedAt": "2025-11-24T04:45:25.099Z",
-      "lastUpdated": "2025-11-24T04:45:25.099Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/cache/elements-of-style",
-      "gitCommitSha": "6099c505c2a8eb066f3777f83a97d9d828f7954c",
-      "isLocal": false
-    },
-    "superpowers-developing-for-claude-code@superpowers-marketplace": {
-      "version": "0.2.1",
-      "installedAt": "2025-11-24T04:45:29.203Z",
-      "lastUpdated": "2025-11-24T04:45:29.203Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/cache/superpowers-developing-for-claude-code",
-      "gitCommitSha": "c5f70a5f34380a0214c0e510ff0feef73aec8de8",
-      "isLocal": false
-    },
-    "example-skills@anthropic-agent-skills": {
-      "version": "unknown",
-      "installedAt": "2025-11-24T04:46:41.231Z",
-      "lastUpdated": "2025-11-24T04:46:41.231Z",
-      "installPath": "/Users/samarthgupta/.claude/plugins/marketplaces/anthropic-agent-skills/",
-      "gitCommitSha": "0f77e501e6506235956d953cd2d7a2a4aa9ba133",
-      "isLocal": true
-    }
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/frontend-design/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:35:48.917Z",
+        "lastUpdated": "2025-12-21T03:42:37.725Z",
+        "gitCommitSha": "bbd02806abdc4e41bfcf1d7078722fec5a991201",
+        "isLocal": true
+      }
+    ],
+    "agent-sdk-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/agent-sdk-dev/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.730Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "pr-review-toolkit@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/pr-review-toolkit/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.728Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "feature-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/feature-dev/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.729Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "security-guidance@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/security-guidance/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.732Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "code-review@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/code-review/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.729Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "ralph-wiggum@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/ralph-wiggum/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.736Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "hookify@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/hookify/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.731Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "plugin-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/plugin-dev/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.737Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "greptile@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/greptile/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.740Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "serena@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/serena/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.739Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "playwright@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/playwright/6d3752c000e2",
+        "version": "6d3752c000e2",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-21T03:42:37.738Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "notion@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/notion/4fee769bf4ec",
+        "version": "4fee769bf4ec",
+        "installedAt": "2025-12-16T13:42:29.678Z",
+        "lastUpdated": "2025-12-16T13:42:29.678Z",
+        "gitCommitSha": "4fee769bf4ec2f271f46c908f44e1cdf6add897c",
+        "isLocal": true
+      }
+    ],
+    "stripe@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/stripe/0.1.0",
+        "version": "0.1.0",
+        "installedAt": "2025-12-21T09:54:30.696Z",
+        "lastUpdated": "2025-12-21T09:54:30.696Z",
+        "gitCommitSha": "bbd02806abdc4e41bfcf1d7078722fec5a991201",
+        "isLocal": true
+      }
+    ],
+    "pyright-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/pyright-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-21T09:54:30.714Z",
+        "lastUpdated": "2025-12-21T09:54:30.714Z",
+        "gitCommitSha": "bbd02806abdc4e41bfcf1d7078722fec5a991201",
+        "isLocal": true
+      }
+    ],
+    "rust-analyzer-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/rust-analyzer-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-21T09:54:30.730Z",
+        "lastUpdated": "2025-12-21T09:54:30.730Z",
+        "gitCommitSha": "bbd02806abdc4e41bfcf1d7078722fec5a991201",
+        "isLocal": true
+      }
+    ],
+    "swift-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/swift-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-21T09:54:30.745Z",
+        "lastUpdated": "2025-12-21T09:54:30.745Z",
+        "gitCommitSha": "bbd02806abdc4e41bfcf1d7078722fec5a991201",
+        "isLocal": true
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/samarthgupta/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-21T09:54:30.761Z",
+        "lastUpdated": "2025-12-21T09:54:30.761Z",
+        "gitCommitSha": "bbd02806abdc4e41bfcf1d7078722fec5a991201",
+        "isLocal": true
+      }
+    ]
   }
 }
