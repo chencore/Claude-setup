@@ -1,538 +1,533 @@
 ---
 name: content-research-writer
-description: Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing process from solo effort to collaborative partnership.
+description: 通过进行研究、添加引用、改进钩子、迭代大纲和提供实时反馈来协助编写高质量内容。将您的写作过程从个人努力转变为协作伙伴关系
 ---
 
-# Content Research Writer
+# 内容研究写作器
 
-This skill acts as your writing partner, helping you research, outline, draft, and refine content while maintaining your unique voice and style.
+此技能作为您的写作伙伴，帮助您研究、概述、起草和润色内容，同时保持您独特的声音和风格。
 
-## When to Use This Skill
+## 何时使用此技能
 
-- Writing blog posts, articles, or newsletters
-- Creating educational content or tutorials
-- Drafting thought leadership pieces
-- Researching and writing case studies
-- Producing technical documentation with sources
-- Writing with proper citations and references
-- Improving hooks and introductions
-- Getting section-by-section feedback while writing
+- 编写博客文章、文章或新闻通讯
+- 创建教育内容或教程
+- 起草思想领导力文章
+- 研究和撰写案例研究
+- 生成带有来源的技术文档
+- 使用适当的引用和参考文献进行写作
+- 改进钩子和引言
+- 在写作过程中获得分节反馈
 
-## What This Skill Does
+## 此技能的功能
 
-1. **Collaborative Outlining**: Helps you structure ideas into coherent outlines
-2. **Research Assistance**: Finds relevant information and adds citations
-3. **Hook Improvement**: Strengthens your opening to capture attention
-4. **Section Feedback**: Reviews each section as you write
-5. **Voice Preservation**: Maintains your writing style and tone
-6. **Citation Management**: Adds and formats references properly
-7. **Iterative Refinement**: Helps you improve through multiple drafts
+1. **协作式 outlining**：帮助您将想法结构化为连贯的大纲
+2. **研究协助**：查找相关信息并添加引用
+3. **钩子改进**：加强您的开场白以吸引注意力
+4. **节反馈**：在您写作时审阅每个节
+5. **声音保留**：保持您的写作风格和语气
+6. **引用管理**：适当地添加和格式化参考文献
+7. **迭代式改进**：通过多个草稿帮助您改进
 
-## How to Use
+## 如何使用
 
-### Setup Your Writing Environment
+### 设置您的写作环境
 
-Create a dedicated folder for your article:
+为您的文章创建专用文件夹：
 ```
 mkdir ~/writing/my-article-title
 cd ~/writing/my-article-title
 ```
 
-Create your draft file:
+创建您的草稿文件：
 ```
 touch article-draft.md
 ```
 
-Open Claude Code from this directory and start writing.
+从此目录打开 Claude Code 并开始写作。
 
-### Basic Workflow
+### 基本工作流程
 
-1. **Start with an outline**:
+1. **从大纲开始**：
 ```
-Help me create an outline for an article about [topic]
-```
-
-2. **Research and add citations**:
-```
-Research [specific topic] and add citations to my outline
+帮助我为关于 [主题] 的文章创建大纲
 ```
 
-3. **Improve the hook**:
+2. **研究和添加引用**：
 ```
-Here's my introduction. Help me make the hook more compelling.
-```
-
-4. **Get section feedback**:
-```
-I just finished the "Why This Matters" section. Review it and give feedback.
+研究 [特定主题] 并为我的大纲添加引用
 ```
 
-5. **Refine and polish**:
+3. **改进钩子**：
 ```
-Review the full draft for flow, clarity, and consistency.
+这是我的引言。帮助使钩子更具吸引力。
 ```
 
-## Instructions
+4. **获得节反馈**：
+```
+我刚完成"为什么这很重要"部分。审阅它并提供反馈。
+```
 
-When a user requests writing assistance:
+5. **润色和完善**：
+```
+审阅完整草稿的流程、清晰度和一致性。
+```
 
-1. **Understand the Writing Project**
-   
-   Ask clarifying questions:
-   - What's the topic and main argument?
-   - Who's the target audience?
-   - What's the desired length/format?
-   - What's your goal? (educate, persuade, entertain, explain)
-   - Any existing research or sources to include?
-   - What's your writing style? (formal, conversational, technical)
+## 指令
 
-2. **Collaborative Outlining**
-   
-   Help structure the content:
-   
+当用户请求写作协助时：
+
+1. **理解写作项目**
+
+   询问澄清性问题：
+   - 主题和主要论点是什么？
+   - 目标受众是谁？
+   - 期望的长度/格式是什么？
+   - 您的目标是什么？（教育、说服、娱乐、解释）
+   - 有任何现有研究或来源要包含吗？
+   - 您的写作风格是什么？（正式、对话式、技术性）
+
+2. **协作式 outlining**
+
+   帮助结构化内容：
+
    ```markdown
-   # Article Outline: [Title]
-   
-   ## Hook
-   - [Opening line/story/statistic]
-   - [Why reader should care]
-   
-   ## Introduction
-   - Context and background
-   - Problem statement
-   - What this article covers
-   
-   ## Main Sections
-   
-   ### Section 1: [Title]
-   - Key point A
-   - Key point B
-   - Example/evidence
-   - [Research needed: specific topic]
-   
-   ### Section 2: [Title]
-   - Key point C
-   - Key point D
-   - Data/citation needed
-   
-   ### Section 3: [Title]
-   - Key point E
-   - Counter-arguments
-   - Resolution
-   
-   ## Conclusion
-   - Summary of main points
-   - Call to action
-   - Final thought
-   
-   ## Research To-Do
-   - [ ] Find data on [topic]
-   - [ ] Get examples of [concept]
-   - [ ] Source citation for [claim]
-   ```
-   
-   **Iterate on outline**:
-   - Adjust based on feedback
-   - Ensure logical flow
-   - Identify research gaps
-   - Mark sections for deep dives
+   # 文章大纲：[标题]
 
-3. **Conduct Research**
-   
-   When user requests research on a topic:
-   
-   - Search for relevant information
-   - Find credible sources
-   - Extract key facts, quotes, and data
-   - Add citations in requested format
-   
-   Example output:
-   ```markdown
-   ## Research: AI Impact on Productivity
-   
-   Key Findings:
-   
-   1. **Productivity Gains**: Studies show 40% time savings for 
-      content creation tasks [1]
-   
-   2. **Adoption Rates**: 67% of knowledge workers use AI tools 
-      weekly [2]
-   
-   3. **Expert Quote**: "AI augments rather than replaces human 
-      creativity" - Dr. Jane Smith, MIT [3]
-   
-   Citations:
-   [1] McKinsey Global Institute. (2024). "The Economic Potential 
-       of Generative AI"
-   [2] Stack Overflow Developer Survey (2024)
-   [3] Smith, J. (2024). MIT Technology Review interview
-   
-   Added to outline under Section 2.
+   ## 钩子
+   - [开场白/故事/统计数据]
+   - [为什么读者应该关心]
+
+   ## 引言
+   - 上下文和背景
+   - 问题陈述
+   - 本文内容概述
+
+   ## 主要部分
+
+   ### 第1节：[标题]
+   - 关键点 A
+   - 关键点 B
+   - 示例/证据
+   - [需要研究：特定主题]
+
+   ### 第2节：[标题]
+   - 关键点 C
+   - 关键点 D
+   - 需要的数据/引用
+
+   ### 第3节：[标题]
+   - 关键点 E
+   - 反对论点
+   - 解决方案
+
+   ## 结论
+   - 主要要点总结
+   - 呼吁行动
+   - 最后的想法
+
+   ## 研究待办事项
+   - [ ] 查找 [主题] 的数据
+   - [ ] 获取 [概念] 的示例
+   - [ ] 为 [主张] 来源引用
    ```
 
-4. **Improve Hooks**
-   
-   When user shares an introduction, analyze and strengthen:
-   
-   **Current Hook Analysis**:
-   - What works: [positive elements]
-   - What could be stronger: [areas for improvement]
-   - Emotional impact: [current vs. potential]
-   
-   **Suggested Alternatives**:
-   
-   Option 1: [Bold statement]
-   > [Example]
-   *Why it works: [explanation]*
-   
-   Option 2: [Personal story]
-   > [Example]
-   *Why it works: [explanation]*
-   
-   Option 3: [Surprising data]
-   > [Example]
-   *Why it works: [explanation]*
-   
-   **Questions to hook**:
-   - Does it create curiosity?
-   - Does it promise value?
-   - Is it specific enough?
-   - Does it match the audience?
+   **迭代大纲**：
+   - 根据反馈调整
+   - 确保逻辑流程
+   - 识别研究空白
+   - 标记需要深入探讨的节
 
-5. **Provide Section-by-Section Feedback**
-   
-   As user writes each section, review for:
-   
+3. **进行研究**
+
+   当用户请求研究某个主题时：
+
+   - 搜索相关信息
+   - 查找可靠来源
+   - 提取关键事实、引言和数据
+   - 以请求的格式添加引用
+
+   示例输出：
    ```markdown
-   # Feedback: [Section Name]
-   
-   ## What Works Well ✓
-   - [Strength 1]
-   - [Strength 2]
-   - [Strength 3]
-   
-   ## Suggestions for Improvement
-   
-   ### Clarity
-   - [Specific issue] → [Suggested fix]
-   - [Complex sentence] → [Simpler alternative]
-   
-   ### Flow
-   - [Transition issue] → [Better connection]
-   - [Paragraph order] → [Suggested reordering]
-   
-   ### Evidence
-   - [Claim needing support] → [Add citation or example]
-   - [Generic statement] → [Make more specific]
-   
-   ### Style
-   - [Tone inconsistency] → [Match your voice better]
-   - [Word choice] → [Stronger alternative]
-   
-   ## Specific Line Edits
-   
-   Original:
-   > [Exact quote from draft]
-   
-   Suggested:
-   > [Improved version]
-   
-   Why: [Explanation]
-   
-   ## Questions to Consider
-   - [Thought-provoking question 1]
-   - [Thought-provoking question 2]
-   
-   Ready to move to next section!
+   ## 研究：AI 对生产力的影响
+
+   关键发现：
+
+   1. **生产力提升**：研究表明内容创建任务节省了 40% 的时间 [1]
+
+   2. **采用率**：67% 的知识工作者每周使用 AI 工具 [2]
+
+   3. **专家引言**："AI 增强而非取代人类创造力" - Jane Smith 博士，麻省理工学院 [3]
+
+   引用：
+   [1] McKinsey Global Institute. (2024). "生成式 AI 的经济潜力"
+   [2] Stack Overflow 开发人员调查 (2024)
+   [3] Smith, J. (2024). MIT 科技评论采访
+
+   添加到第 2 节下的大纲中。
    ```
 
-6. **Preserve Writer's Voice**
-   
-   Important principles:
-   
-   - **Learn their style**: Read existing writing samples
-   - **Suggest, don't replace**: Offer options, not directives
-   - **Match tone**: Formal, casual, technical, friendly
-   - **Respect choices**: If they prefer their version, support it
-   - **Enhance, don't override**: Make their writing better, not different
-   
-   Ask periodically:
-   - "Does this sound like you?"
-   - "Is this the right tone?"
-   - "Should I be more/less [formal/casual/technical]?"
+4. **改进钩子**
 
-7. **Citation Management**
-   
-   Handle references based on user preference:
-   
-   **Inline Citations**:
+   当用户分享引言时，分析和加强：
+
+   **当前钩子分析**：
+   - 有效之处：[积极要素]
+   - 可以更强之处：[改进领域]
+   - 情感影响：[当前 vs 潜力]
+
+   **建议替代方案**：
+
+   选项 1：[大胆声明]
+   > [示例]
+   *为什么有效：[解释]*
+
+   选项 2：[个人故事]
+   > [示例]
+   *为什么有效：[解释]*
+
+   选项 3：[惊人数据]
+   > [示例]
+   *为什么有效：[解释]*
+
+   **钩子问题**：
+   - 它是否创造好奇心？
+   - 它是否承诺价值？
+   - 是否足够具体？
+   - 它是否匹配受众？
+
+5. **提供分节反馈**
+
+   当用户写作每个节时，审阅：
+
    ```markdown
-   Studies show 40% productivity improvement (McKinsey, 2024).
+   # 反馈：[节名称]
+
+   ## 有效之处 ✓
+   - [优势 1]
+   - [优势 2]
+   - [优势 3]
+
+   ## 改进建议
+
+   ### 清晰度
+   - [具体问题] → [建议修复]
+   - [复杂句子] → [更简单的替代]
+
+   ### 流程
+   - [过渡问题] → [更好的连接]
+   - [段落顺序] → [建议重新排序]
+
+   ### 证据
+   - [需要支持的主张] → [添加引用或示例]
+   - [泛泛陈述] → [更具体]
+
+   ### 风格
+   - [语气不一致] → [更好地匹配您的声音]
+   - [用词选择] → [更强的替代]
+
+   ## 具体行编辑
+
+   原文：
+   > [草稿中的准确引用]
+
+   建议：
+   > [改进版本]
+
+   原因：[解释]
+
+   ## 考虑的问题
+   - [发人深省的问题 1]
+   - [发人深省的问题 2]
+
+   准备进入下一节！
    ```
-   
-   **Numbered References**:
+
+6. **保留作者声音**
+
+   重要原则：
+
+   - **学习他们的风格**：阅读现有写作样本
+   - **建议，不要替代**：提供选项，而不是指令
+   - **匹配语气**：正式、随意、技术性、友好
+   - **尊重选择**：如果他们喜欢自己的版本，支持它
+   - **增强，而不是覆盖**：使他们的写作更好，而不是不同
+
+   定期询问：
+   - "这听起来像您吗？"
+   - "这是正确的语气吗？"
+   - "我应该更多/更少 [正式/随意/技术性] 吗？"
+
+7. **引用管理**
+
+   根据用户偏好处理参考文献：
+
+   **内联引用**：
    ```markdown
-   Studies show 40% productivity improvement [1].
-   
+   研究显示 40% 的生产力提升（麦肯锡，2024）。
+   ```
+
+   **编号引用**：
+   ```markdown
+   研究显示 40% 的生产力提升 [1]。
+
    [1] McKinsey Global Institute. (2024)...
    ```
-   
-   **Footnote Style**:
+
+   **脚注样式**：
    ```markdown
-   Studies show 40% productivity improvement^1
-   
+   研究显示 40% 的生产力提升^1
+
    ^1: McKinsey Global Institute. (2024)...
    ```
-   
-   Maintain a running citations list:
+
+   维护运行引用列表：
    ```markdown
-   ## References
-   
-   1. Author. (Year). "Title". Publication.
-   2. Author. (Year). "Title". Publication.
+   ## 参考文献
+
+   1. 作者。（年份）。"标题"。出版物。
+   2. 作者。（年份）。"标题"。出版物。
    ...
    ```
 
-8. **Final Review and Polish**
-   
-   When draft is complete, provide comprehensive feedback:
-   
+8. **最终审阅和润色**
+
+   当草稿完成时，提供全面反馈：
+
    ```markdown
-   # Full Draft Review
-   
-   ## Overall Assessment
-   
-   **Strengths**:
-   - [Major strength 1]
-   - [Major strength 2]
-   - [Major strength 3]
-   
-   **Impact**: [Overall effectiveness assessment]
-   
-   ## Structure & Flow
-   - [Comments on organization]
-   - [Transition quality]
-   - [Pacing assessment]
-   
-   ## Content Quality
-   - [Argument strength]
-   - [Evidence sufficiency]
-   - [Example effectiveness]
-   
-   ## Technical Quality
-   - Grammar and mechanics: [assessment]
-   - Consistency: [assessment]
-   - Citations: [completeness check]
-   
-   ## Readability
-   - Clarity score: [evaluation]
-   - Sentence variety: [evaluation]
-   - Paragraph length: [evaluation]
-   
-   ## Final Polish Suggestions
-   
-   1. **Introduction**: [Specific improvements]
-   2. **Body**: [Specific improvements]
-   3. **Conclusion**: [Specific improvements]
-   4. **Title**: [Options if needed]
-   
-   ## Pre-Publish Checklist
-   - [ ] All claims sourced
-   - [ ] Citations formatted
-   - [ ] Examples clear
-   - [ ] Transitions smooth
-   - [ ] Call to action present
-   - [ ] Proofread for typos
-   
-   Ready to publish! 🚀
+   # 完整草稿审阅
+
+   ## 总体评估
+
+   **优势**：
+   - [主要优势 1]
+   - [主要优势 2]
+   - [主要优势 3]
+
+   **影响**：[整体效果评估]
+
+   ## 结构与流程
+   - [关于组织的评论]
+   - [过渡质量]
+   - [节奏评估]
+
+   ## 内容质量
+   - [论点强度]
+   - [证据充分性]
+   - [示例有效性]
+
+   ## 技术质量
+   - 语法和机械：[评估]
+   - 一致性：[评估]
+   - 引用：[完整性检查]
+
+   ## 可读性
+   - 清晰度评分：[评估]
+   - 句子多样性：[评估]
+   - 段落长度：[评估]
+
+   ## 最终润色建议
+
+   1. **引言**：[具体改进]
+   2. **主体**：[具体改进]
+   3. **结论**：[具体改进]
+   4. **标题**：[如果需要，提供选项]
+
+   ## 发布前检查清单
+   - [ ] 所有主张都有来源
+   - [ ] 引用格式正确
+   - [ ] 示例清晰
+   - [ ] 过渡流畅
+   - [ ] 包含呼吁行动
+   - [ ] 校对拼写错误
+
+   准备发布！🚀
    ```
 
-## Examples
+## 示例
 
-### Example 1: Teresa Torres's Workflow
+### 示例 1：Teresa Torres 的工作流程
 
-**User**: "I'm writing an article about continuous discovery. Help me create an outline."
+**用户**："我正在写一篇关于持续发现的文章。帮助我创建一个大纲。"
 
-**Process**:
-1. Collaborates on outline structure
-2. Identifies research needs
-3. User starts writing introduction
-4. Reviews and improves the hook
-5. User writes each section
-6. Provides feedback after each section
-7. Conducts research and adds citations
-8. Final review of complete draft
-9. Polish and prep for publishing
+**流程**：
+1. 协作大纲结构
+2. 识别研究需求
+3. 用户开始写作引言
+4. 改进钩子
+5. 用户写作每个节
+6. 每节后提供反馈
+7. 进行研究和添加引用
+8. 完整草稿的最终审阅
+9. 润色并为发布准备
 
-**Result**: Well-researched, properly cited article written in Teresa's voice with strong structure and flow.
+**结果**：经过充分研究、正确引用的文章，以 Teresa 的声音写作，具有强大的结构和流程。
 
-### Example 2: Research-Heavy Article
+### 示例 2：研究型文章
 
-**User**: "I'm writing about AI's impact on product management. Help me find current data and examples."
+**用户**："我正在写 AI 对产品管理的影响。帮助我找到当前的数据和示例。"
 
-**Output**:
+**输出**：
 ```markdown
-## Research Compiled
+## 已编译研究
 
-### Recent Data
-- Gartner: 80% of PMs will use AI tools by 2025 [1]
-- Survey: 45% report faster feature shipping [2]
-- Case study: Airbnb's AI-assisted prioritization [3]
+### 最近数据
+- Gartner：到 2025 年，80% 的产品经理将使用 AI 工具 [1]
+- 调查：45% 报告更快的功能发布 [2]
+- 案例研究：Airbnb 的 AI 辅助优先级排序 [3]
 
-### Expert Quotes
-- "AI amplifies PM judgment, not replaces it" - Marty Cagan
-- [Additional quotes with citations]
+### 专家引言
+- "AI 放大而非取代产品经理判断" - Marty Cagan
+- [其他带引用的引言]
 
-### Real Examples
-1. **Company A**: Used AI for user research synthesis
-   - Result: 60% time savings
-   - Source: [citation]
+### 真实示例
+1. **公司 A**：使用 AI 进行用户研究综合
+   - 结果：节省 60% 时间
+   - 来源：[引用]
 
-2. **Company B**: AI-powered roadmap analysis
-   - Result: Better stakeholder alignment
-   - Source: [citation]
+2. **公司 B**：AI 驱动的路线图分析
+   - 结果：更好的利益相关者对齐
+   - 来源：[引用]
 
-All added to your outline with proper citations.
+所有已添加到您的大纲中，具有适当的引用。
 ```
 
-### Example 3: Hook Improvement
+### 示例 3：钩子改进
 
-**User's Original Hook**:
-> "Product management is changing because of AI. In this article, I'll discuss some ways AI affects product managers."
+**用户的原始钩子**：
+> "产品管理因 AI 而改变。在本文中，我将讨论 AI 影响产品经理的一些方式。"
 
-**Improved Options**:
+**改进选项**：
 
-**Option 1 (Data-driven)**:
-> "Last month, I asked AI to analyze 500 customer interviews. It took 30 minutes instead of 3 weeks. Product management will never be the same."
+**选项 1（数据驱动）**：
+> "上个月，我要求 AI 分析 500 次客户访谈。它用了 30 分钟而不是 3 周。产品管理将永远改变。"
 
-**Option 2 (Question)**:
-> "What if you could talk to every customer, read every review, and analyze every support ticket—all before your morning coffee?"
+**选项 2（问题）**：
+> "如果您能在早晨咖啡之前与每个客户交谈、阅读每篇评论并分析每张支持工单会怎样？"
 
-**Option 3 (Story)**:
-> "Sarah spent two weeks building the wrong feature. Not because she didn't understand her users, but because she couldn't process the hundreds of interviews fast enough to spot the pattern."
+**选项 3（故事）**：
+> "Sarah 花了两周时间构建了错误的功能。不是因为不了解她的用户，而是因为她无法足够快地处理数百次访谈以发现模式。"
 
-### Example 4: Section Feedback
+### 示例 4：节反馈
 
-**User**: "Just finished my 'Common Mistakes' section. Thoughts?"
+**用户**："刚完成我的'常见错误'部分。有什么想法？"
 
-**Response**:
+**回应**：
 ```markdown
-# Feedback: Common Mistakes Section
+# 反馈：常见错误部分
 
-## What Works Well ✓
-- Strong examples (the Slack notification story)
-- Clear structure (3 mistakes, clean layout)
-- Practical advice for each mistake
+## 有效之处 ✓
+- 强大的示例（Slack 通知故事）
+- 清晰的结构（3 个错误，干净的布局）
+- 每个错误的实用建议
 
-## Suggestions
+## 建议
 
-### Make It More Specific
-Your second point says "Bad prioritization" but could be stronger:
+### 使其更具体
+您的第二点说"糟糕的优先级排序"，但可以更强：
 
-Current:
-> "Many teams prioritize badly by focusing on features instead of outcomes."
+当前：
+> "许多团队通过专注于功能而不是成果而优先级排序错误。"
 
-Suggested:
-> "I've watched teams ship 14 features in a quarter yet move none of their key metrics. They prioritized activity over progress."
+建议：
+> "我曾看过一个团队在一个季度内发布了 14 个功能，但没有移动任何关键指标。他们优先考虑了活动而不是进展。"
 
-### Add Data
-The third mistake would benefit from evidence:
-> "[Add citation]: Studies show teams without regular user contact are 3x more likely to build unused features [needs source]"
+### 添加数据
+第三个错误将从证据中受益：
+> "[添加引用]：研究表明没有定期用户联系功能的团队构建未使用功能的可能性是 3 倍 [需要来源]"
 
-### Flow Improvement
-Consider reordering: Mistake 3 → Mistake 2 → Mistake 1
-This builds from small to big impact.
+### 流程改进
+考虑重新排序：错误 3 → 错误 2 → 错误 1
+这从小影响到大影响构建。
 
-Ready for the next section!
+准备进入下一节！
 ```
 
-## Writing Workflows
+## 写作工作流程
 
-### Blog Post Workflow
-1. Outline together
-2. Research key points
-3. Write introduction → get feedback
-4. Write body sections → feedback each
-5. Write conclusion → final review
-6. Polish and edit
+### 博客文章工作流程
+1. 一起制定大纲
+2. 研究关键点
+3. 写引言 → 获得反馈
+4. 写主体节 → 每节反馈
+5. 写结论 → 最终审阅
+6. 润色和编辑
 
-### Newsletter Workflow
-1. Discuss hook ideas
-2. Quick outline (shorter format)
-3. Draft in one session
-4. Review for clarity and links
-5. Quick polish
+### 新闻通讯工作流程
+1. 讨论钩子想法
+2. 快速大纲（较短格式）
+3. 一次会议中起草
+4. 审阅清晰度和链接
+5. 快速润色
 
-### Technical Tutorial Workflow
-1. Outline steps
-2. Write code examples
-3. Add explanations
-4. Test instructions
-5. Add troubleshooting section
-6. Final review for accuracy
+### 技术教程工作流程
+1. 概述步骤
+2. 编写代码示例
+3. 添加解释
+4. 测试说明
+5. 添加故障排除部分
+6. 准确性的最终审阅
 
-### Thought Leadership Workflow
-1. Brainstorm unique angle
-2. Research existing perspectives
-3. Develop your thesis
-4. Write with strong POV
-5. Add supporting evidence
-6. Craft compelling conclusion
+### 思想领导力工作流程
+1. 独特角度的头脑风暴
+2. 研究现有观点
+3. 发展您的论点
+4. 以强烈的 POV 写作
+5. 添加支持证据
+6. 设计令人信服的结论
 
-## Pro Tips
+## 专业提示
 
-1. **Work in VS Code**: Better than web Claude for long-form writing
-2. **One section at a time**: Get feedback incrementally
-3. **Save research separately**: Keep a research.md file
-4. **Version your drafts**: article-v1.md, article-v2.md, etc.
-5. **Read aloud**: Use feedback to identify clunky sentences
-6. **Set deadlines**: "I want to finish the draft today"
-7. **Take breaks**: Write, get feedback, pause, revise
+1. **在 VS Code 中工作**：比网络 Claude 更适合长篇写作
+2. **一次一个节**：增量获得反馈
+3. **单独保存研究**：保留 research.md 文件
+4. **版本化您的草稿**：article-v1.md、article-v2.md 等
+5. **大声朗读**：使用反馈识别笨拙的句子
+6. **设定截止日期**："我想今天完成草稿"
+7. **休息**：写作、获得反馈、暂停、修改
 
-## File Organization
+## 文件组织
 
-Recommended structure for writing projects:
+写作项目建议结构：
 
 ```
 ~/writing/article-name/
-├── outline.md          # Your outline
-├── research.md         # All research and citations
-├── draft-v1.md         # First draft
-├── draft-v2.md         # Revised draft
-├── final.md            # Publication-ready
-├── feedback.md         # Collected feedback
-└── sources/            # Reference materials
+├── outline.md          # 您的大纲
+├── research.md         # 所有研究和引用
+├── draft-v1.md         # 第一稿
+├── draft-v2.md         # 修改稿
+├── final.md            # 发布就绪
+├── feedback.md         # 收集的反馈
+└── sources/            # 参考材料
     ├── study1.pdf
     └── article2.md
 ```
 
-## Best Practices
+## 最佳实践
 
-### For Research
-- Verify sources before citing
-- Use recent data when possible
-- Balance different perspectives
-- Link to original sources
+### 对于研究
+- 引用前验证来源
+- 可能时使用最新数据
+- 平衡不同观点
+- 链接到原始来源
 
-### For Feedback
-- Be specific about what you want: "Is this too technical?"
-- Share your concerns: "I'm worried this section drags"
-- Ask questions: "Does this flow logically?"
-- Request alternatives: "What's another way to explain this?"
+### 对于反馈
+- 明确说明您想要什么："这太技术性了吗？"
+- 分享您的担忧："我担心这部分拖沓"
+- 提问："这逻辑流畅吗？"
+- 请求替代方案："有什么其他方式解释这个？"
 
-### For Voice
-- Share examples of your writing
-- Specify tone preferences
-- Point out good matches: "That sounds like me!"
-- Flag mismatches: "Too formal for my style"
+### 对于声音
+- 分享您的写作示例
+- 指定语气偏好
+- 指出良好的匹配："这听起来像我！"
+- 标记不匹配："对我的风格来说太正式了"
 
-## Related Use Cases
+## 相关用例
 
-- Creating social media posts from articles
-- Adapting content for different audiences
-- Writing email newsletters
-- Drafting technical documentation
-- Creating presentation content
-- Writing case studies
-- Developing course outlines
-
+- 从文章创建社交媒体帖子
+- 为不同受众调整内容
+- 写作电子邮件新闻通讯
+- 起草技术文档
+- 创建演示内容
+- 撰写案例研究
+- 开发课程大纲

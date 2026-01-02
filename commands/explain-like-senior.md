@@ -1,58 +1,58 @@
 ---
 allowed-tools: Read, Glob, Grep, WebSearch, WebFetch
-description: Explain code like a senior developer, focusing on the why behind decisions
-argument-hint: [file-path] - optional file to explain
+description: 像高级开发人员一样解释代码，重点关注决策背后的原因
+argument-hint: [file-path] - 可选要解释的文件
 ---
 
-# Senior Developer Explanation
+# 高级开发人员解释
 
-I'll explain this code as a senior developer would, focusing on the why behind decisions.
+我将像高级开发人员一样解释这段代码，重点关注决策背后的原因。
 
-I'll analyze the code using native tools:
-- **Read tool** to examine the code structure and patterns
-- **Grep tool** to find related implementations and usage
-- **Glob tool** to understand the broader codebase context
+我将使用原生工具分析代码：
+- **Read 工具**检查代码结构和模式
+- **Grep 工具**查找相关实现和用法
+- **Glob 工具**理解更广泛的代码库上下文
 
-**Technical Context:**
-- Why this approach was chosen over alternatives
-- Trade-offs and architectural decisions made
-- Performance implications and considerations
-- Maintenance and scalability factors
+**技术上下文：**
+- 为什么选择这种方法而不是其他方法
+- 做出的权衡和架构决策
+- 性能影响和考虑因素
+- 维护和可扩展性因素
 
-**Business Context:**
-- How this fits into the larger system architecture
-- Impact on user experience and business goals
-- Cost implications and resource considerations
-- Timeline and delivery constraints that influenced decisions
+**业务上下文：**
+- 这如何融入更大的系统架构
+- 对用户体验和业务目标的影响
+- 成本影响和资源考虑
+- 影响决策的时间线和交付约束
 
-**Senior-Level Insights:**
-- "This pattern works now but will need refactoring at 10x scale"
-- "The complexity here is justified because of [specific business requirement]"
-- "This is a common anti-pattern, but acceptable given [constraints]"
-- "Consider this alternative approach for better [maintainability/performance]"
+**高级见解：**
+- "这种模式现在有效，但在 10 倍规模时需要重构"
+- "这里的复杂性是合理的，因为特定的业务需求"
+- "这是一种常见的反模式，但在给定约束条件下可以接受"
+- "考虑使用替代方法以获得更好的[可维护性/性能]"
 
-**Experience-Based Guidance:**
-- Common pitfalls junior developers miss in this pattern
-- Edge cases that frequently cause issues in production
-- Integration points that often fail and how to mitigate
-- Performance bottlenecks that emerge at scale
+**基于经验的指导：**
+- 初级开发人员在这种模式中经常遗漏的常见陷阱
+- 经常在生产环境中导致问题的边缘情况
+- 经常失败的集成点及其缓解方法
+- 在规模上出现的性能瓶颈
 
-**Mentoring Approach:**
-- Explains not just WHAT the code does but WHY it exists
-- Points out subtle details that impact long-term maintenance
-- Shares lessons learned from similar implementations
-- Provides actionable next steps for improvement
+**指导方法：**
+- 不仅解释代码做什么，还解释它存在的原因
+- 指出影响长期维护的微妙细节
+- 分享从类似实现中吸取的经验教训
+- 提供可操作的改进下一步
 
-**Code Evolution Perspective:**
-- How this code will likely need to change as requirements evolve
-- Technical debt considerations and when to address them
-- Refactoring opportunities and their priority levels
-- Architecture decisions that will impact future development
+**代码演进视角：**
+- 随着需求的发展，这段代码可能需要如何改变
+- 技术债务考虑及何时处理
+- 重构机会及其优先级
+- 将影响未来开发的架构决策
 
-**Important**: I will NEVER:
-- Add "Co-authored-by" or any Claude signatures
-- Include "Generated with Claude Code" or similar messages
-- Modify git config or user credentials
-- Add any AI/assistant attribution to the commit
+**重要**：我绝不会：
+- 添加"Co-authored-by"或任何 Claude 签名
+- 包含"使用 Claude Code 生成"或类似消息
+- 修改 git 配置或用户凭据
+- 向提交添加任何 AI/助手归属
 
-This provides the kind of contextual, experience-driven explanation that helps developers grow from junior to senior level thinking.
+这种提供上下文、经验驱动的解释有助于开发者从初级成长为高级水平的思维。

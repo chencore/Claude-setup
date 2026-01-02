@@ -1,101 +1,101 @@
 ---
 name: article-extractor
-description: Extract clean article content from URLs (blog posts, articles, tutorials) and save as readable text. Use when user wants to download, extract, or save an article/blog post from a URL without ads, navigation, or clutter
+description: 从 URL 提取干净的文章内容（博客文章、教程、文章）并保存为可读文本。当用户想要从 URL 下载、提取或保存文章/博客文章而不包含广告、导航或其他杂乱内容时使用
 ---
 
-# Article Extractor
+# 文章提取器
 
-This skill extracts the main content from web articles and blog posts, removing navigation, ads, newsletter signups, and other clutter. Saves clean, readable text.
+此技能从网络文章和博客文章中提取主要内容，移除导航、广告、通讯注册表单和其他杂乱内容。保存干净、可读的文本。
 
-## When to Use This Skill
+## 何时使用此技能
 
-Activate when the user:
-- Provides an article/blog URL and wants the text content
-- Asks to "download this article"
-- Wants to "extract the content from [URL]"
-- Asks to "save this blog post as text"
-- Needs clean article text without distractions
+当用户：
+- 提供文章/博客 URL 并想要文本内容
+- 要求"下载这篇文章"
+- 想要"从 [URL] 提取内容"
+- 要求"将此博客文章保存为文本"
+- 需要没有干扰的干净文章文本
 
-## How It Works
+## 工作原理
 
-### Priority Order:
-1. **Check if tools are installed** (reader or trafilatura)
-2. **Download and extract article** using best available tool
-3. **Clean up the content** (remove extra whitespace, format properly)
-4. **Save to file** with article title as filename
-5. **Confirm location** and show preview
+### 优先顺序：
+1. **检查是否安装了工具**（reader 或 trafilatura）
+2. **使用最佳可用工具下载并提取文章**
+3. **清理内容**（移除多余的空白，正确格式化）
+4. **保存到文件**，文章标题作为文件名
+5. **确认位置**并显示预览
 
-## Installation Check
+## 安装检查
 
-Check for article extraction tools in this order:
+按以下顺序检查文章提取工具：
 
-### Option 1: reader (Recommended - Mozilla's Readability)
+### 选项 1：reader（推荐 - Mozilla 的 Readability）
 
 ```bash
 command -v reader
 ```
 
-If not installed:
+如果未安装：
 ```bash
 npm install -g @mozilla/readability-cli
-# or
+# 或
 npm install -g reader-cli
 ```
 
-### Option 2: trafilatura (Python-based, very good)
+### 选项 2：trafilatura（基于 Python，非常好用）
 
 ```bash
 command -v trafilatura
 ```
 
-If not installed:
+如果未安装：
 ```bash
 pip3 install trafilatura
 ```
 
-### Option 3: Fallback (curl + simple parsing)
+### 选项 3：后备方案（curl + 简单解析）
 
-If no tools available, use basic curl + text extraction (less reliable but works)
+如果没有可用工具，使用基本的 curl + 文本提取（不太可靠但可用）
 
-## Extraction Methods
+## 提取方法
 
-### Method 1: Using reader (Best for most articles)
+### 方法 1：使用 reader（适用于大多数文章）
 
 ```bash
-# Extract article
+# 提取文章
 reader "URL" > article.txt
 ```
 
-**Pros:**
-- Based on Mozilla's Readability algorithm
-- Excellent at removing clutter
-- Preserves article structure
+**优点：**
+- 基于 Mozilla 的 Readability 算法
+- 非常擅长移除杂乱内容
+- 保留文章结构
 
-### Method 2: Using trafilatura (Best for blogs/news)
+### 方法 2：使用 trafilatura（适用于博客/新闻）
 
 ```bash
-# Extract article
+# 提取文章
 trafilatura --URL "URL" --output-format txt > article.txt
 
-# Or with more options
+# 或使用更多选项
 trafilatura --URL "URL" --output-format txt --no-comments --no-tables > article.txt
 ```
 
-**Pros:**
-- Very accurate extraction
-- Good with various site structures
-- Handles multiple languages
+**优点：**
+- 非常准确的提取
+- 适用于各种网站结构
+- 支持多种语言
 
-**Options:**
-- `--no-comments`: Skip comment sections
-- `--no-tables`: Skip data tables
-- `--precision`: Favor precision over recall
-- `--recall`: Extract more content (may include some noise)
+**选项：**
+- `--no-comments`：跳过评论部分
+- `--no-tables`：跳过数据表格
+- `--precision`：优先考虑精确度而非召回率
+- `--recall`：提取更多内容（可能包含一些噪音）
 
-### Method 3: Fallback (curl + basic parsing)
+### 方法 3：后备方案（curl + 基本解析）
 
 ```bash
-# Download and extract basic content
+# 下载并提取基本内容
 curl -s "URL" | python3 -c "
 from html.parser import HTMLParser
 import sys
@@ -127,87 +127,87 @@ print(parser.get_content())
 " > article.txt
 ```
 
-**Note:** This is less reliable but works without dependencies.
+**注意**：这种方法不太可靠，但没有依赖也能工作。
 
-## Getting Article Title
+## 获取文章标题
 
-Extract title for filename:
+为文件名提取标题：
 
-### Using reader:
+### 使用 reader：
 ```bash
-# reader outputs markdown with title at top
+# reader 在顶部输出带有标题的 markdown
 TITLE=$(reader "URL" | head -n 1 | sed 's/^# //')
 ```
 
-### Using trafilatura:
+### 使用 trafilatura：
 ```bash
-# Get metadata including title
+# 获取包含标题的元数据
 TITLE=$(trafilatura --URL "URL" --json | python3 -c "import json, sys; print(json.load(sys.stdin)['title'])")
 ```
 
-### Using curl (fallback):
+### 使用 curl（后备）：
 ```bash
 TITLE=$(curl -s "URL" | grep -oP '<title>\K[^<]+' | sed 's/ - .*//' | sed 's/ | .*//')
 ```
 
-## Filename Creation
+## 文件名创建
 
-Clean title for filesystem:
+清理文件系统兼容的标题：
 
 ```bash
-# Get title
-TITLE="Article Title from Website"
+# 获取标题
+TITLE="来自网站的文章标题"
 
-# Clean for filesystem (remove special chars, limit length)
+# 清理文件系统（移除特殊字符，限制长度）
 FILENAME=$(echo "$TITLE" | tr '/' '-' | tr ':' '-' | tr '?' '' | tr '"' '' | tr '<' '' | tr '>' '' | tr '|' '-' | cut -c 1-100 | sed 's/ *$//')
 
-# Add extension
+# 添加扩展名
 FILENAME="${FILENAME}.txt"
 ```
 
-## Complete Workflow
+## 完整工作流程
 
 ```bash
 ARTICLE_URL="https://example.com/article"
 
-# Check for tools
+# 检查工具
 if command -v reader &> /dev/null; then
     TOOL="reader"
-    echo "Using reader (Mozilla Readability)"
+    echo "使用 reader（Mozilla Readability）"
 elif command -v trafilatura &> /dev/null; then
     TOOL="trafilatura"
-    echo "Using trafilatura"
+    echo "使用 trafilatura"
 else
     TOOL="fallback"
-    echo "Using fallback method (may be less accurate)"
+    echo "使用后备方法（可能不太准确）"
 fi
 
-# Extract article
+# 提取文章
 case $TOOL in
     reader)
-        # Get content
+        # 获取内容
         reader "$ARTICLE_URL" > temp_article.txt
 
-        # Get title (first line after # in markdown)
+        # 获取标题（markdown 中第一行后）
         TITLE=$(head -n 1 temp_article.txt | sed 's/^# //')
         ;;
 
     trafilatura)
-        # Get title from metadata
+        # 从元数据获取标题
         METADATA=$(trafilatura --URL "$ARTICLE_URL" --json)
         TITLE=$(echo "$METADATA" | python3 -c "import json, sys; print(json.load(sys.stdin).get('title', 'Article'))")
 
-        # Get clean content
+        # 获取干净内容
         trafilatura --URL "$ARTICLE_URL" --output-format txt --no-comments > temp_article.txt
         ;;
 
     fallback)
-        # Get title
+        # 获取标题
         TITLE=$(curl -s "$ARTICLE_URL" | grep -oP '<title>\K[^<]+' | head -n 1)
-        TITLE=${TITLE%% - *}  # Remove site name
-        TITLE=${TITLE%% | *}  # Remove site name (alternate)
+        TITLE=${TITLE%% - *}  # 移除网站名称
+        TITLE=${TITLE%% | *}  # 移除网站名称（备用）
 
-        # Get content (basic extraction)
+        # 获取内容（基本提取）
         curl -s "$ARTICLE_URL" | python3 -c "
 from html.parser import HTMLParser
 import sys
@@ -240,129 +240,129 @@ print(parser.get_content())
         ;;
 esac
 
-# Clean filename
+# 清理文件名
 FILENAME=$(echo "$TITLE" | tr '/' '-' | tr ':' '-' | tr '?' '' | tr '"' '' | tr '<>' '' | tr '|' '-' | cut -c 1-80 | sed 's/ *$//' | sed 's/^ *//')
 FILENAME="${FILENAME}.txt"
 
-# Move to final filename
+# 移动到最终文件名
 mv temp_article.txt "$FILENAME"
 
-# Show result
-echo "✓ Extracted article: $TITLE"
-echo "✓ Saved to: $FILENAME"
+# 显示结果
+echo "✓ 已提取文章: $TITLE"
+echo "✓ 保存到: $FILENAME"
 echo ""
-echo "Preview (first 10 lines):"
+echo "预览（前10行）："
 head -n 10 "$FILENAME"
 ```
 
-## Error Handling
+## 错误处理
 
-### Common Issues
+### 常见问题
 
-**1. Tool not installed**
-- Try alternate tool (reader → trafilatura → fallback)
-- Offer to install: "Install reader with: npm install -g reader-cli"
+**1. 工具未安装**
+- 尝试备用工具（reader → trafilatura → fallback）
+- 提供安装选项："使用以下命令安装 reader: npm install -g reader-cli"
 
-**2. Paywall or login required**
-- Extraction tools may fail
-- Inform user: "This article requires authentication. Cannot extract."
+**2. 需要付费墙或登录**
+- 提取工具可能会失败
+- 通知用户："此文章需要身份验证。无法提取。"
 
-**3. Invalid URL**
-- Check URL format
-- Try with and without redirects
+**3. 无效 URL**
+- 检查 URL 格式
+- 尝试使用和不使用重定向
 
-**4. No content extracted**
-- Site may use heavy JavaScript
-- Try fallback method
-- Inform user if extraction fails
+**4. 未提取内容**
+- 网站可能使用大量 JavaScript
+- 尝试后备方法
+- 如果提取失败，通知用户
 
-**5. Special characters in title**
-- Clean title for filesystem
-- Remove: `/`, `:`, `?`, `"`, `<`, `>`, `|`
-- Replace with `-` or remove
+**5. 标题中的特殊字符**
+- 清理文件系统的标题
+- 移除：`/`, `:`, `?`, `"`, `<`, `>`, `|`
+- 替换为 `-` 或移除
 
-## Output Format
+## 输出格式
 
-### Saved File Contains:
-- Article title (if available)
-- Author (if available from tool)
-- Main article text
-- Section headings
-- No navigation, ads, or clutter
+### 保存的文件包含：
+- 文章标题（如果可用）
+- 作者（如果从工具获取）
+- 主要文章文本
+- 部分标题
+- 没有导航、广告或杂乱内容
 
-### What Gets Removed:
-- Navigation menus
-- Ads and promotional content
-- Newsletter signup forms
-- Related articles sidebars
-- Comment sections (optional)
-- Social media buttons
-- Cookie notices
+### 被移除的内容：
+- 导航菜单
+- 广告和促销内容
+- 通讯注册表单
+- 相关文章侧边栏
+- 评论部分（可选）
+- 社交媒体按钮
+- Cookie 通知
 
-## Tips for Best Results
+## 获得最佳结果的技巧
 
-**1. Use reader for most articles**
-- Best all-around tool
-- Based on Firefox Reader View
-- Works on most news sites and blogs
+**1. 对大多数文章使用 reader**
+- 最佳全能工具
+- 基于 Firefox 阅读器视图
+- 适用于大多数新闻网站和博客
 
-**2. Use trafilatura for:**
-- Academic articles
-- News sites
-- Blogs with complex layouts
-- Non-English content
+**2. 对以下内容使用 trafilatura：**
+- 学术文章
+- 新闻网站
+- 具有复杂布局的博客
+- 非英语内容
 
-**3. Fallback method limitations:**
-- May include some noise
-- Less accurate paragraph detection
-- Better than nothing for simple sites
+**3. 后备方法的局限性：**
+- 可能包含一些噪音
+- 段落检测不太准确
+- 对于简单网站比没有好
 
-**4. Check extraction quality:**
-- Always show preview to user
-- Ask if it looks correct
-- Offer to try different tool if needed
+**4. 检查提取质量：**
+- 总是向用户显示预览
+- 询问是否看起来正确
+- 如果需要，提供尝试不同工具的选项
 
-## Example Usage
+## 使用示例
 
-**Simple extraction:**
+**简单提取：**
 ```bash
-# User: "Extract https://example.com/article"
+# 用户："提取 https://example.com/article"
 reader "https://example.com/article" > temp.txt
 TITLE=$(head -n 1 temp.txt | sed 's/^# //')
-FILENAME="$(echo "$TITLE" | tr '/' '-').txt"
+FILENAME="$(echo "$TITLE" | tr '/').txt"
 mv temp.txt "$FILENAME"
-echo "✓ Saved to: $FILENAME"
+echo "✓ 保存到: $FILENAME"
 ```
 
-**With error handling:**
+**带错误处理：**
 ```bash
 if ! reader "$URL" > temp.txt 2>/dev/null; then
     if command -v trafilatura &> /dev/null; then
         trafilatura --URL "$URL" --output-format txt > temp.txt
     else
-        echo "Error: Could not extract article. Install reader or trafilatura."
+        echo "错误：无法提取文章。安装 reader 或 trafilatura。"
         exit 1
     fi
 fi
 ```
 
-## Best Practices
+## 最佳实践
 
-- ✅ Always show preview after extraction (first 10 lines)
-- ✅ Verify extraction succeeded before saving
-- ✅ Clean filename for filesystem compatibility
-- ✅ Try fallback method if primary fails
-- ✅ Inform user which tool was used
-- ✅ Keep filename length reasonable (< 100 chars)
+- ✅ 提取后始终显示预览（前10行）
+- ✅ 保存前验证提取成功
+- ✅ 清理文件名以实现文件系统兼容性
+- ✅ 如果主要失败，尝试后备方法
+- ✅ 通知用户使用了哪个工具
+- ✅ 保持文件名长度合理（< 100 个字符）
 
-## After Extraction
+## 提取后
 
-Display to user:
-1. "✓ Extracted: [Article Title]"
-2. "✓ Saved to: [filename]"
-3. Show preview (first 10-15 lines)
-4. File size and location
+向用户显示：
+1. "✓ 已提取：[文章标题]"
+2. "✓ 保存到：[文件名]"
+3. 显示预览（前10-15行）
+4. 文件大小和位置
 
-Ask if needed:
-- "Would you like me to also create a Ship-Learn-Next plan from this?" (if using ship-learn-next skill)
-- "Should I extract another article?"
+询问是否需要：
+- "您是否也希望我从这个创建一个 Ship-Learn-Next 计划？"（如果使用 ship-learn-next 技能）
+- "我应该提取另一篇文章吗？"

@@ -1,150 +1,150 @@
 ---
-description: technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create actionable remediation plans.
-argument-hint: [code-path] or leave empty to identify best opportunities to refactor in the entire codebase
+description: 技术债务专家，专注于在软件项目中识别、量化和优先排序技术债务。分析代码库以发现债务、评估其影响，并创建可行的补救计划。
+argument-hint: [code-path] 或留空以在整个代码库中识别最佳重构机会
 ---
 
-# Technical Debt Analysis and Remediation
+# 技术债务分析和补救
 
-You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create actionable remediation plans.
+您是技术债务专家，专注于在软件项目中识别、量化和优先排序技术债务。分析代码库以发现债务、评估其影响，并创建可行的补救计划。
 
-## Context
-The user needs a comprehensive technical debt analysis to understand what's slowing down development, increasing bugs, and creating maintenance challenges. Focus on practical, measurable improvements with clear ROI.
+## 上下文
+用户需要全面的技术债务分析，以了解什么正在减慢开发速度、增加错误并造成维护挑战。专注于具有清晰 ROI 的实际、可衡量的改进。
 
-## Requirements
-$ARGUMENTS or leave empty to identify best opportunities to refactor in the entire codebase
+## 要求
+$ARGUMENTS 或留空以在整个代码库中识别最佳重构机会
 
-## Instructions
+## 指令
 
-### 1. Technical Debt Inventory
+### 1. 技术债务清单
 
-Conduct a thorough scan for all types of technical debt:
+对所有类型的技术债务进行全面扫描：
 
-**Code Debt**
-- **Duplicated Code**
-  - Exact duplicates (copy-paste)
-  - Similar logic patterns
-  - Repeated business rules
-  - Quantify: Lines duplicated, locations
-  
-- **Complex Code**
-  - High cyclomatic complexity (>10)
-  - Deeply nested conditionals (>3 levels)
-  - Long methods (>50 lines)
-  - God classes (>500 lines, >20 methods)
-  - Quantify: Complexity scores, hotspots
+**代码债务**
+- **重复代码**
+  - 完全重复（复制粘贴）
+  - 相似逻辑模式
+  - 重复的业务规则
+  - 量化：重复的行数、位置
 
-- **Poor Structure**
-  - Circular dependencies
-  - Inappropriate intimacy between classes
-  - Feature envy (methods using other class data)
-  - Shotgun surgery patterns
-  - Quantify: Coupling metrics, change frequency
+- **复杂代码**
+  - 高圈复杂度（>10）
+  - 深嵌套条件语句（>3 层）
+  - 长方法（>50 行）
+  - God 类（>500 行，>20 个方法）
+  - 量化：复杂度分数、热点
 
-**Architecture Debt**
-- **Design Flaws**
-  - Missing abstractions
-  - Leaky abstractions
-  - Violated architectural boundaries
-  - Monolithic components
-  - Quantify: Component size, dependency violations
+- **糟糕的结构**
+  - 循环依赖
+  - 类之间的不适当亲密
+  - 特性羡慕（使用其他类数据的方法）
+  - 散弹手术模式
+  - 量化：耦合度量、更改频率
 
-- **Technology Debt**
-  - Outdated frameworks/libraries
-  - Deprecated API usage
-  - Legacy patterns (e.g., callbacks vs promises)
-  - Unsupported dependencies
-  - Quantify: Version lag, security vulnerabilities
+**架构债务**
+- **设计缺陷**
+  - 缺失抽象
+  - 有漏洞的抽象
+  - 违反架构边界
+  - 单体组件
+  - 量化：组件大小、依赖违规
 
-**Testing Debt**
-- **Coverage Gaps**
-  - Untested code paths
-  - Missing edge cases
-  - No integration tests
-  - Lack of performance tests
-  - Quantify: Coverage %, critical paths untested
+- **技术债务**
+  - 过时的框架/库
+  - 使用已弃用的 API
+  - 遗留模式（例如，回调 vs promise）
+  - 不支持的依赖项
+  - 量化：版本滞后、安全漏洞
 
-- **Test Quality**
-  - Brittle tests (environment-dependent)
-  - Slow test suites
-  - Flaky tests
-  - No test documentation
-  - Quantify: Test runtime, failure rate
+**测试债务**
+- **覆盖缺口**
+  - 未测试的代码路径
+  - 缺失边缘情况
+  - 没有集成测试
+  - 缺少性能测试
+  - 量化：覆盖率%、未测试的关键路径
 
-**Documentation Debt**
-- **Missing Documentation**
-  - No API documentation
-  - Undocumented complex logic
-  - Missing architecture diagrams
-  - No onboarding guides
-  - Quantify: Undocumented public APIs
+- **测试质量**
+  - 脆弱测试（依赖环境）
+  - 慢速测试套件
+  - 不稳定的测试
+  - 没有测试文档
+  - 量化：测试运行时间、失败率
 
-**Infrastructure Debt**
-- **Deployment Issues**
-  - Manual deployment steps
-  - No rollback procedures
-  - Missing monitoring
-  - No performance baselines
-  - Quantify: Deployment time, failure rate
+**文档债务**
+- **缺失文档**
+  - 没有 API 文档
+  - 未记录的复杂逻辑
+  - 缺失架构图
+  - 没有入门指南
+  - 量化：未记录的公共 API
 
-### 2. Impact Assessment
+**基础设施债务**
+- **部署问题**
+  - 手动部署步骤
+  - 没有回滚程序
+  - 缺失监控
+  - 没有性能基线
+  - 量化：部署时间、失败率
 
-Calculate the real cost of each debt item:
+### 2. 影响评估
 
-**Development Velocity Impact**
+计算每项债务项目的实际成本：
+
+**开发速度影响**
 ```
-Debt Item: Duplicate user validation logic
-Locations: 5 files
-Time Impact: 
-- 2 hours per bug fix (must fix in 5 places)
-- 4 hours per feature change
-- Monthly impact: ~20 hours
-Annual Cost: 240 hours × $150/hour = $36,000
-```
-
-**Quality Impact**
-```
-Debt Item: No integration tests for payment flow
-Bug Rate: 3 production bugs/month
-Average Bug Cost:
-- Investigation: 4 hours
-- Fix: 2 hours  
-- Testing: 2 hours
-- Deployment: 1 hour
-Monthly Cost: 3 bugs × 9 hours × $150 = $4,050
-Annual Cost: $48,600
+债务项目：重复的用户验证逻辑
+位置：5 个文件
+时间影响：
+- 每个 bug 修复 2 小时（必须在 5 个地方修复）
+- 每个功能更改 4 小时
+- 月度影响：约 20 小时
+年度成本：240 小时 × 150 美元/小时 = 36,000 美元
 ```
 
-**Risk Assessment**
-- **Critical**: Security vulnerabilities, data loss risk
-- **High**: Performance degradation, frequent outages
-- **Medium**: Developer frustration, slow feature delivery
-- **Low**: Code style issues, minor inefficiencies
+**质量影响**
+```
+债务项目：支付流程没有集成测试
+错误率：每月 3 个生产错误
+平均错误成本：
+- 调查：4 小时
+- 修复：2 小时
+- 测试：2 小时
+- 部署：1 小时
+月度成本：3 个错误 × 9 小时 × 150 美元 = 4,050 美元
+年度成本：48,600 美元
+```
 
-### 3. Debt Metrics Dashboard
+**风险评估**
+- **关键**：安全漏洞、数据丢失风险
+- **高**：性能下降、频繁停机
+- **中等**：开发人员沮丧、功能交付缓慢
+- **低**：代码风格问题、轻微的低效率
 
-Create measurable KPIs:
+### 3. 债务指标仪表板
 
-**Code Quality Metrics**
+创建可衡量的 KPI：
+
+**代码质量指标**
 ```yaml
 Metrics:
   cyclomatic_complexity:
     current: 15.2
     target: 10.0
     files_above_threshold: 45
-    
+
   code_duplication:
     percentage: 23%
     target: 5%
     duplication_hotspots:
       - src/validation: 850 lines
       - src/api/handlers: 620 lines
-      
+
   test_coverage:
     unit: 45%
     integration: 12%
     e2e: 5%
     target: 80% / 60% / 30%
-    
+
   dependency_health:
     outdated_major: 12
     outdated_minor: 34
@@ -152,7 +152,7 @@ Metrics:
     deprecated_apis: 15
 ```
 
-**Trend Analysis**
+**趋势分析**
 ```python
 debt_trends = {
     "2024_Q1": {"score": 750, "items": 125},
@@ -163,137 +163,137 @@ debt_trends = {
 }
 ```
 
-### 4. Prioritized Remediation Plan
+### 4. 优先级补救计划
 
-Create an actionable roadmap based on ROI:
+基于 ROI 创建可行的路线图：
 
-**Quick Wins (High Value, Low Effort)**
-Week 1-2:
+**快速获胜（高价值、低工作量）**
+第 1-2 周：
 ```
-1. Extract duplicate validation logic to shared module
-   Effort: 8 hours
-   Savings: 20 hours/month
-   ROI: 250% in first month
+1. 提取重复验证逻辑到共享模块
+   工作量：8 小时
+   节省：每月 20 小时
+   ROI：第一个月 250%
 
-2. Add error monitoring to payment service
-   Effort: 4 hours
-   Savings: 15 hours/month debugging
-   ROI: 375% in first month
+2. 向支付服务添加错误监控
+   工作量：4 小时
+   节省：每月 15 小时调试
+   ROI：第一个月 375%
 
-3. Automate deployment script
-   Effort: 12 hours
-   Savings: 2 hours/deployment × 20 deploys/month
-   ROI: 333% in first month
-```
-
-**Medium-Term Improvements (Month 1-3)**
-```
-1. Refactor OrderService (God class)
-   - Split into 4 focused services
-   - Add comprehensive tests
-   - Create clear interfaces
-   Effort: 60 hours
-   Savings: 30 hours/month maintenance
-   ROI: Positive after 2 months
-
-2. Upgrade React 16 → 18
-   - Update component patterns
-   - Migrate to hooks
-   - Fix breaking changes
-   Effort: 80 hours  
-   Benefits: Performance +30%, Better DX
-   ROI: Positive after 3 months
+3. 自动化部署脚本
+   工作量：12 小时
+   节省：每次部署 2 小时 × 每月 20 次部署
+   ROI：第一个月 333%
 ```
 
-**Long-Term Initiatives (Quarter 2-4)**
+**中期改进（第 1-3 个月）**
 ```
-1. Implement Domain-Driven Design
-   - Define bounded contexts
-   - Create domain models
-   - Establish clear boundaries
-   Effort: 200 hours
-   Benefits: 50% reduction in coupling
-   ROI: Positive after 6 months
+1. 重构 OrderService（God 类）
+   - 分成 4 个专注的服务
+   - 添加全面的测试
+   - 创建清晰的接口
+   工作量：60 小时
+   节省：每月 30 小时维护
+   ROI：2 个月后为正
 
-2. Comprehensive Test Suite
-   - Unit: 80% coverage
-   - Integration: 60% coverage
-   - E2E: Critical paths
-   Effort: 300 hours
-   Benefits: 70% reduction in bugs
-   ROI: Positive after 4 months
+2. 升级 React 16 → 18
+   - 更新组件模式
+   - 迁移到 hooks
+   - 修复破坏性更改
+   工作量：80 小时
+   收益：性能提升 30%，更好的 DX
+   ROI：3 个月后为正
 ```
 
-### 5. Implementation Strategy
+**长期计划（第 2-4 季度）**
+```
+1. 实施领域驱动设计
+   - 定义限界上下文
+   - 创建领域模型
+   - 建立清晰的边界
+   工作量：200 小时
+   收益：耦合度降低 50%
+   ROI：6 个月后为正
 
-**Incremental Refactoring**
+2. 全面的测试套件
+   - 单元：80% 覆盖率
+   - 集成：60% 覆盖率
+   - 端到端：关键路径
+   工作量：300 小时
+   收益：错误减少 70%
+   ROI：4 个月后为正
+```
+
+### 5. 实现策略
+
+**增量重构**
 ```python
-# Phase 1: Add facade over legacy code
+# 第 1 阶段：在遗留代码上添加外观
 class PaymentFacade:
     def __init__(self):
         self.legacy_processor = LegacyPaymentProcessor()
-    
+
     def process_payment(self, order):
-        # New clean interface
+        # 新的干净接口
         return self.legacy_processor.doPayment(order.to_legacy())
 
-# Phase 2: Implement new service alongside
+# 第 2 阶段：并行实现新服务
 class PaymentService:
     def process_payment(self, order):
-        # Clean implementation
+        # 干净的实现
         pass
 
-# Phase 3: Gradual migration
+# 第 3 阶段：逐步迁移
 class PaymentFacade:
     def __init__(self):
         self.new_service = PaymentService()
         self.legacy = LegacyPaymentProcessor()
-        
+
     def process_payment(self, order):
         if feature_flag("use_new_payment"):
             return self.new_service.process_payment(order)
         return self.legacy.doPayment(order.to_legacy())
 ```
 
-**Team Allocation**
+**团队分配**
 ```yaml
 Debt_Reduction_Team:
   dedicated_time: "20% sprint capacity"
-  
+
   roles:
-    - tech_lead: "Architecture decisions"
-    - senior_dev: "Complex refactoring"  
-    - dev: "Testing and documentation"
-    
+    - tech_lead: "架构决策"
+    - senior_dev: "复杂重构"
+    - dev: "测试和文档"
+
   sprint_goals:
-    - sprint_1: "Quick wins completed"
-    - sprint_2: "God class refactoring started"
-    - sprint_3: "Test coverage >60%"
+    - sprint_1: "完成快速获胜"
+    - sprint_2: "开始 God 类重构"
+    - sprint_3: "测试覆盖率 >60%"
 ```
 
-### 6. Prevention Strategy
+### 6. 预防策略
 
-Implement gates to prevent new debt:
+实施关卡以防止新债务：
 
-**Automated Quality Gates**
+**自动化质量关卡**
 ```yaml
 pre_commit_hooks:
   - complexity_check: "max 10"
   - duplication_check: "max 5%"
   - test_coverage: "min 80% for new code"
-  
+
 ci_pipeline:
   - dependency_audit: "no high vulnerabilities"
   - performance_test: "no regression >10%"
   - architecture_check: "no new violations"
-  
+
 code_review:
   - requires_two_approvals: true
   - must_include_tests: true
   - documentation_required: true
 ```
 
-**Debt Budget**
+**债务预算**
 ```python
 debt_budget = {
     "allowed_monthly_increase": "2%",
@@ -306,71 +306,71 @@ debt_budget = {
 }
 ```
 
-### 7. Communication Plan
+### 7. 沟通计划
 
-**Stakeholder Reports**
+**利益相关者报告**
 ```markdown
-## Executive Summary
-- Current debt score: 890 (High)
-- Monthly velocity loss: 35%
-- Bug rate increase: 45%
-- Recommended investment: 500 hours
-- Expected ROI: 280% over 12 months
+## 执行摘要
+- 当前债务分数：890（高）
+- 月度速度损失：35%
+- 错误率增加：45%
+- 建议投资：500 小时
+- 预期 ROI：12 个月内 280%
 
-## Key Risks
-1. Payment system: 3 critical vulnerabilities
-2. Data layer: No backup strategy
-3. API: Rate limiting not implemented
+## 关键风险
+1. 支付系统：3 个关键漏洞
+2. 数据层：没有备份策略
+3. API：未实施速率限制
 
-## Proposed Actions
-1. Immediate: Security patches (this week)
-2. Short-term: Core refactoring (1 month)
-3. Long-term: Architecture modernization (6 months)
+## 建议措施
+1. 立即：安全补丁（本周）
+2. 短期：核心重构（1 个月）
+3. 长期：架构现代化（6 个月）
 ```
 
-**Developer Documentation**
+**开发人员文档**
 ```markdown
-## Refactoring Guide
-1. Always maintain backward compatibility
-2. Write tests before refactoring
-3. Use feature flags for gradual rollout
-4. Document architectural decisions
-5. Measure impact with metrics
+## 重构指南
+1. 始终保持向后兼容性
+2. 重构前编写测试
+3. 使用功能标志进行渐进式推出
+4. 记录架构决策
+5. 使用指标衡量影响
 
-## Code Standards
-- Complexity limit: 10
-- Method length: 20 lines
-- Class length: 200 lines
-- Test coverage: 80%
-- Documentation: All public APIs
+## 代码标准
+- 复杂度限制：10
+- 方法长度：20 行
+- 类长度：200 行
+- 测试覆盖率：80%
+- 文档：所有公共 API
 ```
 
-### 8. Success Metrics
+### 8. 成功指标
 
-Track progress with clear KPIs:
+使用清晰的 KPI 跟踪进度：
 
-**Monthly Metrics**
-- Debt score reduction: Target -5%
-- New bug rate: Target -20%
-- Deployment frequency: Target +50%
-- Lead time: Target -30%
-- Test coverage: Target +10%
+**月度指标**
+- 债务分数减少：目标 -5%
+- 新错误率：目标 -20%
+- 部署频率：目标 +50%
+- 前置时间：目标 -30%
+- 测试覆盖率：目标 +10%
 
-**Quarterly Reviews**
-- Architecture health score
-- Developer satisfaction survey
-- Performance benchmarks
-- Security audit results
-- Cost savings achieved
+**季度审查**
+- 架构健康分数
+- 开发人员满意度调查
+- 性能基准
+- 安全审计结果
+- 实现的成本节省
 
-## Output Format
+## 输出格式
 
-1. **Debt Inventory**: Comprehensive list categorized by type with metrics
-2. **Impact Analysis**: Cost calculations and risk assessments
-3. **Prioritized Roadmap**: Quarter-by-quarter plan with clear deliverables
-4. **Quick Wins**: Immediate actions for this sprint
-5. **Implementation Guide**: Step-by-step refactoring strategies
-6. **Prevention Plan**: Processes to avoid accumulating new debt
-7. **ROI Projections**: Expected returns on debt reduction investment
+1. **债务清单**：按类型分类的综合列表，包含指标
+2. **影响分析**：成本计算和风险评估
+3. **优先级路线图**：按季度的计划，具有明确的可交付成果
+4. **快速获胜**：本冲刺的即时行动
+5. **实施指南**：分步重构策略
+6. **预防计划**：避免积累新债务的过程
+7. **ROI 预测**：债务减少投资的预期回报
 
-Focus on delivering measurable improvements that directly impact development velocity, system reliability, and team morale.
+专注于提供直接影响开发速度、系统可靠性和团队士气的可衡量改进。

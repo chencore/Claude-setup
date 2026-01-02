@@ -1,111 +1,111 @@
 ---
-description: Push commits and create/update pull request with smart branch management.
-argument-hint: [status] [base-branch] - status: 1=opened, 2=draft, 3=ready; base-branch defaults to main
+description: 推送提交并创建/更新拉取请求，具有智能分支管理
+argument-hint: [status] [base-branch] - status: 1=opened, 2=draft, 3=ready; base-branch 默认为 main
 ---
-Arguments: $ARGUMENTS
-## Arguments
+参数：$ARGUMENTS
+## 参数
 
-Parse arguments (flexible order):
-- **status**: `1`=opened, `2`=draft, `3`=ready (defaults: new PR=opened, update=draft)
-- **base-branch**: Target branch (default: `main`)
+解析参数（灵活顺序）：
+- **status**: `1`=opened, `2`=draft, `3`=ready（默认：新 PR=opened，更新=draft）
+- **base-branch**: 目标分支（默认：`main`）
 
-## Workflow
+## 工作流
 
-### 1. Pre-Flight Checks
+### 1. 起飞前检查
 
 ```bash
-# Check for uncommitted changes
+# 检查未提交的更改
 git status --porcelain
 
-# Check remote tracking
+# 检查远程跟踪
 git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null
 
-# Sync with remote if tracking exists
+# 如果存在跟踪，与远程同步
 git fetch origin
 ```
 
-If uncommitted changes detected, use the Task tool with subagent_type="smart-commit" to commit changes first.
+如果检测到未提交的更改，首先使用带有 subagent_type="smart-commit" 的 Task 工具提交更改。
 
-### 2. Branch Management (CRITICAL)
+### 2. 分支管理（关键）
 
-**Step 1: Detect current situation**
+**步骤 1：检测当前情况**
 ```bash
-# Get current branch name
+# 获取当前分支名称
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 echo "Current branch: $CURRENT_BRANCH"
 
-# Check if on main/master
+# 检查是否在 main/master 上
 if [[ "$CURRENT_BRANCH" == "main" || "$CURRENT_BRANCH" == "master" ]]; then
     echo "ON BASE BRANCH"
 fi
 
-# Count unpushed commits
+# 计算未推送的提交数量
 UNPUSHED=$(git rev-list origin/$CURRENT_BRANCH..HEAD --count 2>/dev/null || echo "0")
 echo "Unpushed commits: $UNPUSHED"
 ```
 
-**Step 2: If on main/master with unpushed commits → CUT A FEATURE BRANCH**
+**步骤 2：如果在 main/master 上且有未推送的提交 → 切出功能分支**
 
-This is critical. If you detect:
-- Current branch is `main` or `master`
-- There are unpushed commits (UNPUSHED > 0)
+这很关键。如果您检测到：
+- 当前分支是 `main` 或 `master`
+- 有未推送的提交（UNPUSHED > 0）
 
-Then you MUST:
-1. Analyze the commits to generate a descriptive feature branch name (e.g., `feat/add-smart-commit-agents`)
-2. Create the feature branch from current HEAD
-3. Switch back to main and reset it to origin
-4. Switch to the new feature branch
+那么您必须：
+1. 分析提交以生成描述性的功能分支名称（例如 `feat/add-smart-commit-agents`）
+2. 从当前 HEAD 创建功能分支
+3. 切回 main 并将其重置到 origin
+4. 切换到新功能分支
 
 ```bash
-# 1. Get commits for naming
+# 1. 获取提交用于命名
 git log origin/main..HEAD --oneline
 
-# 2. Create feature branch (YOU generate the name based on commits)
+# 2. 创建功能分支（您根据提交生成名称）
 git checkout -b feat/descriptive-name-here
 
-# 3. Reset main to match origin (IMPORTANT: keeps main clean)
+# 3. 将 main 重置以匹配 origin（重要：保持 main 干净）
 git checkout main
 git reset --hard origin/main
 
-# 4. Return to feature branch
+# 4. 返回功能分支
 git checkout feat/descriptive-name-here
 ```
 
-**Step 3: If already on feature branch** → Skip branch management, proceed to PR status.
+**步骤 3：如果在功能分支上** → 跳过分支管理，继续 PR 状态。
 
-### 3. PR Status Determination
+### 3. PR 状态确定
 
 ```bash
-# Check if PR exists for current branch
+# 检查当前分支是否有 PR
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 gh pr list --head "$BRANCH" --json number,state
 ```
 
-- If user provided status argument: Use it (1=opened, 2=draft, 3=ready)
-- If no status: New PR defaults to "opened", existing PR update defaults to "draft"
+- 如果用户提供了状态参数：使用它（1=opened，2=draft，3=ready）
+- 如果没有状态：新 PR 默认为 "opened"，现有 PR 更新默认为 "draft"
 
-### 4. Context Gathering
+### 4. 上下文收集
 
 ```bash
-# Get base branch (default: main)
+# 获取基础分支（默认：main）
 BASE=${BASE_BRANCH:-main}
 
-# All commits from base to HEAD
+# 从基础分支到 HEAD 的所有提交
 git log $BASE..HEAD --oneline
 
-# Diff statistics
+# 差异统计
 git diff $BASE...HEAD --stat
 
-# Full diff for analysis
+# 完整差异用于分析
 git diff $BASE...HEAD
 ```
 
-### 5. Push to Remote
+### 5. 推送到远程
 
 ```bash
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-# Check if upstream exists
+# 检查上游是否存在
 if git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null; then
     git push
 else
@@ -113,77 +113,77 @@ else
 fi
 ```
 
-### 6. PR Creation or Update
+### 6. PR 创建或更新
 
-**For new PRs:**
+**对于新 PR**：
 
-Analyze commits and changes to generate:
-- Concise, descriptive PR title
-- Comprehensive description with summary, commits list, key files changed
+分析提交和更改以生成：
+- 简洁、描述性的 PR 标题
+- 包含摘要、提交列表、关键文件更改的综合描述
 
 ```bash
-# Create PR (add --draft if status is draft)
+# 创建 PR（如果是草稿则添加 --draft）
 gh pr create --title "title" --body "description" --base main
 
-# If status is "ready", mark as ready after creation
+# 如果状态是 "ready"，创建后标记为就绪
 gh pr ready
 ```
 
-**For existing PRs:**
+**对于现有 PR**：
 
 ```bash
-# Get PR number
+# 获取 PR 编号
 PR_NUM=$(gh pr list --head "$BRANCH" --json number -q '.[0].number')
 
-# Add comment listing new commits
+# 添加评论列出新提交
 gh pr comment $PR_NUM --body "New commits..."
 
-# Update PR status if needed
-gh pr ready $PR_NUM --undo  # Convert to draft
-gh pr ready $PR_NUM         # Mark ready
+# 如需更新 PR 状态
+gh pr ready $PR_NUM --undo  # 转换为草稿
+gh pr ready $PR_NUM         # 标记为就绪
 ```
 
-## Critical Constraints
+## 关键约束
 
-- Never add "Co-authored-by" or AI signatures to PR content
-- Never include "Generated with Claude Code" or similar
-- Never use emojis in PR title or description
-- Use existing git user configuration only
-- Ensure PR title follows project conventions (analyze recent PRs if available)
+- 永远不要向 PR 内容添加 "Co-authored-by" 或 AI 签名
+- 永远不要包含 "使用 Claude Code 生成" 或类似内容
+- 永远不要在 PR 标题或描述中使用表情符号
+- 仅使用现有的 git 用户配置
+- 确保 PR 标题遵循项目约定（如果可用，分析最近的 PR）
 
-## PR Description Format
+## PR 描述格式
 
 ```markdown
-## Summary
+## 摘要
 
-[2-3 bullet points describing what and why]
+[2-3 个要点描述内容和原因]
 
-## Changes
+## 更改
 
-- [Key change 1]
-- [Key change 2]
+- [关键更改 1]
+- [关键更改 2]
 
-## Commits
+## 提交
 
-- `abc1234` - commit message 1
-- `def5678` - commit message 2
+- `abc1234` - 提交消息 1
+- `def5678` - 提交消息 2
 
-## Files Changed
+## 更改的文件
 
-[List significant files with brief notes]
+[列出重要文件并简要说明]
 ```
 
-## Edge Cases
+## 边缘情况
 
-1. **No remote configured**: Report error, suggest `git remote add origin <url>`
-2. **No gh CLI**: Report that GitHub CLI is required for PR operations
-3. **Permission issues**: Report and suggest checking repository access
-4. **Branch behind remote**: Pull and rebase before pushing
-5. **No commits to push**: Report that there are no new commits
+1. **未配置远程**：报告错误，建议 `git remote add origin <url>`
+2. **没有 gh CLI**：报告需要 GitHub CLI 进行 PR 操作
+3. **权限问题**：报告并建议检查存储库访问权限
+4. **分支落后于远程**：推送前先拉取并变基
+5. **没有要推送的提交**：报告没有新提交
 
-## Output
+## 输出
 
-Report clearly:
-- Branch pushed: `<branch-name>`
-- PR created/updated: `<PR-URL>`
-- Status: opened/draft/ready
+清晰报告：
+- 已推送分支：`<branch-name>`
+- 已创建/更新 PR：`<PR-URL>`
+- 状态：opened/draft/ready

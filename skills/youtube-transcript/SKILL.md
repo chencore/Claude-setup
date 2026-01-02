@@ -1,179 +1,179 @@
 ---
 name: youtube-transcript
-description: Download YouTube video transcripts when user provides a YouTube URL or asks to download/get/fetch a transcript from YouTube. Also use when user wants to transcribe or get captions/subtitles from a YouTube video.
+description: 当用户提供 YouTube URL 或要求从 YouTube 下载/获取/获取讲稿时下载 YouTube 视频讲稿。当用户想要转录 YouTube 视频或获取字幕/字幕时也使用。
 ---
 
-# YouTube Transcript Downloader
+# YouTube 讲稿下载器
 
-This skill helps download transcripts (subtitles/captions) from YouTube videos using yt-dlp.
+此技能帮助使用 yt-dlp 从 YouTube 视频下载讲稿（字幕/字幕）。
 
-## When to Use This Skill
+## 何时使用此技能
 
-Activate this skill when the user:
-- Provides a YouTube URL and wants the transcript
-- Asks to "download transcript from YouTube"
-- Wants to "get captions" or "get subtitles" from a video
-- Asks to "transcribe a YouTube video"
-- Needs text content from a YouTube video
+当用户：
+- 提供 YouTube URL 并想要讲稿
+- 要求"从 YouTube 下载讲稿"
+- 想从视频中"获取字幕"或"获取字幕"
+- 要求"转录 YouTube 视频"
+- 需要 YouTube 视频中的文本内容
 
-## How It Works
+## 它如何工作
 
-### Priority Order:
-1. **Check if yt-dlp is installed** - install if needed
-2. **List available subtitles** - see what's actually available
-3. **Try manual subtitles first** (`--write-sub`) - highest quality
-4. **Fallback to auto-generated** (`--write-auto-sub`) - usually available
-5. **Last resort: Whisper transcription** - if no subtitles exist (requires user confirmation)
-6. **Confirm the download** and show the user where the file is saved
-7. **Optionally clean up** the VTT format if the user wants plain text
+### 优先顺序：
+1. **检查是否安装了 yt-dlp** - 如需要则安装
+2. **列出可用字幕** - 查看实际可用的内容
+3. **首先尝试手动字幕**（`--write-sub`）- 最高质量
+4. **回退到自动生成**（`--write-auto-sub`） - 通常可用
+5. **最后手段：Whisper 转录** - 如果不存在字幕（需要用户确认）
+6. **确认下载**并向用户显示文件保存位置
+7. **可选清理** VTT 格式（如果用户想要纯文本）
 
-## Installation Check
+## 安装检查
 
-**IMPORTANT**: Always check if yt-dlp is installed first:
+**重要**：始终首先检查是否安装了 yt-dlp：
 
 ```bash
 which yt-dlp || command -v yt-dlp
 ```
 
-### If Not Installed
+### 如果未安装
 
-Attempt automatic installation based on the system:
+根据系统尝试自动安装：
 
-**macOS (Homebrew)**:
+**macOS (Homebrew)**：
 ```bash
 brew install yt-dlp
 ```
 
-**Linux (apt/Debian/Ubuntu)**:
+**Linux (apt/Debian/Ubuntu)**：
 ```bash
 sudo apt update && sudo apt install -y yt-dlp
 ```
 
-**Alternative (pip - works on all systems)**:
+**替代方案（pip - 适用于所有系统）**：
 ```bash
 pip3 install yt-dlp
-# or
+# 或
 python3 -m pip install yt-dlp
 ```
 
-**If installation fails**: Inform the user they need to install yt-dlp manually and provide them with installation instructions from https://github.com/yt-dlp/yt-dlp#installation
+**如果安装失败**：通知用户需要手动安装 yt-dlp，并提供来自 https://github.com/yt-dlp/yt-dlp#installation 的安装说明
 
-## Check Available Subtitles
+## 检查可用字幕
 
-**ALWAYS do this first** before attempting to download:
+**在尝试下载之前始终首先执行此操作**：
 
 ```bash
 yt-dlp --list-subs "YOUTUBE_URL"
 ```
 
-This shows what subtitle types are available without downloading anything. Look for:
-- Manual subtitles (better quality)
-- Auto-generated subtitles (usually available)
-- Available languages
+这显示什么字幕类型可用而不下载任何内容。查找：
+- 手动字幕（更好的质量）
+- 自动生成字幕（通常可用）
+- 可用语言
 
-## Download Strategy
+## 下载策略
 
-### Option 1: Manual Subtitles (Preferred)
+### 选项 1：手动字幕（首选）
 
-Try this first - highest quality, human-created:
+首先尝试这个 - 最高质量，人工创建：
 
 ```bash
 yt-dlp --write-sub --skip-download --output "OUTPUT_NAME" "YOUTUBE_URL"
 ```
 
-### Option 2: Auto-Generated Subtitles (Fallback)
+### 选项 2：自动生成字幕（回退）
 
-If manual subtitles aren't available:
+如果手动字幕不可用：
 
 ```bash
 yt-dlp --write-auto-sub --skip-download --output "OUTPUT_NAME" "YOUTUBE_URL"
 ```
 
-Both commands create a `.vtt` file (WebVTT subtitle format).
+两个命令都创建 `.vtt` 文件（WebVTT 字幕格式）。
 
-## Option 3: Whisper Transcription (Last Resort)
+## 选项 3：Whisper 转录（最后手段）
 
-**ONLY use this if both manual and auto-generated subtitles are unavailable.**
+**仅在手动和自动生成字幕都不可用时使用。**
 
-### Step 1: Show File Size and Ask for Confirmation
+### 步骤 1：显示文件大小并请求确认
 
 ```bash
-# Get audio file size estimate
+# 获取音频文件大小估计
 yt-dlp --print "%(filesize,filesize_approx)s" -f "bestaudio" "YOUTUBE_URL"
 
-# Or get duration to estimate
+# 或获取持续时间来估计
 yt-dlp --print "%(duration)s %(title)s" "YOUTUBE_URL"
 ```
 
-**IMPORTANT**: Display the file size to the user and ask: "No subtitles are available. I can download the audio (approximately X MB) and transcribe it using Whisper. Would you like to proceed?"
+**重要**：向用户显示文件大小并询问："没有可用字幕。我可以下载音频（大约 X MB）并使用 Whisper 转录。您要继续吗？"
 
-**Wait for user confirmation before continuing.**
+**在继续之前等待用户确认。**
 
-### Step 2: Check for Whisper Installation
+### 步骤 2：检查 Whisper 安装
 
 ```bash
 command -v whisper
 ```
 
-If not installed, ask user: "Whisper is not installed. Install it with `pip install openai-whisper` (requires ~1-3GB for models)? This is a one-time installation."
+如果未安装，询问用户："Whisper 未安装。使用 `pip install openai-whisper` 安装它（需要 ~1-3GB 用于模型）？这是一次性安装。"
 
-**Wait for user confirmation before installing.**
+**在安装之前等待用户确认。**
 
-Install if approved:
+如果批准则安装：
 ```bash
 pip3 install openai-whisper
 ```
 
-### Step 3: Download Audio Only
+### 步骤 3：仅下载音频
 
 ```bash
 yt-dlp -x --audio-format mp3 --output "audio_%(id)s.%(ext)s" "YOUTUBE_URL"
 ```
 
-### Step 4: Transcribe with Whisper
+### 步骤 4：使用 Whisper 转录
 
 ```bash
-# Auto-detect language (recommended)
+# 自动检测语言（推荐）
 whisper audio_VIDEO_ID.mp3 --model base --output_format vtt
 
-# Or specify language if known
+# 或如果已知则指定语言
 whisper audio_VIDEO_ID.mp3 --model base --language en --output_format vtt
 ```
 
-**Model Options** (stick to `base` for now):
-- `tiny` - fastest, least accurate (~1GB)
-- `base` - good balance (~1GB) ← **USE THIS**
-- `small` - better accuracy (~2GB)
-- `medium` - very good (~5GB)
-- `large` - best accuracy (~10GB)
+**模型选项**（现在坚持使用 `base`）：
+- `tiny` - 最快，最不准确（~1GB）
+- `base` - 良好平衡（~1GB）← **使用这个**
+- `small` - 更准确（~2GB）
+- `medium` - 非常好（~5GB）
+- `large` - 最准确（~10GB）
 
-### Step 5: Cleanup
+### 步骤 5：清理
 
-After transcription completes, ask user: "Transcription complete! Would you like me to delete the audio file to save space?"
+转录完成后询问用户："转录完成！您要删除音频文件以节省空间吗？"
 
-If yes:
+如果是：
 ```bash
 rm audio_VIDEO_ID.mp3
 ```
 
-## Getting Video Information
+## 获取视频信息
 
-### Extract Video Title (for filename)
+### 提取视频标题（用于文件名）
 
 ```bash
 yt-dlp --print "%(title)s" "YOUTUBE_URL"
 ```
 
-Use this to create meaningful filenames based on the video title. Clean the title for filesystem compatibility:
-- Replace `/` with `-`
-- Replace special characters that might cause issues
-- Consider using sanitized version: `$(yt-dlp --print "%(title)s" "URL" | tr '/' '-' | tr ':' '-')`
+使用此功能基于视频标题创建有意义的文件名。清理标题以实现文件系统兼容性：
+- 将 `/` 替换为 `-`
+- 替换可能引起问题的特殊字符
+- 考虑使用清理过的版本：`$(yt-dlp --print "%(title)s" "URL" | tr '/' '-' | tr ':')`
 
-## Post-Processing
+## 后处理
 
-### Convert to Plain Text (Recommended)
+### 转换为纯文本（推荐）
 
-YouTube's auto-generated VTT files contain **duplicate lines** because captions are shown progressively with overlapping timestamps. Always deduplicate when converting to plain text while preserving the original speaking order.
+YouTube 的自动生成 VTT 文件包含**重复行**，因为字幕以重叠的时间戳逐步显示。转换为纯文本时始终去重，同时保持原始说话顺序。
 
 ```bash
 python3 -c "
@@ -191,16 +191,16 @@ with open('transcript.en.vtt', 'r') as f:
 " > transcript.txt
 ```
 
-### Complete Post-Processing with Video Title
+### 使用视频标题的完整后处理
 
 ```bash
-# Get video title
+# 获取视频标题
 VIDEO_TITLE=$(yt-dlp --print "%(title)s" "YOUTUBE_URL" | tr '/' '_' | tr ':' '-' | tr '?' '' | tr '"' '')
 
-# Find the VTT file
+# 找到 VTT 文件
 VTT_FILE=$(ls *.vtt | head -n 1)
 
-# Convert with deduplication
+# 转换并去重
 python3 -c "
 import sys, re
 seen = set()
@@ -215,39 +215,39 @@ with open('$VTT_FILE', 'r') as f:
                 seen.add(clean)
 " > "${VIDEO_TITLE}.txt"
 
-echo "✓ Saved to: ${VIDEO_TITLE}.txt"
+echo "✓ 已保存到：${VIDEO_TITLE}.txt"
 
-# Clean up VTT file
+# 清理 VTT 文件
 rm "$VTT_FILE"
-echo "✓ Cleaned up temporary VTT file"
+echo "✓ 已清理临时 VTT 文件"
 ```
 
-## Output Formats
+## 输出格式
 
-- **VTT format** (`.vtt`): Includes timestamps and formatting, good for video players
-- **Plain text** (`.txt`): Just the text content, good for reading or analysis
+- **VTT 格式**（`.vtt`）：包含时间戳和格式，适用于视频播放器
+- **纯文本**（`.txt`）：仅文本内容，适用于阅读或分析
 
-## Tips
+## 提示
 
-- The filename will be `{output_name}.{language_code}.vtt` (e.g., `transcript.en.vtt`)
-- Most YouTube videos have auto-generated English subtitles
-- Some videos may have multiple language options
-- If auto-subtitles aren't available, try `--write-sub` instead for manual subtitles
+- 文件名将是 `{output_name}.{language_code}.vtt`（例如 `transcript.en.vtt`）
+- 大多数 YouTube 视频都有自动生成的英文字幕
+- 某些视频可能有多种语言选项
+- 如果自动字幕不可用，尝试 `--write-sub` 来获取手动字幕
 
-## Complete Workflow Example
+## 完整工作流示例
 
 ```bash
 VIDEO_URL="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
-# Get video title for filename
+# 获取视频标题用于文件名
 VIDEO_TITLE=$(yt-dlp --print "%(title)s" "$VIDEO_URL" | tr '/' '_' | tr ':' '-' | tr '?' '' | tr '"' '')
 OUTPUT_NAME="transcript_temp"
 
 # ============================================
-# STEP 1: Check if yt-dlp is installed
+# 步骤 1：检查是否安装了 yt-dlp
 # ============================================
 if ! command -v yt-dlp &> /dev/null; then
-    echo "yt-dlp not found, attempting to install..."
+    echo "未找到 yt-dlp，尝试安装..."
     if command -v brew &> /dev/null; then
         brew install yt-dlp
     elif command -v apt &> /dev/null; then
@@ -258,90 +258,90 @@ if ! command -v yt-dlp &> /dev/null; then
 fi
 
 # ============================================
-# STEP 2: List available subtitles
+# 步骤 2：列出可用字幕
 # ============================================
-echo "Checking available subtitles..."
+echo "检查可用字幕..."
 yt-dlp --list-subs "$VIDEO_URL"
 
 # ============================================
-# STEP 3: Try manual subtitles first
+# 步骤 3：首先尝试手动字幕
 # ============================================
-echo "Attempting to download manual subtitles..."
+echo "尝试下载手动字幕..."
 if yt-dlp --write-sub --skip-download --output "$OUTPUT_NAME" "$VIDEO_URL" 2>/dev/null; then
-    echo "✓ Manual subtitles downloaded successfully!"
+    echo "✓ 手动字幕下载成功！"
     ls -lh ${OUTPUT_NAME}.*
 else
     # ============================================
-    # STEP 4: Fallback to auto-generated
+    # 步骤 4：回退到自动生成
     # ============================================
-    echo "Manual subtitles not available. Trying auto-generated..."
+    echo "手动字幕不可用。尝试自动生成..."
     if yt-dlp --write-auto-sub --skip-download --output "$OUTPUT_NAME" "$VIDEO_URL" 2>/dev/null; then
-        echo "✓ Auto-generated subtitles downloaded successfully!"
+        echo "✓ 自动生成字幕下载成功！"
         ls -lh ${OUTPUT_NAME}.*
     else
         # ============================================
-        # STEP 5: Last resort - Whisper transcription
+        # 步骤 5：最后手段 - Whisper 转录
         # ============================================
-        echo "⚠ No subtitles available for this video."
+        echo "⚠ 此视频没有可用字幕。"
 
-        # Get file size
+        # 获取文件大小
         FILE_SIZE=$(yt-dlp --print "%(filesize_approx)s" -f "bestaudio" "$VIDEO_URL")
         DURATION=$(yt-dlp --print "%(duration)s" "$VIDEO_URL")
         TITLE=$(yt-dlp --print "%(title)s" "$VIDEO_URL")
 
-        echo "Video: $TITLE"
-        echo "Duration: $((DURATION / 60)) minutes"
-        echo "Audio size: ~$((FILE_SIZE / 1024 / 1024)) MB"
+        echo "视频：$TITLE"
+        echo "时长：$((DURATION / 60)) 分钟"
+        echo "音频大小：~$((FILE_SIZE / 1024 / 1024)) MB"
         echo ""
-        echo "Would you like to download and transcribe with Whisper? (y/n)"
+        echo "您要下载并使用 Whisper 转录吗？(y/n)"
         read -r RESPONSE
 
         if [[ "$RESPONSE" =~ ^[Yy]$ ]]; then
-            # Check for Whisper
+            # 检查 Whisper
             if ! command -v whisper &> /dev/null; then
-                echo "Whisper not installed. Install now? (requires ~1-3GB) (y/n)"
+                echo "Whisper 未安装。现在安装吗？（需要 ~1-3GB）(y/n)"
                 read -r INSTALL_RESPONSE
                 if [[ "$INSTALL_RESPONSE" =~ ^[Yy]$ ]]; then
                     pip3 install openai-whisper
                 else
-                    echo "Cannot proceed without Whisper. Exiting."
+                    echo "没有 Whisper 无法继续。退出。"
                     exit 1
                 fi
             fi
 
-            # Download audio
-            echo "Downloading audio..."
+            # 下载音频
+            echo "下载音频..."
             yt-dlp -x --audio-format mp3 --output "audio_%(id)s.%(ext)s" "$VIDEO_URL"
 
-            # Get the actual audio filename
+            # 获取实际音频文件名
             AUDIO_FILE=$(ls audio_*.mp3 | head -n 1)
 
-            # Transcribe
-            echo "Transcribing with Whisper (this may take a few minutes)..."
+            # 转录
+            echo "使用 Whisper 转录（这可能需要几分钟）..."
             whisper "$AUDIO_FILE" --model base --output_format vtt
 
-            # Cleanup
-            echo "Transcription complete! Delete audio file? (y/n)"
+            # 清理
+            echo "转录完成！删除音频文件吗？(y/n)"
             read -r CLEANUP_RESPONSE
             if [[ "$CLEANUP_RESPONSE" =~ ^[Yy]$ ]]; then
                 rm "$AUDIO_FILE"
-                echo "Audio file deleted."
+                echo "音频文件已删除。"
             fi
 
             ls -lh *.vtt
         else
-            echo "Transcription cancelled."
+            echo "转录已取消。"
             exit 0
         fi
     fi
 fi
 
 # ============================================
-# STEP 6: Convert to readable plain text with deduplication
+# 步骤 6：转换为可读纯文本并去重
 # ============================================
 VTT_FILE=$(ls ${OUTPUT_NAME}*.vtt 2>/dev/null || ls *.vtt | head -n 1)
 if [ -f "$VTT_FILE" ]; then
-    echo "Converting to readable format and removing duplicates..."
+    echo "转换为可读格式并删除重复项..."
     python3 -c "
 import sys, re
 seen = set()
@@ -355,60 +355,60 @@ with open('$VTT_FILE', 'r') as f:
                 print(clean)
                 seen.add(clean)
 " > "${VIDEO_TITLE}.txt"
-    echo "✓ Saved to: ${VIDEO_TITLE}.txt"
+    echo "✓ 已保存到：${VIDEO_TITLE}.txt"
 
-    # Clean up temporary VTT file
+    # 清理临时 VTT 文件
     rm "$VTT_FILE"
-    echo "✓ Cleaned up temporary VTT file"
+    echo "✓ 已清理临时 VTT 文件"
 else
-    echo "⚠ No VTT file found to convert"
+    echo "⚠ 未找到要转换的 VTT 文件"
 fi
 
-echo "✓ Complete!"
+echo "✓ 完成！"
 ```
 
-**Note**: This complete workflow handles all scenarios with proper error checking and user prompts at each decision point.
+**注意**：此完整工作流在每个决策点处理所有场景，具有适当的错误检查和用户提示。
 
-## Error Handling
+## 错误处理
 
-### Common Issues and Solutions:
+### 常见问题和解决方案：
 
-**1. yt-dlp not installed**
-- Attempt automatic installation based on system (Homebrew/apt/pip)
-- If installation fails, provide manual installation link
-- Verify installation before proceeding
+**1. yt-dlp 未安装**
+- 根据系统尝试自动安装（Homebrew/apt/pip）
+- 如果安装失败，提供手动安装链接
+- 在继续前验证安装
 
-**2. No subtitles available**
-- List available subtitles first to confirm
-- Try both `--write-sub` and `--write-auto-sub`
-- If both fail, offer Whisper transcription option
-- Show file size and ask for user confirmation before downloading audio
+**2. 无可用字幕**
+- 首先列出可用字幕以确认
+- 尝试 `--write-sub` 和 `--write-auto-sub`
+- 如果两者都失败，提供 Whisper 转录选项
+- 下载音频前显示文件大小并请求用户确认
 
-**3. Invalid or private video**
-- Check if URL is correct format: `https://www.youtube.com/watch?v=VIDEO_ID`
-- Some videos may be private, age-restricted, or geo-blocked
-- Inform user of the specific error from yt-dlp
+**3. 无效或私有视频**
+- 检查 URL 是否正确格式：`https://www.youtube.com/watch?v=VIDEO_ID`
+- 某些视频可能是私有的、年龄受限的或地理位置受限的
+- 向用户显示 yt-dlp 的具体错误
 
-**4. Whisper installation fails**
-- May require system dependencies (ffmpeg, rust)
-- Provide fallback: "Install manually with: `pip3 install openai-whisper`"
-- Check available disk space (models require 1-10GB depending on size)
+**4. Whisper 安装失败**
+- 可能需要系统依赖项（ffmpeg、rust）
+- 提供回退："手动安装：`pip3 install openai-whisper`"
+- 检查可用磁盘空间（模型需要 1-10GB，取决于大小）
 
-**5. Download interrupted or failed**
-- Check internet connection
-- Verify sufficient disk space
-- Try again with `--no-check-certificate` if SSL issues occur
+**5. 下载中断或失败**
+- 检查互联网连接
+- 验证足够的磁盘空间
+- 如果发生 SSL 问题，尝试使用 `--no-check-certificate`
 
-**6. Multiple subtitle languages**
-- By default, yt-dlp downloads all available languages
-- Can specify with `--sub-langs en` for English only
-- List available with `--list-subs` first
+**6. 多种字幕语言**
+- 默认情况下，yt-dlp 下载所有可用语言
+- 可以使用 `--sub-langs en` 仅指定英语
+- 首先使用 `--list-subs` 列出可用语言
 
-### Best Practices:
+### 最佳实践：
 
-- ✅ Always check what's available before attempting download (`--list-subs`)
-- ✅ Verify success at each step before proceeding to next
-- ✅ Ask user before large downloads (audio files, Whisper models)
-- ✅ Clean up temporary files after processing
-- ✅ Provide clear feedback about what's happening at each stage
-- ✅ Handle errors gracefully with helpful messages
+- ✅ 在尝试下载前始终检查可用内容（`--list-subs`）
+- ✅ 在继续下一步前验证每一步的成功
+- ✅ 在大下载前询问用户（音频文件、Whisper 模型）
+- ✅ 处理后清理临时文件
+- ✅ 在每个阶段提供清晰的操作反馈
+- ✅ 优雅地处理错误并提供有帮助的消息

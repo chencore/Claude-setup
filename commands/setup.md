@@ -1,50 +1,50 @@
 ---
 argument-hint: [category|server-names]
-description: Setup MCP servers (optional: category or comma-separated server names)
+description: 配置 MCP 服务器（可选：类别或逗号分隔的服务器名称）
 ---
 
-# Setup MCP Servers
+# 配置 MCP 服务器
 
-Intelligently manages MCP server configurations by comparing master config with existing project setup and allowing selective addition of new MCPs.
+通过比较主配置与现有项目设置，智能管理 MCP 服务器配置，并允许选择性添加新的 MCP。
 
-## Usage
+## 使用方法
 
 ```
-/setup-mcp                           # Interactive mode
-/setup-mcp research                  # Add all research MCPs
-/setup-mcp seo                       # Add all SEO MCPs
-/setup-mcp frontend                  # Add all frontend MCPs
-/setup-mcp exa,brave-search          # Add specific MCPs (comma-separated)
+/setup-mcp                           # 交互模式
+/setup-mcp research                  # 添加所有研究类 MCP
+/setup-mcp seo                       # 添加所有 SEO 类 MCP
+/setup-mcp frontend                  # 添加所有前端类 MCP
+/setup-mcp exa,brave-search          # 添加特定 MCP（逗号分隔）
 ```
 
-## Categories
+## 类别
 
 - **research**: exa, brave-search, reddit-mcp, reddit
 - **seo**: dataforseo, firecrawl-mcp
 - **frontend**: chrome-devtools, vibe-annotations, shadcn, next-devtools
 
-## Description
+## 描述
 
-This command sets up MCP (Model Context Protocol) servers for a project by:
+此命令通过以下方式为项目设置 MCP（模型上下文协议）服务器：
 
-1. Reading master MCP configuration from `~/.claude/mcp-config.json`
-2. Comparing with existing `.mcp.json` in the project (if it exists)
-3. Identifying new MCPs that aren't in the current project
-4. Asking user which new MCPs they want to add
-5. Adding selected MCPs and enabling them by default
-6. Preserving existing MCP configurations and their enabled/disabled state
+1. 从 `~/.claude/mcp-config.json` 读取主 MCP 配置
+2. 与项目中的现有 `.mcp.json` 进行比较（如果存在）
+3. 识别当前项目中不存在的新 MCP
+4. 询问用户要添加哪些新 MCP
+5. 添加选定的 MCP 并默认启用它们
+6. 保留现有 MCP 配置及其启用/禁用状态
 
-## Implementation
+## 实现
 
 ```javascript
-// Read master MCP configuration from ~/.claude/mcp-config.json
-// Note: readTextFile reads the ENTIRE file content with no line limits
+// 从 ~/.claude/mcp-config.json 读取主 MCP 配置
+// 注意：readTextFile 读取整个文件内容，没有行数限制
 const homeDir = Deno.env.get("HOME");
 const masterConfigPath = `${homeDir}/.claude/mcp-config.json`;
 
 let masterConfig;
 try {
-  // Reads complete file content regardless of size
+  // 无论大小如何，都读取完整的文件内容
   const masterConfigText = await Deno.readTextFile(masterConfigPath);
   masterConfig = JSON.parse(masterConfigText);
 } catch (error) {
@@ -53,30 +53,30 @@ try {
   Deno.exit(1);
 }
 
-// Check for existing .mcp.json in project
-// Note: readTextFile reads the ENTIRE file content with no line limits
+// 检查项目中是否存在 .mcp.json
+// 注意：readTextFile 读取整个文件内容，没有行数限制
 let existingConfig = { mcpServers: {} };
 let existingMcpNames = [];
 try {
-  // Reads complete file content regardless of size
+  // 无论大小如何，都读取完整的文件内容
   const existingConfigText = await Deno.readTextFile(".mcp.json");
   existingConfig = JSON.parse(existingConfigText);
   existingMcpNames = Object.keys(existingConfig.mcpServers || {});
 } catch {
-  // No existing config, that's fine
+  // 没有现有配置，这没问题
 }
 
-// Define category mappings
+// 定义类别映射
 const categories = {
   research: ["exa", "brave-search", "reddit-mcp", "reddit"],
   seo: ["dataforseo", "firecrawl-mcp"],
   frontend: ["chrome-devtools", "vibe-annotations", "shadcn", "next-devtools"]
 };
 
-// Get argument from $ARGUMENTS
+// 从 $ARGUMENTS 获取参数
 const argument = "$ARGUMENTS".trim();
 
-// Find new MCPs that aren't in the existing config
+// 查找现有配置中不存在的新 MCP
 const masterMcpNames = Object.keys(masterConfig.mcpServers);
 const newMcpNames = masterMcpNames.filter(
   (name) => !existingMcpNames.includes(name)
@@ -92,9 +92,9 @@ if (newMcpNames.length === 0) {
 
 let selectedMcps = [];
 
-// Handle argument-based selection
+// 处理基于参数的选择
 if (argument) {
-  // Check if it's a category
+  // 检查是否为类别
   if (categories[argument]) {
     selectedMcps = categories[argument].filter(name => newMcpNames.includes(name));
     if (selectedMcps.length === 0) {
@@ -103,7 +103,7 @@ if (argument) {
     }
     console.log(`📦 Adding ${selectedMcps.length} MCP(s) from category '${argument}': ${selectedMcps.join(", ")}`);
   } else {
-    // Treat as comma-separated server names
+    // 视为逗号分隔的服务器名称
     const requestedNames = argument.split(",").map(s => s.trim());
     selectedMcps = requestedNames.filter(name => {
       if (!masterMcpNames.includes(name)) {
@@ -124,7 +124,7 @@ if (argument) {
     console.log(`📦 Adding ${selectedMcps.length} MCP(s): ${selectedMcps.join(", ")}`);
   }
 } else {
-  // Interactive mode - ask user which MCPs to add
+  // 交互模式 - 询问用户要添加哪些 MCP
   console.log(`\n📋 Found ${newMcpNames.length} new MCP(s) available:`);
   newMcpNames.forEach((name, index) => {
     console.log(`${index + 1}. ${name}`);
@@ -143,7 +143,7 @@ if (argument) {
     console.log("❌ Operation cancelled.");
     Deno.exit(0);
   } else {
-    // Parse comma-separated numbers
+    // 解析逗号分隔的数字
     const indices = input.split(",").map((s) => parseInt(s.trim()) - 1);
     selectedMcps = indices
       .filter((i) => i >= 0 && i < newMcpNames.length)
@@ -156,18 +156,18 @@ if (selectedMcps.length === 0) {
   Deno.exit(0);
 }
 
-// Add selected MCPs to existing config
+// 将选定的 MCP 添加到现有配置
 for (const mcpName of selectedMcps) {
   existingConfig.mcpServers[mcpName] = masterConfig.mcpServers[mcpName];
 }
 
-// Create .claude directory if it doesn't exist
+// 创建 .claude 目录（如果不存在）
 await Deno.mkdir(".claude", { recursive: true });
 
-// Write updated .mcp.json
+// 写入更新的 .mcp.json
 await Deno.writeTextFile(".mcp.json", JSON.stringify(existingConfig, null, 2));
 
-// Handle settings.local.json
+// 处理 settings.local.json
 let settings = {};
 try {
   const existingSettings = await Deno.readTextFile(
@@ -175,23 +175,23 @@ try {
   );
   settings = JSON.parse(existingSettings);
 } catch {
-  // File doesn't exist, start with empty settings
+  // 文件不存在，从空设置开始
 }
 
-// Ensure enableAllProjectMcpServers is set to false
+// 确保 enableAllProjectMcpServers 设置为 false
 settings.enableAllProjectMcpServers = false;
 
-// Initialize enabledMcpjsonServers if it doesn't exist
+// 初始化 enabledMcpjsonServers（如果不存在）
 if (!settings.enabledMcpjsonServers) {
   settings.enabledMcpjsonServers = [];
 }
 
-// Initialize disabledMcpjsonServers if it doesn't exist
+// 初始化 disabledMcpjsonServers（如果不存在）
 if (!settings.disabledMcpjsonServers) {
   settings.disabledMcpjsonServers = [];
 }
 
-// Add newly selected MCPs to enabled list
+// 将新选择的 MCP 添加到启用列表
 for (const mcpName of selectedMcps) {
   if (!settings.enabledMcpjsonServers.includes(mcpName)) {
     settings.enabledMcpjsonServers.push(mcpName);

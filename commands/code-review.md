@@ -1,62 +1,62 @@
 ---
 allowed-tools: Read, Glob, Grep, Bash, TodoWrite, Write
-description: Perform comprehensive code quality review covering quality, security, performance, and architecture
-argument-hint: [path] - optional path to review
+description: 执行全面的代码质量审查，涵盖质量、安全、性能和架构
+argument-hint: [path] - 可选审查路径
 ---
 
-# Comprehensive Code Quality Review
+# 全面的代码质量审查
 
-Perform comprehensive code quality review
+执行全面的代码质量审查
 
-## Instructions
+## 指令
 
-Follow these steps to conduct a thorough code review:
+遵循这些步骤进行彻底的代码审查：
 
-1. **Repository Analysis**
-   - Examine the repository structure and identify the primary language/framework
-   - Check for configuration files (package.json, requirements.txt, Cargo.toml, etc.)
-   - Review README and documentation for context
+1. **仓库分析**
+   - 检查仓库结构并识别主要语言/框架
+   - 检查配置文件（package.json、requirements.txt、Cargo.toml 等）
+   - 查看 README 和文档以获取上下文
 
-2. **Code Quality Assessment**
-   - Scan for code smells, anti-patterns, and potential bugs
-   - Check for consistent coding style and naming conventions
-   - Identify unused imports, variables, or dead code
-   - Review error handling and logging practices
+2. **代码质量评估**
+   - 扫描代码异味、反模式和潜在错误
+   - 检查一致的编码风格和命名约定
+   - 识别未使用的导入、变量或死代码
+   - 审查错误处理和日志记录实践
 
-3. **Security Review**
-   - Look for common security vulnerabilities (SQL injection, XSS, etc.)
-   - Check for hardcoded secrets, API keys, or passwords
-   - Review authentication and authorization logic
-   - Examine input validation and sanitization
+3. **安全审查**
+   - 查找常见安全漏洞（SQL 注入、XSS 等）
+   - 检查硬编码的秘密、API 密钥或密码
+   - 审查身份验证和授权逻辑
+   - 检查输入验证和清理
 
-4. **Performance Analysis**
-   - Identify potential performance bottlenecks
-   - Check for inefficient algorithms or database queries
-   - Review memory usage patterns and potential leaks
-   - Analyze bundle size and optimization opportunities
+4. **性能分析**
+   - 识别潜在性能瓶颈
+   - 检查低效算法或数据库查询
+   - 审查内存使用模式和潜在泄漏
+   - 分析包大小和优化机会
 
-5. **Architecture & Design**
-   - Evaluate code organization and separation of concerns
-   - Check for proper abstraction and modularity
-   - Review dependency management and coupling
-   - Assess scalability and maintainability
+5. **架构与设计**
+   - 评估代码组织和关注点分离
+   - 检查适当的抽象和模块化
+   - 审查依赖管理和耦合
+   - 评估可扩展性和可维护性
 
-6. **Testing Coverage**
-   - Check existing test coverage and quality
-   - Identify areas lacking proper testing
-   - Review test structure and organization
-   - Suggest additional test scenarios
+6. **测试覆盖率**
+   - 检查现有测试覆盖率和质量
+   - 识别缺乏适当测试的区域
+   - 审查测试结构和组织
+   - 建议额外的测试场景
 
-7. **Documentation Review**
-   - Evaluate code comments and inline documentation
-   - Check API documentation completeness
-   - Review README and setup instructions
-   - Identify areas needing better documentation
+7. **文档审查**
+   - 评估代码注释和内联文档
+   - 检查 API 文档完整性
+   - 查看 README 和设置说明
+   - 识别需要更好文档的区域
 
-8. **Recommendations**
-   - Prioritize issues by severity (critical, high, medium, low)
-   - Provide specific, actionable recommendations
-   - Suggest tools and practices for improvement
-   - Create a summary report with next steps
+8. **建议**
+   - 按严重性（关键、高、中、低）对问题进行优先级排序
+   - 提供具体、可操作的建议
+   - 建议改进工具和实践
+   - 创建包含后续步骤的摘要报告
 
-Remember to be constructive and provide specific examples with file paths and line numbers where applicable.
+请具有建设性并提供具体示例，并在适用时包含文件路径和行号。

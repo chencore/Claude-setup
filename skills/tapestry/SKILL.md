@@ -1,125 +1,125 @@
 ---
 name: tapestry
-description: Unified content extraction and action planning. Use when user says "tapestry <URL>", "weave <URL>", "help me plan <URL>", "extract and plan <URL>", "make this actionable <URL>", or similar phrases indicating they want to extract content and create an action plan. Automatically detects content type (YouTube video, article, PDF) and processes accordingly.
+description: 统一的内容提取和行动计划。当用户说"tapestry <URL>"、"weave <URL>"、"帮我计划 <URL>"、"提取并计划 <URL>"、"使这可操作 <URL>"或类似短语表明他们想要提取内容并创建行动计划时使用。自动检测内容类型（YouTube 视频、文章、PDF）并相应处理。
 ---
 
-# Tapestry: Unified Content Extraction + Action Planning
+# Tapestry：统一内容提取 + 行动计划
 
-This is the **master skill** that orchestrates the entire Tapestry workflow:
-1. Detect content type from URL
-2. Extract content using appropriate skill
-3. Automatically create a Ship-Learn-Next action plan
+这是**主技能**，协调整个 Tapestry 工作流：
+1. 从 URL 检测内容类型
+2. 使用适当的技能提取内容
+3. 自动创建 Ship-Learn-Next 行动计划
 
-## When to Use This Skill
+## 何时使用此技能
 
-Activate when the user:
-- Says "tapestry [URL]"
-- Says "weave [URL]"
-- Says "help me plan [URL]"
-- Says "extract and plan [URL]"
-- Says "make this actionable [URL]"
-- Says "turn [URL] into a plan"
-- Provides a URL and asks to "learn and implement from this"
-- Wants the full Tapestry workflow (extract → plan)
+当用户：
+- 说"tapestry [URL]"
+- 说"weave [URL]"
+- 说"帮我计划 [URL]"
+- 说"提取并计划 [URL]"
+- 说"使这可操作 [URL]"
+- 说"将 [URL] 转化为计划"
+- 提供 URL 并要求"从中学习和实施"
+- 想要完整的 Tapestry 工作流（提取 → 计划）
 
-**Keywords to watch for**: tapestry, weave, plan, actionable, extract and plan, make a plan, turn into action
+**需要注意的关键词**：tapestry, weave, plan, actionable, extract and plan, make a plan, turn into action
 
-## How It Works
+## 它如何工作
 
-### Complete Workflow:
-1. **Detect URL type** (YouTube, article, PDF)
-2. **Extract content** using appropriate skill:
-   - YouTube → youtube-transcript skill
-   - Article → article-extractor skill
-   - PDF → download and extract text
-3. **Create action plan** using ship-learn-next skill
-4. **Save both** content file and plan file
-5. **Present summary** to user
+### 完整工作流：
+1. **检测 URL 类型**（YouTube、文章、PDF）
+2. **使用适当的技能提取内容**：
+   - YouTube → youtube-transcript 技能
+   - 文章 → article-extractor 技能
+   - PDF → 下载并提取文本
+3. **使用 ship-learn-next 技能创建行动计划**
+4. **保存**内容文件和计划文件
+5. **向用户呈现**摘要
 
-## URL Detection Logic
+## URL 检测逻辑
 
-### YouTube Videos
+### YouTube 视频
 
-**Patterns to detect:**
+**检测模式**：
 - `youtube.com/watch?v=`
 - `youtu.be/`
 - `youtube.com/shorts/`
 - `m.youtube.com/watch?v=`
 
-**Action:** Use youtube-transcript skill
+**操作**：使用 youtube-transcript 技能
 
-### Web Articles/Blog Posts
+### 网络文章/博客文章
 
-**Patterns to detect:**
-- `http://` or `https://`
-- NOT YouTube, NOT PDF
-- Common domains: medium.com, substack.com, dev.to, etc.
-- Any HTML page
+**检测模式**：
+- `http://` 或 `https://`
+- 不是 YouTube，不是 PDF
+- 常见域名：medium.com、substack.com、dev.to 等
+- 任何 HTML 页面
 
-**Action:** Use article-extractor skill
+**操作**：使用 article-extractor 技能
 
-### PDF Documents
+### PDF 文档
 
-**Patterns to detect:**
-- URL ends with `.pdf`
-- URL returns `Content-Type: application/pdf`
+**检测模式**：
+- URL 以 `.pdf` 结尾
+- URL 返回 `Content-Type: application/pdf`
 
-**Action:** Download and extract text
+**操作**：下载并提取文本
 
-### Other Content
+### 其他内容
 
-**Fallback:**
-- Try article-extractor (works for most HTML)
-- If fails, inform user of unsupported type
+**回退**：
+- 尝试 article-extractor（适用于大多数 HTML）
+- 如果失败，通知用户不支持的类型
 
-## Step-by-Step Workflow
+## 逐步工作流
 
-### Step 1: Detect Content Type
+### 步骤 1：检测内容类型
 
 ```bash
 URL="$1"
 
-# Check for YouTube
+# 检查 YouTube
 if [[ "$URL" =~ youtube\.com/watch || "$URL" =~ youtu\.be/ || "$URL" =~ youtube\.com/shorts ]]; then
     CONTENT_TYPE="youtube"
 
-# Check for PDF
+# 检查 PDF
 elif [[ "$URL" =~ \.pdf$ ]]; then
     CONTENT_TYPE="pdf"
 
-# Check if URL returns PDF
+# 检查 URL 是否返回 PDF
 elif curl -sI "$URL" | grep -i "Content-Type: application/pdf" > /dev/null; then
     CONTENT_TYPE="pdf"
 
-# Default to article
+# 默认为文章
 else
     CONTENT_TYPE="article"
 fi
 
-echo "📍 Detected: $CONTENT_TYPE"
+echo "📍 检测到：$CONTENT_TYPE"
 ```
 
-### Step 2: Extract Content (by Type)
+### 步骤 2：按类型提取内容
 
-#### YouTube Video
+#### YouTube 视频
 
 ```bash
-# Use youtube-transcript skill workflow
-echo "📺 Extracting YouTube transcript..."
+# 使用 youtube-transcript 技能工作流
+echo "📺 提取 YouTube 讲稿..."
 
-# 1. Check for yt-dlp
+# 1. 检查 yt-dlp
 if ! command -v yt-dlp &> /dev/null; then
-    echo "Installing yt-dlp..."
+    echo "正在安装 yt-dlp..."
     brew install yt-dlp
 fi
 
-# 2. Get video title
+# 2. 获取视频标题
 VIDEO_TITLE=$(yt-dlp --print "%(title)s" "$URL" | tr '/' '_' | tr ':' '-' | tr '?' '' | tr '"' '')
 
-# 3. Download transcript
+# 3. 下载讲稿
 yt-dlp --write-auto-sub --skip-download --sub-langs en --output "temp_transcript" "$URL"
 
-# 4. Convert to clean text (deduplicate)
+# 4. 转换为干净文本（去重）
 python3 -c "
 import sys, re
 seen = set()
@@ -135,24 +135,24 @@ try:
                     print(clean)
                     seen.add(clean)
 except FileNotFoundError:
-    print('Error: Could not find transcript file', file=sys.stderr)
+    print('错误：找不到讲稿文件', file=sys.stderr)
     sys.exit(1)
 " > "${VIDEO_TITLE}.txt"
 
-# 5. Cleanup
+# 5. 清理
 rm -f temp_transcript.en.vtt
 
 CONTENT_FILE="${VIDEO_TITLE}.txt"
-echo "✓ Saved transcript: $CONTENT_FILE"
+echo "✓ 已保存讲稿：$CONTENT_FILE"
 ```
 
-#### Article/Blog Post
+#### 文章/博客文章
 
 ```bash
-# Use article-extractor skill workflow
-echo "📄 Extracting article content..."
+# 使用 article-extractor 技能工作流
+echo "📄 提取文章内容..."
 
-# 1. Check for extraction tools
+# 1. 检查提取工具
 if command -v reader &> /dev/null; then
     TOOL="reader"
 elif command -v trafilatura &> /dev/null; then
@@ -161,9 +161,9 @@ else
     TOOL="fallback"
 fi
 
-echo "Using: $TOOL"
+echo "使用：$TOOL"
 
-# 2. Extract based on tool
+# 2. 根据工具提取
 case $TOOL in
     reader)
         reader "$URL" > temp_article.txt
@@ -208,112 +208,112 @@ print(parser.get_content())
         ;;
 esac
 
-# 3. Clean filename
+# 3. 清理文件名
 FILENAME=$(echo "$ARTICLE_TITLE" | tr '/' '-' | tr ':' '-' | tr '?' '' | tr '"' '' | cut -c 1-80 | sed 's/ *$//')
 CONTENT_FILE="${FILENAME}.txt"
 mv temp_article.txt "$CONTENT_FILE"
 
-echo "✓ Saved article: $CONTENT_FILE"
+echo "✓ 已保存文章：$CONTENT_FILE"
 ```
 
-#### PDF Document
+#### PDF 文档
 
 ```bash
-# Download and extract PDF
-echo "📑 Downloading PDF..."
+# 下载并提取 PDF
+echo "📑 下载 PDF..."
 
-# 1. Download PDF
+# 1. 下载 PDF
 PDF_FILENAME=$(basename "$URL")
 curl -L -o "$PDF_FILENAME" "$URL"
 
-# 2. Extract text using pdftotext (if available)
+# 2. 使用 pdftotext 提取文本（如果可用）
 if command -v pdftotext &> /dev/null; then
     pdftotext "$PDF_FILENAME" temp_pdf.txt
     CONTENT_FILE="${PDF_FILENAME%.pdf}.txt"
     mv temp_pdf.txt "$CONTENT_FILE"
-    echo "✓ Extracted text from PDF: $CONTENT_FILE"
+    echo "✓ 从 PDF 提取文本：$CONTENT_FILE"
 
-    # Optionally keep PDF
-    echo "Keep original PDF? (y/n)"
+    # 可选：保留 PDF
+    echo "保留原始 PDF？(y/n)"
     read -r KEEP_PDF
     if [[ ! "$KEEP_PDF" =~ ^[Yy]$ ]]; then
         rm "$PDF_FILENAME"
     fi
 else
-    # No pdftotext available
-    echo "⚠️  pdftotext not found. PDF downloaded but not extracted."
-    echo "   Install with: brew install poppler"
+    # 没有 pdftotext
+    echo "⚠️  未找到 pdftotext。已下载 PDF 但未提取。"
+    echo "   使用以下命令安装：brew install poppler"
     CONTENT_FILE="$PDF_FILENAME"
 fi
 ```
 
-### Step 3: Create Ship-Learn-Next Action Plan
+### 步骤 3：创建 Ship-Learn-Next 行动计划
 
-**IMPORTANT**: Always create an action plan after extracting content.
+**重要**：提取内容后始终创建行动计划。
 
 ```bash
-# Read the extracted content
-CONTENT_FILE="[from previous step]"
+# 读取提取的内容
+CONTENT_FILE="[来自上一步]"
 
-# Invoke ship-learn-next skill logic:
-# 1. Read the content file
-# 2. Extract core actionable lessons
-# 3. Create 5-rep progression plan
-# 4. Save as: Ship-Learn-Next Plan - [Quest Title].md
+# 调用 ship-learn-next 技能逻辑：
+# 1. 读取内容文件
+# 2. 提取核心可操作课程
+# 3. 创建 5 次练习进展计划
+# 4. 保存为：Ship-Learn-Next Plan - [任务标题].md
 
-# See ship-learn-next/SKILL.md for full details
+# 完整细节请参阅 ship-learn-next/SKILL.md
 ```
 
-**Key points for plan creation:**
-- Extract actionable lessons (not just summaries)
-- Define a specific 4-8 week quest
-- Create Rep 1 (shippable this week)
-- Design Reps 2-5 (progressive iterations)
-- Save plan to markdown file
-- Use format: `Ship-Learn-Next Plan - [Brief Quest Title].md`
+**计划创建的关键点**：
+- 提取可操作的课程（不只是摘要）
+- 定义特定的 4-8 周任务
+- 创建练习 1（本周可发布）
+- 设计练习 2-5（渐进式迭代）
+- 将计划保存为 markdown 文件
+- 使用格式：`Ship-Learn-Next Plan - [简要任务标题].md`
 
-### Step 4: Present Results
+### 步骤 4：呈现结果
 
-Show user:
+向用户显示：
 ```
-✅ Tapestry Workflow Complete!
+✅ Tapestry 工作流完成！
 
-📥 Content Extracted:
-   ✓ [Content type]: [Title]
-   ✓ Saved to: [filename.txt]
-   ✓ [X] words extracted
+📥 内容已提取：
+   ✓ [内容类型]：[标题]
+   ✓ 已保存到：[filename.txt]
+   ✓ 提取了 [X] 个单词
 
-📋 Action Plan Created:
-   ✓ Quest: [Quest title]
-   ✓ Saved to: Ship-Learn-Next Plan - [Title].md
+📋 行动计划已创建：
+   ✓ 任务：[任务标题]
+   ✓ 已保存到：Ship-Learn-Next Plan - [标题].md
 
-🎯 Your Quest: [One-line summary]
+🎯 您的任务：[一行摘要]
 
-📍 Rep 1 (This Week): [Rep 1 goal]
+📍 练习 1（本周）：[练习 1 目标]
 
-When will you ship Rep 1?
+您什么时候会发布练习 1？
 ```
 
-## Complete Tapestry Workflow Script
+## 完整的 Tapestry 工作流脚本
 
 ```bash
 #!/bin/bash
 
-# Tapestry: Extract content + create action plan
-# Usage: tapestry <URL>
+# Tapestry：提取内容 + 创建行动计划
+# 使用方法：tapestry <URL>
 
 URL="$1"
 
 if [ -z "$URL" ]; then
-    echo "Usage: tapestry <URL>"
+    echo "用法：tapestry <URL>"
     exit 1
 fi
 
-echo "🧵 Tapestry Workflow Starting..."
+echo "🧵 Tapestry 工作流启动中..."
 echo "URL: $URL"
 echo ""
 
-# Step 1: Detect content type
+# 步骤 1：检测内容类型
 if [[ "$URL" =~ youtube\.com/watch || "$URL" =~ youtu\.be/ || "$URL" =~ youtube\.com/shorts ]]; then
     CONTENT_TYPE="youtube"
 elif [[ "$URL" =~ \.pdf$ ]] || curl -sI "$URL" | grep -iq "Content-Type: application/pdf"; then
@@ -322,160 +322,160 @@ else
     CONTENT_TYPE="article"
 fi
 
-echo "📍 Detected: $CONTENT_TYPE"
+echo "📍 检测到：$CONTENT_TYPE"
 echo ""
 
-# Step 2: Extract content
+# 步骤 2：提取内容
 case $CONTENT_TYPE in
     youtube)
-        echo "📺 Extracting YouTube transcript..."
-        # [YouTube extraction code from above]
+        echo "📺 提取 YouTube 讲稿..."
+        # [上面的 YouTube 提取代码]
         ;;
 
     article)
-        echo "📄 Extracting article..."
-        # [Article extraction code from above]
+        echo "📄 提取文章..."
+        # [上面的文章提取代码]
         ;;
 
     pdf)
-        echo "📑 Downloading PDF..."
-        # [PDF extraction code from above]
+        echo "📑 下载 PDF..."
+        # [上面的 PDF 提取代码]
         ;;
 esac
 
 echo ""
 
-# Step 3: Create action plan
-echo "🚀 Creating Ship-Learn-Next action plan..."
-# [Plan creation using ship-learn-next skill]
+# 步骤 3：创建行动计划
+echo "🚀 创建 Ship-Learn-Next 行动计划..."
+# [使用 ship-learn-next 技能的计划创建]
 
 echo ""
-echo "✅ Tapestry Workflow Complete!"
+echo "✅ Tapestry 工作流完成！"
 echo ""
-echo "📥 Content: $CONTENT_FILE"
-echo "📋 Plan: Ship-Learn-Next Plan - [title].md"
+echo "📥 内容：$CONTENT_FILE"
+echo "📋 计划：Ship-Learn-Next Plan - [标题].md"
 echo ""
-echo "🎯 Next: Review your action plan and ship Rep 1!"
+echo "🎯 下一步：查看您的行动计划并发布练习 1！"
 ```
 
-## Error Handling
+## 错误处理
 
-### Common Issues:
+### 常见问题：
 
-**1. Unsupported URL type**
-- Try article extraction as fallback
-- If fails: "Could not extract content from this URL type"
+**1. 不支持的 URL 类型**
+- 尝试文章提取作为回退
+- 如果失败："无法从此 URL 类型提取内容"
 
-**2. No content extracted**
-- Check if URL is accessible
-- Try alternate extraction method
-- Inform user: "Extraction failed. URL may require authentication."
+**2. 未提取内容**
+- 检查 URL 是否可访问
+- 尝试 alternate 提取方法
+- 通知用户："提取失败。URL 可能需要身份验证。"
 
-**3. Tools not installed**
-- Auto-install when possible (yt-dlp, reader, trafilatura)
-- Provide install instructions if auto-install fails
-- Use fallback methods when available
+**3. 工具未安装**
+- 尽可能自动安装（yt-dlp、reader、trafilatura）
+- 如果自动安装失败，提供安装说明
+- 在可用时使用回退方法
 
-**4. Empty or invalid content**
-- Verify file has content before creating plan
-- Don't create plan if extraction failed
-- Show preview to user before planning
+**4. 空或无效的内容**
+- 在创建计划前验证文件有内容
+- 如果提取失败不要创建计划
+- 在计划前向用户显示预览
 
-## Best Practices
+## 最佳实践
 
-- ✅ Always show what was detected ("📍 Detected: youtube")
-- ✅ Display progress for each step
-- ✅ Save both content file AND plan file
-- ✅ Show preview of extracted content (first 10 lines)
-- ✅ Create plan automatically (don't ask)
-- ✅ Present clear summary at end
-- ✅ Ask commitment question: "When will you ship Rep 1?"
+- ✅ 始终显示检测到什么（"📍 检测到：youtube"）
+- ✅ 为每个步骤显示进度
+- ✅ 同时保存内容文件和计划文件
+- ✅ 显示提取内容的预览（前 10 行）
+- ✅ 自动创建计划（不要询问）
+- ✅ 在结束时显示清晰的摘要
+- ✅ 询问承诺问题："您什么时候会发布练习 1？"
 
-## Usage Examples
+## 使用示例
 
-### Example 1: YouTube Video (using "tapestry")
-
-```
-User: tapestry https://www.youtube.com/watch?v=dQw4w9WgXcQ
-
-Claude:
-🧵 Tapestry Workflow Starting...
-📍 Detected: youtube
-📺 Extracting YouTube transcript...
-✓ Saved transcript: Never Gonna Give You Up.txt
-
-🚀 Creating action plan...
-✓ Quest: Master Video Production
-✓ Saved plan: Ship-Learn-Next Plan - Master Video Production.md
-
-✅ Complete! When will you ship Rep 1?
-```
-
-### Example 2: Article (using "weave")
+### 示例 1：YouTube 视频（使用"tapestry"）
 
 ```
-User: weave https://example.com/how-to-build-saas
+用户：tapestry https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
-Claude:
-🧵 Tapestry Workflow Starting...
-📍 Detected: article
-📄 Extracting article...
-✓ Using reader (Mozilla Readability)
-✓ Saved article: How to Build a SaaS.txt
+Claude：
+🧵 Tapestry 工作流启动中...
+📍 检测到：youtube
+📺 提取 YouTube 讲稿...
+✓ 已保存讲稿：Never Gonna Give You Up.txt
 
-🚀 Creating action plan...
-✓ Quest: Build a SaaS MVP
-✓ Saved plan: Ship-Learn-Next Plan - Build a SaaS MVP.md
+🚀 创建行动计划...
+✓ 任务：掌握视频制作
+✓ 已保存计划：Ship-Learn-Next Plan - 掌握视频制作.md
 
-✅ Complete! When will you ship Rep 1?
+✅ 完成！您什么时候会发布练习 1？
 ```
 
-### Example 3: PDF (using "help me plan")
+### 示例 2：文章（使用"weave"）
 
 ```
-User: help me plan https://example.com/research-paper.pdf
+用户：weave https://example.com/how-to-build-saas
 
-Claude:
-🧵 Tapestry Workflow Starting...
-📍 Detected: pdf
-📑 Downloading PDF...
-✓ Downloaded: research-paper.pdf
-✓ Extracted text: research-paper.txt
+Claude：
+🧵 Tapestry 工作流启动中...
+📍 检测到：article
+📄 提取文章...
+✓ 使用 reader（Mozilla Readability）
+✓ 已保存文章：How to Build a SaaS.txt
 
-🚀 Creating action plan...
-✓ Quest: Apply Research Findings
-✓ Saved plan: Ship-Learn-Next Plan - Apply Research Findings.md
+🚀 创建行动计划...
+✓ 任务：构建 SaaS MVP
+✓ 已保存计划：Ship-Learn-Next Plan - 构建 SaaS MVP.md
 
-✅ Complete! When will you ship Rep 1?
+✅ 完成！您什么时候会发布练习 1？
 ```
 
-## Dependencies
+### 示例 3：PDF（使用"帮我计划"）
 
-This skill orchestrates the other skills, so requires:
+```
+用户：帮我计划 https://example.com/research-paper.pdf
 
-**For YouTube:**
-- yt-dlp (auto-installed)
-- Python 3 (for deduplication)
+Claude：
+🧵 Tapestry 工作流启动中...
+📍 检测到：pdf
+📑 下载 PDF...
+✓ 已下载：research-paper.pdf
+✓ 已提取文本：research-paper.txt
 
-**For Articles:**
-- reader (npm) OR trafilatura (pip)
-- Falls back to basic curl if neither available
+🚀 创建行动计划...
+✓ 任务：应用研究发现
+✓ 已保存计划：Ship-Learn-Next Plan - 应用研究发现.md
 
-**For PDFs:**
-- curl (built-in)
-- pdftotext (optional - from poppler package)
-  - Install: `brew install poppler` (macOS)
-  - Install: `apt install poppler-utils` (Linux)
+✅ 完成！您什么时候会发布练习 1？
+```
 
-**For Planning:**
-- No additional requirements (uses built-in tools)
+## 依赖关系
 
-## Philosophy
+此技能协调整个其他技能，因此需要：
 
-**Tapestry weaves learning content into action.**
+**对于 YouTube：**
+- yt-dlp（自动安装）
+- Python 3（用于去重）
 
-The unified workflow ensures you never just consume content - you always create an implementation plan. This transforms passive learning into active building.
+**对于文章：**
+- reader（npm）或 trafilatura（pip）
+- 如果两者都不可用，则回退到基本 curl
 
-Extract → Plan → Ship → Learn → Next.
+**对于 PDF：**
+- curl（内置）
+- pdftotext（可选 - 来自 poppler 包）
+  - 安装：`brew install poppler`（macOS）
+  - 安装：`apt install poppler-utils`（Linux）
 
-That's the Tapestry way.
+**对于计划：**
+- 无额外要求（使用内置工具）
+
+## 理念
+
+**Tapestry 将学习内容编织成行动。**
+
+统一的工作流确保您不只是消费内容 - 您总是创建一个实施计划。这使被动学习转变为主动构建。
+
+提取 → 计划 → 发布 → 学习 → 下一个。
+
+这就是 Tapestry 的方式。

@@ -1,76 +1,76 @@
-# Security Hardening
+# 安全加固
 
-Harden application security configuration
+加强应用程序安全配置
 
-## Instructions
+## 指令
 
-1. **Security Assessment and Baseline**
-   - Conduct comprehensive security audit of current application
-   - Identify potential vulnerabilities and attack vectors
-   - Analyze authentication and authorization mechanisms
-   - Review data handling and storage practices
-   - Assess network security and communication protocols
+1. **安全评估和基线**
+   - 对当前应用程序进行全面的安全审计
+   - 识别潜在的漏洞和攻击向量
+   - 分析身份验证和授权机制
+   - 审查数据处理和存储实践
+   - 评估网络安全和通信协议
 
-2. **Authentication and Authorization Hardening**
-   - Implement strong password policies and multi-factor authentication
-   - Configure secure session management with proper timeouts
-   - Set up role-based access control (RBAC) with least privilege principle
-   - Implement JWT security best practices or secure session tokens
-   - Configure account lockout and brute force protection
+2. **身份验证和授权加固**
+   - 实施强密码策略和多因素身份验证
+   - 配置具有适当超时的安全会话管理
+   - 设置基于角色的访问控制（RBAC），遵循最小权限原则
+   - 实施 JWT 安全最佳实践或安全的会话令牌
+   - 配置账户锁定和暴力破解保护
 
-3. **Input Validation and Sanitization**
-   - Implement comprehensive input validation for all user inputs
-   - Set up SQL injection prevention with parameterized queries
-   - Configure XSS protection with proper output encoding
-   - Implement CSRF protection with tokens and SameSite cookies
-   - Set up file upload security with type validation and sandboxing
+3. **输入验证和清理**
+   - 对所有用户输入实施全面的输入验证
+   - 使用参数化查询设置 SQL 注入预防
+   - 配置具有适当输出编码的 XSS 保护
+   - 使用令牌和 SameSite cookie 实施 CSRF 保护
+   - 设置具有类型验证和沙箱化的文件上传安全
 
-4. **Secure Communication**
-   - Configure HTTPS with strong TLS/SSL certificates
-   - Implement HTTP Strict Transport Security (HSTS)
-   - Set up secure API communication with proper authentication
-   - Configure certificate pinning for mobile applications
-   - Implement end-to-end encryption for sensitive data transmission
+4. **安全通信**
+   - 配置具有强 TLS/SSL 证书的 HTTPS
+   - 实施 HTTP 严格传输安全（HSTS）
+   - 设置具有适当身份验证的安全 API 通信
+   - 为移动应用程序配置证书锁定
+   - 对敏感数据传输实施端到端加密
 
-5. **Data Protection and Encryption**
-   - Implement encryption at rest for sensitive data
-   - Configure secure key management and rotation
-   - Set up database encryption and access controls
-   - Implement proper secrets management (avoid hardcoded secrets)
-   - Configure secure backup and recovery procedures
+5. **数据保护和加密**
+   - 对静态敏感数据实施加密
+   - 配置安全的密钥管理和轮换
+   - 设置数据库加密和访问控制
+   - 实施适当的密钥管理（避免硬编码密钥）
+   - 配置安全的备份和恢复程序
 
-6. **Security Headers and Policies**
-   - Configure Content Security Policy (CSP) headers
-   - Set up X-Frame-Options and X-Content-Type-Options headers
-   - Implement Referrer Policy and Feature Policy headers
-   - Configure CORS policies with proper origin validation
-   - Set up security.txt file for responsible disclosure
+6. **安全标头和策略**
+   - 配置内容安全策略（CSP）标头
+   - 设置 X-Frame-Options 和 X-Content-Type-Options 标头
+   - 实施引用策略和功能策略标头
+   - 配置具有适当源验证的 CORS 策略
+   - 为负责任披露设置 security.txt 文件
 
-7. **Dependency and Supply Chain Security**
-   - Audit and update all dependencies to latest secure versions
-   - Implement dependency vulnerability scanning
-   - Configure automated security updates for critical dependencies
-   - Set up software composition analysis (SCA) tools
-   - Implement dependency pinning and integrity checks
+7. **依赖项和供应链安全**
+   - 审计并更新所有依赖项到最新的安全版本
+   - 实施依赖项漏洞扫描
+   - 为关键依赖项配置自动安全更新
+   - 设置软件成分分析（SCA）工具
+   - 实施依赖项锁定和完整性检查
 
-8. **Infrastructure Security**
-   - Configure firewall rules and network segmentation
-   - Implement intrusion detection and prevention systems
-   - Set up secure logging and monitoring
-   - Configure secure container images and runtime security
-   - Implement infrastructure as code security scanning
+8. **基础设施安全**
+   - 配置防火墙规则和网络分段
+   - 实施入侵检测和预防系统
+   - 设置安全的日志记录和监控
+   - 配置安全的容器镜像和运行时安全
+   - 实施基础设施即代码安全扫描
 
-9. **Application Security Controls**
-   - Implement rate limiting and DDoS protection
-   - Set up web application firewall (WAF) rules
-   - Configure secure error handling without information disclosure
-   - Implement proper logging for security events
-   - Set up security monitoring and alerting
+9. **应用程序安全控制**
+   - 实施速率限制和 DDoS 保护
+   - 设置 Web 应用程序防火墙（WAF）规则
+   - 配置安全的错误处理，不泄露信息
+   - 为安全事件实施适当的日志记录
+   - 设置安全监控和警报
 
-10. **Security Testing and Validation**
-    - Conduct penetration testing and vulnerability assessments
-    - Implement automated security testing in CI/CD pipeline
-    - Set up static application security testing (SAST)
-    - Configure dynamic application security testing (DAST)
-    - Create security incident response plan and procedures
-    - Document security controls and compliance requirements
+10. **安全测试和验证**
+    - 进行渗透测试和漏洞评估
+    - 在 CI/CD 管道中实施自动化安全测试
+    - 设置静态应用程序安全测试（SAST）
+    - 配置动态应用程序安全测试（DAST）
+    - 创建安全事件响应计划程序
+    - 记录安全控制和合规要求

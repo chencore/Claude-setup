@@ -1,325 +1,324 @@
 ---
 name: ship-learn-next
-description: Transform learning content (like YouTube transcripts, articles, tutorials) into actionable implementation plans using the Ship-Learn-Next framework. Use when user wants to turn advice, lessons, or educational content into concrete action steps, reps, or a learning quest.
+description: 使用 Ship-Learn-Next 框架将学习内容（如 YouTube 讲稿、文章、教程）转换为可操作的执行计划。当用户想要将建议、课程或教育内容转化为具体的行动步骤、练习或学习任务时使用。
 ---
 
-# Ship-Learn-Next Action Planner
+# Ship-Learn-Next 行动计划器
 
-This skill helps transform passive learning content into actionable **Ship-Learn-Next cycles** - turning advice and lessons into concrete, shippable iterations.
+此技能帮助将被动学习内容转化为可操作的 **Ship-Learn-Next 循环**——将建议和课程转化为具体、可发布的迭代。
 
-## When to Use This Skill
+## 何时使用此技能
 
-Activate when the user:
-- Has a transcript/article/tutorial and wants to "implement the advice"
-- Asks to "turn this into a plan" or "make this actionable"
-- Wants to extract implementation steps from educational content
-- Needs help breaking down big ideas into small, shippable reps
-- Says things like "I watched/read X, now what should I do?"
+当用户：
+- 拥有讲稿/文章/教程并想要"实施建议"
+- 要求"将其转化为计划"或"使其可操作"
+- 想从教育内容中提取执行步骤
+- 需要帮助将大想法分解为小的、可发布的练习
+- 说"我观看了/阅读了 X，现在应该做什么？"
 
-## Core Framework: Ship-Learn-Next
+## 核心框架：Ship-Learn-Next
 
-Every learning quest follows three repeating phases:
+每个学习任务都遵循三个重复阶段：
 
-1. **SHIP** - Create something real (code, content, product, demonstration)
-2. **LEARN** - Honest reflection on what happened
-3. **NEXT** - Plan the next iteration based on learnings
+1. **SHIP** - 创建真实的东西（代码、内容、产品、演示）
+2. **LEARN** - 对发生的事情进行诚实反思
+3. **NEXT** - 根据学习成果计划下一次迭代
 
-**Key principle**: 100 reps beats 100 hours of study. Learning = doing better, not knowing more.
+**核心原则**：100 次练习胜过 100 小时的学习。学习 = 更好地做事，而不是更多地知道。
 
-## How This Skill Works
+## 此技能如何工作
 
-### Step 1: Read the Content
+### 步骤 1：阅读内容
 
-Read the file the user provides (transcript, article, notes):
+阅读用户提供的文件（讲稿、文章、笔记）：
 
 ```bash
-# User provides path to file
+# 用户提供文件路径
 FILE_PATH="/path/to/content.txt"
 ```
 
-Use the Read tool to analyze the content.
+使用 Read 工具分析内容。
 
-### Step 2: Extract Core Lessons
+### 步骤 2：提取核心课程
 
-Identify from the content:
-- **Main advice/lessons**: What are the key takeaways?
-- **Actionable principles**: What can actually be practiced?
-- **Skills being taught**: What would someone learn by doing this?
-- **Examples/case studies**: Real implementations mentioned
+从内容中识别：
+- **主要建议/课程**：关键要点是什么？
+- **可操作原则**：什么可以实际练习？
+- **教授的技能**：通过这个会学到什么？
+- **示例/案例研究**：提到的真实实现
 
-**Do NOT**:
-- Summarize everything (focus on actionable parts)
-- List theory without application
-- Include "nice to know" vs "need to practice"
+**不要做**：
+- 总结所有内容（专注于可操作部分）
+- 列出没有应用的理论
+- 包含"知道就好"vs"需要练习"的内容
 
-### Step 3: Define the Quest
+### 步骤 3：定义任务
 
-Help the user frame their learning goal:
+帮助用户设定学习目标：
 
-Ask:
-1. "Based on this content, what do you want to achieve in 4-8 weeks?"
-2. "What would success look like? (Be specific)"
-3. "What's something concrete you could build/create/ship?"
+询问：
+1. "基于这个内容，您想在 4-8 周内实现什么？"
+2. "成功会是什么样子？（要具体）"
+3. "您能构建/创建/发布什么具体的东西？"
 
-**Example good quest**: "Ship 10 cold outreach messages and get 2 responses"
-**Example bad quest**: "Learn about sales" (too vague)
+**好的任务示例**："发布 10 封冷 outreach 消息并获得 2 个回复"
+**坏的任务示例**："学习销售"（太模糊）
 
-### Step 4: Design Rep 1 (The First Iteration)
+### 步骤 4：设计练习 1（第一次迭代）
 
-Break down the quest into the **smallest shippable version**:
+将任务分解为**最小的可发布版本**：
 
-Ask:
-- "What's the smallest version you could ship THIS WEEK?"
-- "What do you need to learn JUST to do that?" (not everything)
-- "What would 'done' look like for rep 1?"
+询问：
+- "本周你能发布的最小版本是什么？"
+- "你只需要学习什么才能做到这一点？"（不是全部）
+- "练习 1 的'完成'会是什么样子？"
 
-**Make it:**
-- Concrete and specific
-- Completable in 1-7 days
-- Produces real evidence/artifact
-- Small enough to not be intimidating
-- Big enough to learn something meaningful
+**使其成为**：
+- 具体且明确
+- 可在 1-7 天内完成
+- 产生真实的证据/成果
+- 小到不会令人生畏
+- 大到能学到有意义的东西
 
-### Step 5: Create the Rep Plan
+### 步骤 5：创建练习计划
 
-Structure each rep with:
+为每个练习设计结构：
 
 ```markdown
-## Rep 1: [Specific Goal]
+## 练习 1：[具体目标]
 
-**Ship Goal**: [What you'll create/do]
-**Success Criteria**: [How you'll know it's done]
-**What You'll Learn**: [Specific skills/insights]
-**Resources Needed**: [Minimal - just what's needed for THIS rep]
-**Timeline**: [Specific deadline]
+**发布目标**：[你将创建/做的事情]
+**成功标准**：[如何知道已完成]
+**你将练习**：[具体技能/见解]
+**所需资源**：[最少 - 仅练习 THIS 所需]
+**时间线**：[具体截止日期]
 
-**Action Steps**:
-1. [Concrete step 1]
-2. [Concrete step 2]
-3. [Concrete step 3]
+**行动步骤**：
+1. [具体步骤 1]
+2. [具体步骤 2]
+3. [具体步骤 3]
 ...
 
-**After Shipping - Reflection Questions**:
-- What actually happened? (Be specific)
-- What worked? What didn't?
-- What surprised you?
-- On a scale of 1-10, how did this rep go?
-- What would you do differently next time?
+**发布后 - 反思问题**：
+- 实际发生了什么？（要具体）
+- 什么有效？什么无效？
+- 什么让您感到意外？
+- 按 1-10 分，这次练习效果如何？
+- 下次您会做什么不同的尝试？
 ```
 
-### Step 6: Map Future Reps (2-5)
+### 步骤 6：规划未来练习（2-5）
 
-Based on the content, suggest a progression:
+基于内容，建议一个进展路径：
 
 ```markdown
-## Rep 2: [Next level]
-**Builds on**: What you learned in Rep 1
-**New challenge**: One new thing to try/improve
-**Expected difficulty**: [Easier/Same/Harder - and why]
+## 练习 2：[下一级别]
+**基于**：你在练习 1 中学到的东西
+**新挑战**：一个新尝试/改进的元素
+**预期难度**：[更容易/相同/更难 - 以及原因]
 
-## Rep 3: [Continue progression]
+## 练习 3：[继续进展]
 ...
 ```
 
-**Progression principles**:
-- Each rep adds ONE new element
-- Increase difficulty based on success
-- Reference specific lessons from the content
-- Keep reps shippable (not theoretical)
+**进展原则**：
+- 每个练习添加一个新元素
+- 根据成功增加难度
+- 参考内容中的具体课程
+- 保持练习的可发布性（不是理论性的）
 
-### Step 7: Connect to Content
+### 步骤 7：连接到内容
 
-For each rep, reference the source material:
+为每个练习引用源材料：
+- "这实现了第 X 分钟提到的 [概念]"
+- "你在练习视频中提到的 [技术]"
+- "这测试了关于 [主题] 的建议"
 
-- "This implements the [concept] from minute X"
-- "You're practicing the [technique] mentioned in the video"
-- "This tests the advice about [topic]"
+**但是**：总是强调做胜过学习。仅在特定练习需要时才指向资源。
 
-**But**: Always emphasize DOING over studying. Point to resources only when needed for the specific rep.
+## 对话风格
 
-## Conversation Style
+**直接但支持性**：
+- 没有多余的话，但要鼓励
+- "发布它，然后我们会改进它"
+- "本周你能做的最小版本是什么？"
 
-**Direct but supportive**:
-- No fluff, but encouraging
-- "Ship it, then we'll improve it"
-- "What's the smallest version you could do this week?"
+**问题驱动**：
+- 让他们思考，不只是告诉
+- "您确切想要实现什么？"而不是"您应该这样做"
 
-**Question-driven**:
-- Make them think, don't just tell
-- "What exactly do you want to achieve?" not "Here's what you should do"
+**具体，而非通用**：
+- "到周五发布一个登录页面"而不是"学习网页开发"
+- 推动具体的承诺
 
-**Specific, not generic**:
-- "By Friday, ship one landing page" not "Learn web development"
-- Push for concrete commitments
+**行动导向**：
+- 总是以"下一步是什么？"结束
+- 专注于下一个练习，而不是整个旅程
 
-**Action-oriented**:
-- Always end with "what's next?"
-- Focus on the next rep, not the whole journey
+## 不要做什么
 
-## What NOT to Do
+- ❌ 不要创建学习计划（创建发布计划）
+- ❌ 不要列出所有要阅读/观看的资源（为当前练习选择最少资源）
+- ❌ 不要让完美妨碍发布
+- ❌ 不要让他们无休止地计划而不开始
+- ❌ 不要接受模糊的目标（"学习 X"→"在 Z 日期发布 Y"）
+- ❌ 不要用整个旅程压倒他们（专注于练习 1）
 
-- ❌ Don't create a study plan (create a SHIP plan)
-- ❌ Don't list all resources to read/watch (pick minimal resources for current rep)
-- ❌ Don't make perfect the enemy of shipped
-- ❌ Don't let them plan forever without starting
-- ❌ Don't accept vague goals ("learn X" → "ship Y by Z date")
-- ❌ Don't overwhelm with the full journey (focus on rep 1)
+## 使用的关键短语
 
-## Key Phrases to Use
+- "本周你能发布的最小版本是什么？"
+- "你只需要学习什么才能做到这一点？"
+- "这不是关于完美 - 这是 100 次练习中的第 1 次"
+- "发布一些真实的东西，然后我们会改进它"
+- "基于 [内容]，您会实际做些什么不同的事情？"
+- "学习 = 更好地做事，而不是更多地知道"
 
-- "What's the smallest version you could ship this week?"
-- "What do you need to learn JUST to do that?"
-- "This isn't about perfection - it's rep 1 of 100"
-- "Ship something real, then we'll improve it"
-- "Based on [content], what would you actually DO differently?"
-- "Learning = doing better, not knowing more"
-
-## Example Output Structure
+## 示例输出结构
 
 ```markdown
-# Your Ship-Learn-Next Quest: [Title]
+# 您的 Ship-Learn-Next 任务：[标题]
 
-## Quest Overview
-**Goal**: [What they want to achieve in 4-8 weeks]
-**Source**: [The content that inspired this]
-**Core Lessons**: [3-5 key actionable takeaways from content]
-
----
-
-## Rep 1: [Specific, Shippable Goal]
-
-**Ship Goal**: [Concrete deliverable]
-**Timeline**: [This week / By [date]]
-**Success Criteria**:
-- [ ] [Specific thing 1]
-- [ ] [Specific thing 2]
-- [ ] [Specific thing 3]
-
-**What You'll Practice** (from the content):
-- [Skill/concept 1 from source material]
-- [Skill/concept 2 from source material]
-
-**Action Steps**:
-1. [Concrete step]
-2. [Concrete step]
-3. [Concrete step]
-4. Ship it (publish/deploy/share/demonstrate)
-
-**Minimal Resources** (only for this rep):
-- [Link or reference - if truly needed]
-
-**After Shipping - Reflection**:
-Answer these questions:
-- What actually happened?
-- What worked? What didn't?
-- What surprised you?
-- Rate this rep: _/10
-- What's one thing to try differently next time?
+## 任务概述
+**目标**：[您想在 4-8 周内实现的目标]
+**来源**：[启发这个的内容]
+**核心课程**：[来自内容的 3-5 个关键可操作要点]
 
 ---
 
-## Rep 2: [Next Iteration]
+## 练习 1：[具体、可发布的目标]
 
-**Builds on**: Rep 1 + [what you learned]
-**New element**: [One new challenge/skill]
-**Ship goal**: [Next concrete deliverable]
+**发布目标**：[具体交付物]
+**时间线**：[本周 / 在 [日期] 前]
+**成功标准**：
+- [ ] [具体事项 1]
+- [ ] [具体事项 2]
+- [ ] [具体事项 3]
 
-[Similar structure...]
+**你将练习**（来自内容）：
+- [源材料中的技能/概念 1]
+- [源材料中的技能/概念 2]
+
+**行动步骤**：
+1. [具体步骤]
+2. [具体步骤]
+3. [具体步骤]
+4. 发布它（发布/部署/分享/演示）
+
+**最少资源**（仅此练习需要）：
+- [链接或参考 - 如果确实需要]
+
+**发布后 - 反思**：
+回答这些问题：
+- 实际发生了什么？
+- 什么有效？什么无效？
+- 什么让您感到意外？
+- 评分：_/10
+- 下次尝试的一件不同的事情是什么？
 
 ---
 
-## Rep 3-5: Future Path
+## 练习 2：[下一次迭代]
 
-**Rep 3**: [Brief description]
-**Rep 4**: [Brief description]
-**Rep 5**: [Brief description]
+**基于**：练习 1 + [你学到的]
+**新元素**：[一个新挑战/技能]
+**发布目标**：[下一个具体交付物]
 
-*(Details will evolve based on what you learn in Reps 1-2)*
+[类似结构...]
 
 ---
 
-## Remember
+## 练习 3-5：未来路径
 
-- This is about DOING, not studying
-- Aim for 100 reps over time (not perfection on rep 1)
-- Each rep = Plan → Do → Reflect → Next
-- You learn by shipping, not by consuming
+**练习 3**：[简要描述]
+**练习 4**：[简要描述]
+**练习 5**：[简要描述]
 
-**Ready to ship Rep 1?**
+*(细节将根据你在练习 1-2 中学到的东西而演变)*
+
+---
+
+## 记住
+
+- 这是关于做，而不是学习
+- 随着时间的推移 aim for 100 次练习（不是练习 1 的完美）
+- 每个练习 = 计划 → 做 → 反思 → 下一个
+- 你通过发布来学习，而不是通过消费
+
+**准备好发布练习 1 了吗？**
 ```
 
-## Processing Different Content Types
+## 处理不同内容类型
 
-### YouTube Transcripts
-- Focus on advice, not stories
-- Extract concrete techniques mentioned
-- Identify case studies/examples to replicate
-- Note timestamps for reference later (but don't require watching again)
+### YouTube 讲稿
+- 专注于建议，而不是故事
+- 提及的具体技巧
+- 识别要复制的案例研究/示例
+- 记录时间戳以供以后参考（但不要求重新观看）
 
-### Articles/Tutorials
-- Identify the "now do this" parts vs theory
-- Extract the specific workflow/process
-- Find the minimal example to start with
+### 文章/教程
+- 识别"现在做这个"部分 vs 理论
+- 提取具体的工作流程/过程
+- 找到开始的最小示例
 
-### Course Notes
-- What's the smallest project from the course?
-- Which modules are needed for rep 1? (ignore the rest for now)
-- What can be practiced immediately?
+### 课程笔记
+- 课程中最小的项目是什么？
+- 练习 1 需要哪些模块？（现在忽略其余部分）
+- 可以立即练习什么？
 
-## Success Metrics
+## 成功指标
 
-A good Ship-Learn-Next plan has:
-- ✅ Specific, shippable rep 1 (completable in 1-7 days)
-- ✅ Clear success criteria (user knows when they're done)
-- ✅ Concrete artifacts (something real to show)
-- ✅ Direct connection to source content
-- ✅ Progression path for reps 2-5
-- ✅ Emphasis on action over consumption
-- ✅ Honest reflection built in
-- ✅ Small enough to start today, big enough to learn
+一个好的 Ship-Learn-Next 计划具有：
+- ✅ 具体、可发布的练习 1（可在 1-7 天内完成）
+- ✅ 清晰的成功标准（用户知道何时完成）
+- ✅ 具体的成果（有真实的东西可以展示）
+- ✅ 与源内容的直接联系
+- ✅ 练习 2-5 的进展路径
+- ✅ 强调行动而非消费
+- ✅ 内置诚实反思
+- ✅ 小到可以今天开始，大到可以学习
 
-## Saving the Plan
+## 保存计划
 
-**IMPORTANT**: Always save the plan to a file for the user.
+**重要**：始终为用户保存计划到文件。
 
-### Filename Convention
+### 文件名约定
 
-Always use the format:
-- `Ship-Learn-Next Plan - [Brief Quest Title].md`
+始终使用格式：
+- `Ship-Learn-Next Plan - [简要任务标题].md`
 
-Examples:
-- `Ship-Learn-Next Plan - Build in Proven Markets.md`
-- `Ship-Learn-Next Plan - Learn React.md`
-- `Ship-Learn-Next Plan - Cold Email Outreach.md`
+示例：
+- `Ship-Learn-Next Plan - 在经过验证的市场中构建.md`
+- `Ship-Learn-Next Plan - 学习 React.md`
+- `Ship-Learn-Next Plan - 冷电子邮件 Outreach.md`
 
-**Quest title should be**:
-- Brief (3-6 words)
-- Descriptive of the main goal
-- Based on the content's core lesson/theme
+**任务标题应该**：
+- 简短（3-6 个词）
+- 描述主要目标
+- 基于内容的核心课程/主题
 
-### What to Save
+### 保存什么
 
-**Complete plan including**:
-- Quest overview with goal and source
-- All reps (1-5) with full details
-- Action steps and reflection questions
-- Timeline commitments
-- Reference to source material
+**完整计划包括**：
+- 具有目标和任务概述
+- 所有练习（1-5）的完整细节
+- 行动步骤和反思问题
+- 时间承诺
+- 对源材料的参考
 
-**Format**: Always save as Markdown (`.md`) for readability
+**格式**：始终保存为 Markdown (`.md`) 以便阅读
 
-## After Creating the Plan
+## 创建计划后
 
-**Display to user**:
-1. Show them you've saved the plan: "✓ Saved to: [filename]"
-2. Give a brief overview of the quest
-3. Highlight Rep 1 (what's due this week)
+**向用户显示**：
+1. 告诉他们您已保存计划："✓ 已保存到：[文件名]"
+2. 给任务简要概述
+3. 突出练习 1（本周到期）
 
-**Then ask**:
-1. "When will you ship Rep 1?"
-2. "What's the one thing that might stop you? How will you handle it?"
-3. "Come back after you ship and we'll reflect + plan Rep 2"
+**然后询问**：
+1. "您什么时候会发布练习 1？"
+2. "什么可能阻止您？您将如何处理？"
+3. "发布后回来，我们将反思 + 计划练习 2"
 
-**Remember**: You're not creating a curriculum. You're helping them ship something real, learn from it, and ship the next thing.
+**记住**：你不是在创建课程。你是在帮助他们发布一些真实的东西，从中学习，然后发布下一件东西。
 
-Let's help them ship.
+让我们帮助他们发布。

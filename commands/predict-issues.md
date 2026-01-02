@@ -1,84 +1,82 @@
 ---
-description: Analyze codebase to predict potential problems before they impact the project
-argument-hint: [code-path] - optional path to analyze
+description: 分析代码库以预测可能影响项目的潜在问题
+argument-hint: [code-path] - 可选要分析的路径
 ---
 
-# Predictive Code Analysis
+# 预测性代码分析
 
-I'll analyze your codebase to predict potential problems before they impact your project.
+我将分析您的代码库，以预测可能影响您项目的潜在问题。
 
-## Strategic Thinking Process
+## 战略性思考过程
 
-<think>
-To make accurate predictions, I need to consider:
+要进行准确的预测，我需要考虑：
 
-1. **Pattern Recognition**
-   - Which code patterns commonly lead to problems?
-   - Are there growing complexity hotspots?
-   - Do I see anti-patterns that will cause issues at scale?
-   - Are there ticking time bombs (hardcoded values, assumptions)?
+1. **模式识别**
+   - 哪些代码模式通常会导致问题？
+   - 是否有日益复杂的性能热点？
+   - 我看到的反模式是否会在大规模时导致问题？
+   - 是否有定时炸弹（硬编码值、假设）？
 
-2. **Risk Assessment Framework**
-   - Likelihood: How probable is this issue to occur?
-   - Impact: How severe would the consequences be?
-   - Timeline: When might this become a problem?
-   - Effort: How hard would it be to fix now vs later?
+2. **风险评估框架**
+   - 可能性：此问题发生的概率有多大？
+   - 影响：后果的严重程度如何？
+   - 时间线：这何时可能成为问题？
+   - 工作量：现在修复 vs 后来修复的难度如何？
 
-3. **Common Problem Categories**
-   - Performance: O(n²) algorithms, memory leaks, inefficient queries
-   - Maintainability: High complexity, poor naming, tight coupling
-   - Security: Input validation gaps, exposed secrets, weak auth
-   - Scalability: Hardcoded limits, single points of failure
+3. **常见问题类别**
+   - 性能：O(n²) 算法、内存泄漏、低效查询
+   - 可维护性：高复杂性、糟糕的命名、紧密耦合
+   - 安全性：输入验证漏洞、暴露的密钥、弱身份验证
+   - 可扩展性：硬编码限制、单点故障
 
-4. **Prediction Strategy**
-   - Start with highest risk areas (critical path code)
-   - Look for patterns that break at 10x, 100x scale
-   - Check for technical debt accumulation
-   - Identify brittleness in integration points
-</think>
+4. **预测策略**
+   - 从风险最高的区域开始（关键路径代码）
+   - 寻找在 10 倍、100 倍规模时崩溃的模式
+   - 检查技术债务累积
+   - 识别集成点的脆弱性
 
-Based on this analysis framework, I'll use native tools for comprehensive analysis:
-- **Grep tool** to search for problematic patterns
-- **Glob tool** to analyze file structures and growth
-- **Read tool** to examine complex functions and hotspots
+基于此分析框架，我将使用原生工具进行全面分析：
+- **Grep 工具**搜索问题模式
+- **Glob 工具**分析文件结构和增长
+- **Read 工具**检查复杂函数和热点
 
-I'll examine:
-- Code complexity trends and potential hotspots
-- Performance bottleneck patterns forming
-- Maintenance difficulty indicators
-- Architecture stress points and scaling issues
-- Error handling gaps
+我将检查：
+- 代码复杂性趋势和潜在热点
+- 正在形成的性能瓶颈模式
+- 维护难度指标
+- 架构压力点和扩展问题
+- 错误处理差距
 
-For each prediction, I'll:
-- Show specific code locations with file references
-- Explain why it's likely to cause future issues
-- Estimate potential timeline and impact
-- Suggest preventive measures with priority levels
+对于每个预测，我将：
+- 显示带有文件引用的特定代码位置
+- 解释为什么它可能导致未来的问题
+- 估计可能的时间线和影响
+- 建议带有优先级级别的预防措施
 
-When I find multiple issues, I'll create a todo list for systematic review and prioritization.
+当我发现多个问题时，我将创建一个待办事项列表进行系统性审查和优先级排序。
 
-Analysis areas:
-- Functions approaching complexity thresholds
-- Files with high change frequency (potential hotspots)
-- Dependencies with known issues or update requirements
-- Performance patterns that don't scale
-- Code duplication leading to maintenance issues
+分析区域：
+- 接近复杂性阈值的函数
+- 具有高频更改的文件（潜在热点）
+- 具有已知问题或更新要求的依赖项
+- 无法扩展的性能模式
+- 导致维护问题的代码重复
 
-After analysis, I'll ask: "How would you like to track these predictions?"
-- Create todos: I'll add items to track resolution progress
-- Create GitHub issues: I'll generate properly formatted issues with details
-- Summary only: I'll provide actionable report without task creation
+分析后，我将询问："您想如何跟踪这些预测？"
+- 创建待办事项：我将添加项目来跟踪解决进度
+- 创建 GitHub 问题：我将生成格式正确的详细问题
+- 仅摘要：我将提供可操作的报告而不创建任务
 
-**Important**: I will NEVER:
-- Add "Created by Claude" or any AI attribution to issues
-- Include "Generated with Claude Code" in descriptions
-- Modify repository settings or permissions
-- Add any AI/assistant signatures or watermarks
+**重要**：我绝不会：
+- 向问题添加"由 Claude 创建"或任何 AI 归属
+- 在描述中包含"使用 Claude Code 生成"
+- 修改存储库设置或权限
+- 添加任何 AI/助手签名或水印
 
-Predictions will include:
-- Risk level assessment (Critical/High/Medium/Low)
-- Estimated timeline for potential issues
-- Specific remediation recommendations
-- Impact assessment on project goals
+预测将包括：
+- 风险级别评估（关键/高/中/低）
+- 潜在问题的时间线估计
+- 具体的补救建议
+- 对项目目标的影响评估
 
-This helps prevent problems before they impact your project, saving time and maintaining code quality proactively.
+这有助于在问题影响您的项目之前预防问题，节省时间并主动维护代码质量。

@@ -1,94 +1,94 @@
 ---
 allowed-tools: Read, Glob, Grep, TodoWrite, Bash
-description: Analyze entire application to understand architecture, patterns, and how everything works
-argument-hint: (no arguments)
+description: 分析整个应用程序以理解架构、模式和所有组件如何协同工作
+argument-hint: （无参数）
 ---
 
-# Understand Project
+# 理解项目
 
-I'll analyze your entire application to understand its architecture, patterns, and how everything works together.
+我将分析您的整个应用程序以理解其架构、模式和所有组件如何协同工作。
 
-**Phase 1: Project Discovery**
-Using native tools for comprehensive analysis:
-- **Glob** to map entire project structure
-- **Read** key files (README, docs, configs)
-- **Grep** to identify technology patterns
-- **Read** entry points and main files
+**第 1 阶段：项目发现**
+使用原生工具进行全面分析：
+- **Glob** 映射整个项目结构
+- **Read** 关键文件（README、docs、configs）
+- **Grep** 识别技术模式
+- **Read** 入口点和主文件
 
-I'll discover:
-- Project type and main technologies
-- Architecture patterns (MVC, microservices, etc.)
-- Directory structure and organization
-- Dependencies and external integrations
-- Build and deployment setup
+我将发现：
+- 项目类型和主要技术
+- 架构模式（MVC、微服务等）
+- 目录结构和组织
+- 依赖项和外部集成
+- 构建和部署设置
 
-**Phase 2: Code Architecture Analysis**
-- **Entry points**: Main files, index files, app initializers
-- **Core modules**: Business logic organization
-- **Data layer**: Database, models, repositories
-- **API layer**: Routes, controllers, endpoints
-- **Frontend**: Components, views, templates
-- **Configuration**: Environment setup, constants
-- **Testing**: Test structure and coverage
+**第 2 阶段：代码架构分析**
+- **入口点**：主文件、索引文件、应用初始化器
+- **核心模块**：业务逻辑组织
+- **数据层**：数据库、模型、仓储
+- **API 层**：路由、控制器、端点
+- **前端**：组件、视图、模板
+- **配置**：环境设置、常量
+- **测试**：测试结构和覆盖率
 
-**Phase 3: Pattern Recognition**
-I'll identify established patterns:
-- Naming conventions for files and functions
-- Code style and formatting rules
-- Error handling approaches
-- Authentication/authorization flow
-- State management strategy
-- Communication patterns between modules
+**第 3 阶段：模式识别**
+我将识别已建立的模式：
+- 文件和函数的命名约定
+- 代码风格和格式规则
+- 错误处理方法
+- 身份验证/授权流程
+- 状态管理策略
+- 模块间的通信模式
 
-**Phase 4: Dependency Mapping**
-- Internal dependencies between modules
-- External library usage patterns
-- Service integrations
-- API dependencies
-- Database relationships
-- Asset and resource management
+**第 4 阶段：依赖映射**
+- 模块之间的内部依赖项
+- 外部库使用模式
+- 服务集成
+- API 依赖项
+- 数据库关系
+- 资源和资产管理
 
-**Phase 5: Documentation Synthesis**
-After analysis, I'll provide:
-- **Architecture diagram** (in text/markdown)
-- **Key components** and their responsibilities
-- **Data flow** through the application
-- **Important patterns** to follow
-- **Tech stack summary**
-- **Development workflow**
+**第 5 阶段：文档综合**
+分析后，我将提供：
+- **架构图**（以文本/markdown 格式）
+- **关键组件**及其职责
+- **数据流**通过应用程序
+- **重要模式**以遵循
+- **技术栈摘要**
+- **开发工作流**
 
-**Integration Points:**
-I'll identify how components interact:
-- API endpoints and their consumers
-- Database queries and their callers
-- Event systems and listeners
-- Shared utilities and helpers
-- Cross-cutting concerns (logging, auth)
+**集成点：**
+我将识别组件如何交互：
+- API 端点及其消费者
+- 数据库查询及其调用者
+- 事件系统和监听器
+- 共享实用程序和助手
+- 横切关注点（日志记录、身份验证）
 
-**Output Format:**
+**输出格式：**
 ```
-PROJECT OVERVIEW
-├── Architecture: [Type]
-├── Main Technologies: [List]
-├── Key Patterns: [List]
-└── Entry Point: [File]
+项目概述
+├── 架构：[类型]
+├── 主要技术：[列表]
+├── 关键模式：[列表]
+└── 入口点：[文件]
 
-COMPONENT MAP
-├── Frontend
-│   └── [Structure]
-├── Backend
-│   └── [Structure]
-├── Database
-│   └── [Schema approach]
-└── Tests
-    └── [Test strategy]
+组件映射
+├── 前端
+│   └── [结构]
+├── 后端
+│   └── [结构]
+├── 数据库
+│   └── [架构方法]
+└── 测试
+    └── [测试策略]
 
-KEY INSIGHTS
-- [Important finding 1]
-- [Important finding 2]
-- [Unique patterns]
+关键洞察
+- [重要发现 1]
+- [重要发现 2]
+- [独特模式]
 ```
 
-When the analysis is large, I'll create a todo list to explore specific areas in detail.
+当分析很大时，我将创建一个待办事项列表来详细探索特定区域。
 
-This gives you a complete mental model of how your application works.
+这为您提供了应用程序工作方式的完整心智模型。

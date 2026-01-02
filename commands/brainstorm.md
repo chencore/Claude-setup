@@ -1,43 +1,43 @@
 ---
-description: Use when creating or developing, before writing code or implementation plans - refines rough ideas into fully-formed designs through collaborative questioning, alternative exploration, and incremental validation.
+description: 当在创建或开发时使用，在编写代码或实施计划之前 - 通过协作性提问、替代方案探索和增量验证，将粗糙的想法完善为完整的设计
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, TodoWrite, WebSearch, WebFetch
 ---
 
-# Brainstorming Ideas Into Designs
+# 将想法转化为设计的头脑风暴
 
-## Overview
+## 概述
 
-Help turn ideas into fully formed designs and specs through natural collaborative dialogue.
+通过自然的协作对话将想法转化为完整的设计和规范。
 
-Start by understanding the current project context, then ask questions one at a time to refine the idea. Once you understand what you're building, present the design in small sections (200-300 words), checking after each section whether it looks right so far.
+首先了解当前项目上下文，然后一次提出一个问题来完善想法。一旦理解了您要构建的内容，以小节（200-300字）呈现设计，并在每节后检查到目前为止是否看起来正确。
 
-## The Process
+## 流程
 
-**Understanding the idea:**
-- Check out the current project state first (files, docs, recent commits)
-- Ask questions one at a time to refine the idea
-- Prefer multiple choice questions when possible, but open-ended is fine too
-- Only one question per message - if a topic needs more exploration, break it into multiple questions
-- Focus on understanding: purpose, constraints, success criteria
+**理解想法：**
+- 首先查看当前项目状态（文件、文档、最近的提交）
+- 一次提出一个问题来完善想法
+- 尽可能使用选择题，但开放式也可以
+- 每条消息只问一个问题 - 如果主题需要更多探索，将其分解为多个问题
+- 专注于理解：目的、约束条件、成功标准
 
-**Exploring approaches:**
-- Propose 2-3 different approaches with trade-offs
-- Present options conversationally with your recommendation and reasoning
-- Lead with your recommended option and explain why
+**探索方法：**
+- 提出 2-3 种不同的方法及其权衡
+- 以对话方式呈现选项，包括您的推荐和理由
+- 从您的推荐选项开始并解释原因
 
-**Presenting the design:**
-- Once you believe you understand what you're building, present the design
-- Break it into sections of 200-300 words
-- Ask after each section whether it looks right so far
-- Cover: architecture, components, data flow, error handling, testing
-- Be ready to go back and clarify if something doesn't make sense
+**呈现设计：**
+- 一旦相信您理解要构建的内容，就呈现设计
+- 将其分解为 200-300 字的小节
+- 在每节后询问到目前为止是否看起来正确
+- 涵盖：架构、组件、数据流、错误处理、测试
+- 如果某些内容没有意义，准备好回去澄清
 
 
-## Key Principles
+## 关键原则
 
-- **One question at a time** - Don't overwhelm with multiple questions
-- **Multiple choice preferred** - Easier to answer than open-ended when possible
-- **YAGNI ruthlessly** - Remove unnecessary features from all designs
-- **Explore alternatives** - Always propose 2-3 approaches before settling
-- **Incremental validation** - Present design in sections, validate each
-- **Be flexible** - Go back and clarify when something doesn't make sense
+- **一次问一个问题** - 不要用多个问题压倒用户
+- **首选选择题** - 可能时比开放式问题更容易回答
+- **严格遵循 YAGNI** - 从所有设计中删除不必要的功能
+- **探索替代方案** - 在确定之前总是提出 2-3 种方法
+- **增量验证** - 分节呈现设计，验证每节
+- **保持灵活性** - 当某些内容没有意义时回去澄清

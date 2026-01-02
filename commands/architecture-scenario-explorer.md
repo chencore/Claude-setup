@@ -1,381 +1,381 @@
 ---
 allowed-tools: Read, Write, Glob, Grep, AskUserQuestion, TodoWrite, WebSearch, WebFetch
-description: Explore architectural decisions through systematic scenario analysis with trade-off evaluation
-argument-hint: [scenario] - optional architecture scenario to explore
+description: 通过系统性场景分析和权衡评估探索架构决策
+argument-hint: [scenario] - 可选要探索的架构场景
 ---
 
-# Architecture Scenario Explorer
+# 架构场景探索器
 
-Explore architectural decisions through systematic scenario analysis with trade-off evaluation and future-proofing assessment.
+通过系统性场景分析和权衡评估探索架构决策，并进行前瞻性评估。
 
-## Instructions
+## 指令
 
-You are tasked with systematically exploring architectural decisions through comprehensive scenario modeling to optimize system design choices. Follow this approach: **$ARGUMENTS**
+您需要通过全面的场景建模来系统地探索架构决策，以优化系统设计选择。遵循此方法：**$ARGUMENTS**
 
-### 1. Prerequisites Assessment
+### 1. 先决条件评估
 
-**Critical Architecture Context Validation:**
+**关键架构上下文验证：**
 
-- **System Scope**: What system or component architecture are you designing?
-- **Scale Requirements**: What are the expected usage patterns and growth projections?
-- **Constraints**: What technical, business, or resource constraints apply?
-- **Timeline**: What is the implementation timeline and evolution roadmap?
-- **Success Criteria**: How will you measure architectural success?
+- **系统范围**：您正在设计什么系统或组件架构？
+- **规模需求**：预期的使用模式和增长预测是什么？
+- **约束条件**：适用哪些技术、业务或资源约束？
+- **时间线**：实现时间线和演进路线图是什么？
+- **成功标准**：如何衡量架构成功？
 
-**If context is unclear, guide systematically:**
+**如果上下文不明确，请系统性地引导：**
 
 ```
-Missing System Scope:
-"What specific system architecture needs exploration?
-- New System Design: Greenfield application or service architecture
-- System Migration: Moving from legacy to modern architecture
-- Scaling Architecture: Expanding existing system capabilities
-- Integration Architecture: Connecting multiple systems and services
-- Platform Architecture: Building foundational infrastructure
+缺少系统范围：
+"需要探索什么特定的系统架构？
+- 新系统设计：绿地应用程序或服务架构
+- 系统迁移：从传统架构迁移到现代架构
+- 扩展架构：扩展现有系统功能
+- 集成架构：连接多个系统和服务
+- 平台架构：构建基础设施
 
-Please specify the system boundaries, key components, and primary functions."
+请指定系统边界、关键组件和主要功能。"
 
-Missing Scale Requirements:
-"What are the expected system scale and usage patterns?
-- User Scale: Number of concurrent and total users
-- Data Scale: Volume, velocity, and variety of data processed
-- Transaction Scale: Requests per second, peak load patterns
-- Geographic Scale: Single region, multi-region, or global distribution
-- Growth Projections: Expected scaling timeline and magnitude"
+缺少规模需求：
+"预期的系统规模和使用模式是什么？
+- 用户规模：并发用户总数和总用户数
+- 数据规模：处理数据的容量、速度和多样性
+- 事务规模：每秒请求数、峰值负载模式
+- 地理规模：单个区域、多区域或全球分布
+- 增长预测：预期的扩展时间线和幅度"
 ```
 
-### 2. Architecture Option Generation
+### 2. 架构选项生成
 
-**Systematically identify architectural approaches:**
+**系统性地识别架构方法：**
 
-#### Architecture Pattern Matrix
+#### 架构模式矩阵
 ```
-Architectural Approach Framework:
+架构方法框架：
 
-Monolithic Patterns:
-- Layered Architecture: Traditional n-tier with clear separation
-- Modular Monolith: Well-bounded modules within single deployment
-- Plugin Architecture: Core system with extensible plugin ecosystem
-- Service-Oriented Monolith: Internal service boundaries with single deployment
+单体模式：
+- 分层架构：传统的 n 层架构，具有清晰的分离
+- 模块化单体：单一部署内的良好边界模块
+- 插件架构：具有可扩展插件生态系统的核心系统
+- 面向服务的单体：具有单一部署的内部服务边界
 
-Distributed Patterns:
-- Microservices: Independent services with business capability alignment
-- Service Mesh: Microservices with infrastructure-level communication
-- Event-Driven: Asynchronous communication with event sourcing
-- CQRS/Event Sourcing: Command-query separation with event storage
+分布式模式：
+- 微服务：与业务能力对齐的独立服务
+- 服务网格：具有基础设施级别通信的微服务
+- 事件驱动：具有事件源异步通信
+- CQRS/事件源：命令查询分离与事件存储
 
-Hybrid Patterns:
-- Modular Microservices: Services grouped by business domain
-- Micro-Frontend: Frontend decomposition matching backend services
-- Strangler Fig: Gradual migration from monolith to distributed
-- API Gateway: Centralized entry point with backend service routing
+混合模式：
+- 模块化微服务：按业务域分组的服务
+- 微前端：与前端正后服务匹配的前端分解
+- 绞杀者模式：从单体到分布式的逐步迁移
+- API 网关：具有后端服务路由的集中式入口点
 
-Cloud-Native Patterns:
-- Serverless: Function-based with cloud provider infrastructure
-- Container-Native: Kubernetes-first with cloud-native services
-- Multi-Cloud: Cloud-agnostic with portable infrastructure
-- Edge-First: Distributed computing with edge location optimization
-```
-
-#### Architecture Variation Specification
-```
-For each architectural option:
-
-Structural Characteristics:
-- Component Organization: [how system parts are structured and related]
-- Communication Patterns: [synchronous vs asynchronous, protocols, messaging]
-- Data Management: [database strategy, consistency model, storage patterns]
-- Deployment Model: [packaging, distribution, scaling, and operational approach]
-
-Quality Attributes:
-- Scalability Profile: [horizontal vs vertical scaling, bottleneck analysis]
-- Reliability Characteristics: [failure modes, recovery, fault tolerance]
-- Performance Expectations: [latency, throughput, resource efficiency]
-- Security Model: [authentication, authorization, data protection, attack surface]
-
-Implementation Considerations:
-- Technology Stack: [languages, frameworks, databases, infrastructure]
-- Team Structure Fit: [Conway's Law implications, team capabilities]
-- Development Process: [build, test, deploy, monitor workflows]
-- Evolution Strategy: [how architecture can grow and change over time]
+云原生模式：
+- 无服务器：基于云提供商基础设施的函数
+- 容器原生：Kubernetes 优先与云原生服务
+- 多云：与可移植基础设施无关的云
+- 边缘优先：具有边缘位置优化的分布式计算
 ```
 
-### 3. Scenario Framework Development
-
-**Create comprehensive architectural testing scenarios:**
-
-#### Usage Scenario Matrix
+#### 架构变化规格
 ```
-Multi-Dimensional Scenario Framework:
+对于每个架构选项：
 
-Load Scenarios:
-- Normal Operation: Typical daily usage patterns and traffic
-- Peak Load: Maximum expected concurrent usage and transaction volume
-- Stress Testing: Beyond normal capacity to identify breaking points
-- Spike Testing: Sudden traffic increases and burst handling
+结构特征：
+- 组件组织：[系统部分如何组织和关联]
+- 通信模式：[同步与异步、协议、消息传递]
+- 数据管理：[数据库策略、一致性模型、存储模式]
+- 部署模型：[打包、分发、扩展和操作方法]
 
-Growth Scenarios:
-- Linear Growth: Steady user and data volume increases over time
-- Exponential Growth: Rapid scaling requirements and viral adoption
-- Geographic Expansion: Multi-region deployment and global scaling
-- Feature Expansion: New capabilities and service additions
+质量属性：
+- 可扩展性配置文件：[水平与垂直扩展、瓶颈分析]
+- 可靠性特征：[故障模式、恢复、容错]
+- 性能期望：[延迟、吞吐量、资源效率]
+- 安全模型：[身份验证、授权、数据保护、攻击面]
 
-Failure Scenarios:
-- Component Failures: Individual service or database outages
-- Infrastructure Failures: Network, storage, or compute disruptions
-- Cascade Failures: Failure propagation and system-wide impacts
-- Disaster Recovery: Major outage recovery and business continuity
-
-Evolution Scenarios:
-- Technology Migration: Framework, language, or platform changes
-- Business Model Changes: New revenue streams or service offerings
-- Regulatory Changes: Compliance requirements and data protection
-- Competitive Response: Market pressures and feature requirements
+实现考虑因素：
+- 技术栈：[语言、框架、数据库、基础设施]
+- 团队结构适配：[康威定律影响、团队能力]
+- 开发过程：[构建、测试、部署、监控工作流]
+- 演进策略：[架构如何随时间增长和变化]
 ```
 
-#### Scenario Impact Modeling
-- Performance impact under each scenario type
-- Cost implications for infrastructure and operations
-- Development velocity and team productivity effects
-- Risk assessment and mitigation requirements
+### 3. 场景框架开发
 
-### 4. Trade-off Analysis Framework
+**创建全面的架构测试场景：**
 
-**Systematic evaluation of architectural trade-offs:**
-
-#### Quality Attribute Trade-off Matrix
+#### 使用场景矩阵
 ```
-Architecture Quality Assessment:
+多维场景框架：
 
-Performance Trade-offs:
-- Latency vs Throughput: Response time vs maximum concurrent processing
-- Memory vs CPU: Resource utilization optimization strategies
-- Consistency vs Availability: CAP theorem implications and choices
-- Caching vs Freshness: Data staleness vs response speed
+负载场景：
+- 正常操作：典型每日使用模式和流量
+- 峰值负载：预期最大并发使用和事务量
+- 压力测试：超出正常容量以识别断点
+- 尖峰测试：流量突然增加和突发处理
 
-Scalability Trade-offs:
-- Horizontal vs Vertical: Infrastructure scaling approach and economics
-- Stateless vs Stateful: Session management and performance implications
-- Synchronous vs Asynchronous: Communication complexity vs performance
-- Coupling vs Autonomy: Service independence vs operational overhead
+增长场景：
+- 线性增长：随时间的稳定用户和数据量增长
+- 指数增长：快速扩展要求和病毒式采用
+- 地理扩展：多区域部署和全球扩展
+- 功能扩展：新功能和服务添加
 
-Development Trade-offs:
-- Development Speed vs Runtime Performance: Optimization time investment
-- Type Safety vs Flexibility: Compile-time vs runtime error handling
-- Code Reuse vs Service Independence: Shared libraries vs duplication
-- Testing Complexity vs System Reliability: Test investment vs quality
+故障场景：
+- 组件故障：个别服务或数据库故障
+- 基础设施故障：网络、存储或计算中断
+- 级联故障：故障传播和系统范围影响
+- 灾难恢复：重大中断恢复和业务连续性
 
-Operational Trade-offs:
-- Complexity vs Control: Managed services vs self-managed infrastructure
-- Monitoring vs Privacy: Observability vs data protection
-- Automation vs Flexibility: Standardization vs customization
-- Cost vs Performance: Infrastructure spending vs response times
+演进场景：
+- 技术迁移：框架、语言或平台更改
+- 业务模式更改：新收入流或服务产品
+- 法规更改：合规要求和数据保护
+- 竞争响应：市场压力和功能要求
 ```
 
-#### Decision Matrix Construction
-- Weight assignment for different quality attributes based on business priorities
-- Scoring methodology for each architecture option across quality dimensions
-- Sensitivity analysis for weight and score variations
-- Pareto frontier identification for non-dominated solutions
+#### 场景影响建模
+- 每种场景类型下的性能影响
+- 基础设施和运营成本的影响
+- 开发速度和团队生产力效应
+- 风险评估和缓解要求
 
-### 5. Future-Proofing Assessment
+### 4. 权衡分析框架
 
-**Evaluate architectural adaptability and evolution potential:**
+**系统性地评估架构权衡：**
 
-#### Technology Evolution Scenarios
+#### 质量属性权衡矩阵
 ```
-Future-Proofing Analysis Framework:
+架构质量评估：
 
-Technology Trend Integration:
-- AI/ML Integration: Machine learning capability embedding and scaling
-- Edge Computing: Distributed processing and low-latency requirements
-- Quantum Computing: Post-quantum cryptography and computational impacts
-- Blockchain/DLT: Distributed ledger integration and trust mechanisms
+性能权衡：
+- 延迟与吞吐量：响应时间与最大并发处理
+- 内存与 CPU：资源利用优化策略
+- 一致性与可用性：CAP 定理含义和选择
+- 缓存与新鲜度：数据陈旧性与响应速度
 
-Market Evolution Preparation:
-- Business Model Flexibility: Subscription, marketplace, platform pivots
-- Global Expansion: Multi-tenant, multi-region, multi-regulatory compliance
-- Customer Expectation Evolution: Real-time, personalized, omnichannel experiences
-- Competitive Landscape Changes: Feature parity and differentiation requirements
+可扩展性权衡：
+- 水平与垂直：基础设施扩展方法和经济学
+- 无状态与有状态：会话管理和性能影响
+- 同步与异步：通信复杂性与性能
+- 耦合与自治：服务独立性 vs 运营开销
 
-Regulatory Future-Proofing:
-- Privacy Regulation: GDPR, CCPA evolution and global privacy requirements
-- Security Standards: Zero-trust, compliance framework evolution
-- Data Sovereignty: Geographic data residency and cross-border restrictions
-- Accessibility Requirements: Inclusive design and assistive technology support
-```
+开发权衡：
+- 开发速度与运行时性能：优化时间投资
+- 类型安全与灵活性：编译时与运行时错误处理
+- 代码重用与服务独立性：共享库与重复
+- 测试复杂性 vs 系统可靠性：测试投资与质量
 
-#### Adaptability Scoring
-- Architecture flexibility for requirement changes
-- Technology migration feasibility and cost
-- Team skill evolution and learning curve management
-- Investment protection and technical debt management
-
-### 6. Architecture Simulation Engine
-
-**Model architectural behavior under different scenarios:**
-
-#### Performance Simulation Framework
-```
-Multi-Layer Architecture Simulation:
-
-Component-Level Simulation:
-- Individual service performance characteristics and resource usage
-- Database query performance and optimization opportunities
-- Cache hit ratios and invalidation strategies
-- Message queue throughput and latency patterns
-
-Integration-Level Simulation:
-- Service-to-service communication overhead and optimization
-- API gateway performance and routing efficiency
-- Load balancer distribution and health checking
-- Circuit breaker and retry mechanism effectiveness
-
-System-Level Simulation:
-- End-to-end request flow and user experience
-- Peak load distribution and resource allocation
-- Failure propagation and recovery patterns
-- Monitoring and alerting system effectiveness
-
-Infrastructure-Level Simulation:
-- Cloud resource utilization and auto-scaling behavior
-- Network bandwidth and latency optimization
-- Storage performance and data consistency patterns
-- Security policy enforcement and performance impact
+运营权衡：
+- 复杂性与控制：托管服务与自管基础设施
+- 监控与隐私：可观察性与数据保护
+- 自动化与灵活性：标准化与定制
+- 成本与性能：基础设施支出与响应时间
 ```
 
-#### Cost Modeling Integration
-- Infrastructure cost estimation across different scenarios
-- Development and operational cost projection
-- Total cost of ownership analysis over multi-year timeline
-- Cost optimization opportunities and trade-off analysis
+#### 决策矩阵构建
+- 基于业务优先级为不同质量属性分配权重
+- 每个架构选项跨质量维度的评分方法
+- 权重和分数变化的敏感性分析
+- 非支配解决方案的帕累托前沿识别
 
-### 7. Risk Assessment and Mitigation
+### 5. 前瞻性评估
 
-**Comprehensive architectural risk evaluation:**
+**评估架构适应性和演进潜力：**
 
-#### Technical Risk Framework
+#### 技术演进场景
 ```
-Architecture Risk Assessment:
+前瞻性分析框架：
 
-Implementation Risks:
-- Technology Maturity: New vs proven technology adoption risks
-- Complexity Management: System comprehension and debugging challenges
-- Integration Challenges: Third-party service dependencies and compatibility
-- Performance Uncertainty: Untested scaling and optimization requirements
+技术趋势集成：
+- AI/ML 集成：机器学习能力嵌入和扩展
+- 边缘计算：分布式处理和低延迟要求
+- 量子计算：后量子密码学和计算影响
+- 区块链/DLT：分布式账本集成和信任机制
 
-Operational Risks:
-- Deployment Complexity: Release management and rollback capabilities
-- Monitoring Gaps: Observability and troubleshooting limitations
-- Scaling Challenges: Auto-scaling reliability and cost control
-- Disaster Recovery: Backup, recovery, and business continuity planning
+市场演进准备：
+- 业务模式灵活性：订阅、市场、平台转型
+- 全球扩展：多租户、多区域、多法规合规
+- 客户期望演进：实时、个性化、全渠道体验
+- 竞争格局变化：功能对等和差异化要求
 
-Strategic Risks:
-- Technology Lock-in: Vendor dependency and migration flexibility
-- Skill Dependencies: Team expertise requirements and knowledge gaps
-- Evolution Constraints: Architecture modification and extension limitations
-- Competitive Disadvantage: Time-to-market and feature development speed
-```
-
-#### Risk Mitigation Strategy Development
-- Specific mitigation approaches for identified risks
-- Contingency planning and alternative architecture options
-- Early warning indicators and monitoring strategies
-- Risk acceptance criteria and stakeholder communication
-
-### 8. Decision Framework and Recommendations
-
-**Generate systematic architectural guidance:**
-
-#### Architecture Decision Record (ADR) Format
-```
-## Architecture Decision: [System Name] - [Decision Topic]
-
-### Context and Problem Statement
-- Business Requirements: [key functional and non-functional requirements]
-- Current Constraints: [technical, resource, and timeline limitations]
-- Decision Drivers: [factors influencing architectural choice]
-
-### Architecture Options Considered
-
-#### Option 1: [Architecture Name]
-- Description: [architectural approach and key characteristics]
-- Pros: [advantages and benefits]
-- Cons: [disadvantages and risks]
-- Trade-offs: [specific quality attribute impacts]
-
-[Repeat for each option]
-
-### Decision Outcome
-- Selected Architecture: [chosen approach with rationale]
-- Decision Rationale: [why this option was selected]
-- Expected Benefits: [anticipated advantages and success metrics]
-- Accepted Trade-offs: [compromises and mitigation strategies]
-
-### Implementation Strategy
-- Phase 1 (Immediate): [initial implementation steps and validation]
-- Phase 2 (Short-term): [core system development and integration]
-- Phase 3 (Medium-term): [optimization and scaling implementation]
-- Phase 4 (Long-term): [evolution and enhancement roadmap]
-
-### Validation and Success Criteria
-- Performance Metrics: [specific KPIs and acceptable ranges]
-- Quality Gates: [architectural compliance and validation checkpoints]
-- Review Schedule: [when to reassess architectural decisions]
-- Adaptation Triggers: [conditions requiring architectural modification]
-
-### Risks and Mitigation
-- High-Priority Risks: [most significant concerns and responses]
-- Monitoring Strategy: [early warning systems and health checks]
-- Contingency Plans: [alternative approaches if problems arise]
-- Learning and Adaptation: [how to incorporate feedback and improve]
+法规前瞻性：
+- 隐私法规：GDPR、CCA 演进和全球隐私要求
+- 安全标准：零信任、合规框架演进
+- 数据主权：地理数据驻留和跨境限制
+- 可访问性要求：包容性设计和辅助技术支持
 ```
 
-### 9. Continuous Architecture Evolution
+#### 适应性评分
+- 需求变更的架构灵活性
+- 技术迁移可行性和成本
+- 团队能力演进和学习曲线管理
+- 投资保护和债务管理
 
-**Establish ongoing architectural assessment and improvement:**
+### 6. 架构模拟引擎
 
-#### Architecture Health Monitoring
-- Performance metric tracking against architectural predictions
-- Technical debt accumulation and remediation planning
-- Team productivity and development velocity measurement
-- User satisfaction and business outcome correlation
+**在不同场景下建模架构行为：**
 
-#### Evolutionary Architecture Practices
-- Regular architecture review and fitness function evaluation
-- Incremental improvement identification and implementation
-- Technology trend assessment and adoption planning
-- Cross-team architecture knowledge sharing and standardization
+#### 性能模拟框架
+```
+多层架构模拟：
 
-## Usage Examples
+组件级模拟：
+- 个别服务性能特征和资源使用
+- 数据库查询性能和优化机会
+- 缓存命中率和失效策略
+- 消息队列吞吐量和延迟模式
+
+集成级模拟：
+- 服务到服务通信开销和优化
+- API 网关性能和路由效率
+- 负载均衡器分发和健康检查
+- 熔断器和重试机制有效性
+
+系统级模拟：
+- 端到端请求流程和用户体验
+- 峰值负载分配和资源分配
+- 故障传播和恢复模式
+- 监控和警报系统有效性
+
+基础设施级模拟：
+- 云资源利用和自动扩展行为
+- 网络带宽和延迟优化
+- 存储性能和数据一致性模式
+- 安全策略执行和性能影响
+```
+
+#### 成本建模集成
+- 不同场景下的基础设施成本估算
+- 开发和运营成本预测
+- 多年时间线的总拥有成本分析
+- 成本优化机会和权衡分析
+
+### 7. 风险评估和缓解
+
+**全面的架构风险评估：**
+
+#### 技术风险框架
+```
+架构风险评估：
+
+实施风险：
+- 技术成熟度：新 vs 已验证技术采用风险
+- 复杂性管理：系统理解和调试挑战
+- 集成挑战：第三方服务依赖和兼容性
+- 性能不确定性：未测试的扩展和优化要求
+
+运营风险：
+- 部署复杂性：发布管理和回滚能力
+- 监控差距：可观察性和故障排除限制
+- 扩展挑战：自动扩展可靠性和成本控制
+- 灾难恢复：备份、恢复和业务连续性规划
+
+战略风险：
+- 技术锁定：供应商依赖性和迁移灵活性
+- 技能依赖：团队专业知识要求和知识差距
+- 演进限制：架构修改和扩展限制
+- 竞争劣势：上市时间和功能开发速度
+```
+
+#### 风险缓解策略开发
+- 已识别风险的特定缓解方法
+- 应急规划和替代架构选项
+- 早期警告指标和监控策略
+- 风险接受标准和利益相关者沟通
+
+### 8. 决策框架和推荐
+
+**生成系统性的架构指导：**
+
+#### 架构决策记录 (ADR) 格式
+```
+## 架构决策：[系统名称] - [决策主题]
+
+### 上下文和问题陈述
+- 业务需求：[关键功能和非功能需求]
+- 当前约束：[技术、资源和时间限制]
+- 决策驱动因素：[影响架构选择的因素]
+
+### 考虑的架构选项
+
+#### 选项 1：[架构名称]
+- 描述：[架构方法和关键特征]
+- 优点：[优势和好处]
+- 缺点：[劣势和风险]
+- 权衡：[特定质量属性影响]
+
+[对每个选项重复]
+
+### 决定结果
+- 选定架构：[选择的理由和方法]
+- 决策理由：[为什么选择此选项]
+- 预期收益：[预期优势和成功指标]
+- 接受的权衡：[妥协和缓解策略]
+
+### 实施策略
+- 阶段 1（立即）：[初始实施步骤和验证]
+- 阶段 2（短期）：[核心系统开发和集成]
+- 阶段 3（中期）：[优化和扩展实施]
+- 阶段 4（长期）：[演进和增强路线图]
+
+### 验证和成功标准
+- 性能指标：[具体 KPI 和可接受范围]
+- 质量门控：[架构合规性和验证检查点]
+- 审查时间表：[何时重新评估架构决策]
+- 适应触发器：[需要架构修改的条件]
+
+### 风险和缓解
+- 高优先级风险：[最重要问题和响应]
+- 监控策略：[早期预警系统和健康检查]
+- 应急计划：[问题出现时的替代方法]
+- 学习和适应：[如何整合反馈和改进]
+```
+
+### 9. 持续架构演进
+
+**建立持续的架构评估和改进：**
+
+#### 架构健康监控
+- 性能指标跟踪与架构预测对比
+- 技术债务累积和修复计划
+- 团队生产力和开发速度测量
+- 用户满意度和业务成果相关性
+
+#### 演进架构实践
+- 定期架构审查和适应度函数评估
+- 增量改进识别和实施
+- 技术趋势评估和采用计划
+- 跨团队架构知识共享和标准化
+
+## 使用示例
 
 ```bash
-# Microservices migration planning
-/dev:architecture-scenario-explorer Evaluate monolith to microservices migration for e-commerce platform with 1M+ users
+# 微服务迁移规划
+/dev:architecture-scenario-explorer 评估从单体到微服务迁移电商平台，支持 100 万+用户
 
-# New system architecture design
-/dev:architecture-scenario-explorer Design architecture for real-time analytics platform handling 100k events/second
+# 新系统架构设计
+/dev:architecture-scenario-explorer 为处理 10 万事件/秒的实时分析平台设计架构
 
-# Scaling architecture assessment
-/dev:architecture-scenario-explorer Analyze architecture options for scaling social media platform from 10k to 1M daily active users
+# 扩展架构评估
+/dev:architecture-scenario-explorer 分析从 1 万到 100 万日活跃用户的社交媒体平台架构选项
 
-# Technology modernization planning
-/dev:architecture-scenario-explorer Compare serverless vs container-native architectures for data processing pipeline modernization
+# 技术现代化规划
+/dev:architecture-scenario-explorer 比较数据处理管道现代化的无服务器 vs 容器原生架构
 ```
 
-## Quality Indicators
+## 质量指标
 
-- **Green**: Multiple architectures analyzed, comprehensive scenarios tested, validated trade-offs
-- **Yellow**: Some architectural options considered, basic scenario coverage, estimated trade-offs
-- **Red**: Single architecture focus, limited scenario analysis, unvalidated assumptions
+- **绿色**：分析多个架构，全面场景测试，验证权衡
+- **黄色**：考虑一些架构选项，基本场景覆盖，估算权衡
+- **红色**：单架构焦点，有限场景分析，未验证假设
 
-## Common Pitfalls to Avoid
+## 避免的常见陷阱
 
-- Architecture astronauting: Over-engineering for theoretical rather than real requirements
-- Cargo cult architecture: Copying successful patterns without understanding context
-- Technology bias: Choosing architecture based on technology preferences rather than requirements
-- Premature optimization: Solving performance problems that don't exist yet
-- Scalability obsession: Over-optimizing for scale that may never materialize
-- Evolution blindness: Not planning for architectural change and growth
+- 架构航天员：为理论需求而非实际需求过度设计
+- 教条式架构：在不理解上下文的情况下复制成功模式
+- 技术偏见：基于技术偏好而非需求选择架构
+- 过早优化：解决尚未存在的性能问题
+- 扩展痴迷：针对可能永远不会实现的规模过度优化
+- 演进盲点：未计划架构变更和增长
 
-Transform architectural decisions from opinion-based debates into systematic, evidence-driven choices through comprehensive scenario exploration and trade-off analysis.
+通过全面的场景探索和权衡分析，将架构决策从基于意见的辩论转变为系统化、证据驱动的选择。

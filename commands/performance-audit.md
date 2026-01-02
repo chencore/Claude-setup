@@ -1,75 +1,75 @@
-# Performance Audit Command
+# 性能审计命令
 
-Audit application performance metrics
+审计应用程序性能指标
 
-## Instructions
+## 指令
 
-Conduct a comprehensive performance audit following these steps:
+遵循以下步骤进行全面的性能审计：
 
-1. **Technology Stack Analysis**
-   - Identify the primary language, framework, and runtime environment
-   - Review build tools and optimization configurations
-   - Check for performance monitoring tools already in place
+1. **技术栈分析**
+   - 识别主要语言、框架和运行时环境
+   - 审查构建工具和优化配置
+   - 检查已存在的性能监控工具
 
-2. **Code Performance Analysis**
-   - Identify inefficient algorithms and data structures
-   - Look for nested loops and O(n²) operations
-   - Check for unnecessary computations and redundant operations
-   - Review memory allocation patterns and potential leaks
+2. **代码性能分析**
+   - 识别低效的算法和数据结构
+   - 查找嵌套循环和 O(n²) 操作
+   - 检查不必要的计算和冗余操作
+   - 审查内存分配模式和潜在泄漏
 
-3. **Database Performance**
-   - Analyze database queries for efficiency
-   - Check for missing indexes and slow queries
-   - Review connection pooling and database configuration
-   - Identify N+1 query problems and excessive database calls
+3. **数据库性能**
+   - 分析数据库查询的效率
+   - 检查缺失的索引和慢查询
+   - 审查连接池和数据库配置
+   - 识别 N+1 查询问题和过多的数据库调用
 
-4. **Frontend Performance (if applicable)**
-   - Analyze bundle size and chunk optimization
-   - Check for unused code and dependencies
-   - Review image optimization and lazy loading
-   - Examine render performance and re-render cycles
-   - Check for memory leaks in UI components
+4. **前端性能（如果适用）**
+   - 分析包大小和块优化
+   - 检查未使用的代码和依赖
+   - 审查图像优化和懒加载
+   - 检查渲染性能和重新渲染周期
+   - 检查 UI 组件中的内存泄漏
 
-5. **Network Performance**
-   - Review API call patterns and caching strategies
-   - Check for unnecessary network requests
-   - Analyze payload sizes and compression
-   - Examine CDN usage and static asset optimization
+5. **网络性能**
+   - 审查 API 调用模式和缓存策略
+   - 检查不必要的网络请求
+   - 分析有效载荷大小和压缩
+   - 检查 CDN 使用和静态资源优化
 
-6. **Asynchronous Operations**
-   - Review async/await usage and promise handling
-   - Check for blocking operations and race conditions
-   - Analyze task queuing and background processing
-   - Identify opportunities for parallel execution
+6. **异步操作**
+   - 审查 async/await 使用和 promise 处理
+   - 检查阻塞操作和竞争条件
+   - 分析任务队列和后台处理
+   - 识别并行执行的机会
 
-7. **Memory Usage**
-   - Check for memory leaks and excessive memory consumption
-   - Review garbage collection patterns
-   - Analyze object lifecycle and cleanup
-   - Identify large objects and unnecessary data retention
+7. **内存使用**
+   - 检查内存泄漏和过度的内存消耗
+   - 审查垃圾回收模式
+   - 分析对象生命周期和清理
+   - 识别大对象和不必要的数据保留
 
-8. **Build & Deployment Performance**
-   - Analyze build times and optimization opportunities
-   - Review dependency bundling and tree shaking
-   - Check for development vs production optimizations
-   - Examine deployment pipeline efficiency
+8. **构建和部署性能**
+   - 分析构建时间和优化机会
+   - 审查依赖打包和 tree shaking
+   - 检查开发和生产优化
+   - 检查部署管道效率
 
-9. **Performance Monitoring**
-   - Check existing performance metrics and monitoring
-   - Identify key performance indicators (KPIs) to track
-   - Review alerting and performance thresholds
-   - Suggest performance testing strategies
+9. **性能监控**
+   - 检查现有的性能指标和监控
+   - 识别要跟踪的关键绩效指标 (KPI)
+   - 审查警报和性能阈值
+   - 建议性能测试策略
 
-10. **Benchmarking & Profiling**
-    - Run performance profiling tools appropriate for the stack
-    - Create benchmarks for critical code paths
-    - Measure before and after optimization impact
-    - Document performance baselines
+10. **基准测试和分析**
+    - 运行适用于技术栈的性能分析工具
+    - 为关键代码路径创建基准测试
+    - 测量优化前后的影响
+    - 记录性能基线
 
-11. **Optimization Recommendations**
-    - Prioritize optimizations by impact and effort
-    - Provide specific code examples and alternatives
-    - Suggest architectural improvements for scalability
-    - Recommend appropriate performance tools and libraries
+11. **优化建议**
+    - 按影响力和工作量优先级排序优化
+    - 提供具体的代码示例和替代方案
+    - 建议可扩展性的架构改进
+    - 推荐适当的性能工具和库
 
-Include specific file paths, line numbers, and measurable metrics where possible. Focus on high-impact, low-effort optimizations first.
+尽可能包含具体的文件路径、行号和可衡量的指标。首先关注高影响、低工作量的优化。

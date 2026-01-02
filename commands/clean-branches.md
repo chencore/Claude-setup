@@ -1,8 +1,8 @@
 ---
-description: Clean up merged and stale git branches with safety checks
-argument-hint: [branch-pattern] - optional pattern to filter branches
+description: 使用安全检查清理已合并和过时的 git 分支
+argument-hint: [branch-pattern] - 可选用于过滤分支的模式
 ---
 
-Use the Task tool with subagent_type="branch-cleaner" to clean up branches.
+使用带有 subagent_type="branch-cleaner" 的 Task 工具来清理分支。
 
-Arguments: $ARGUMENTS
+参数：$ARGUMENTS

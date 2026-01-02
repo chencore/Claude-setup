@@ -1,81 +1,79 @@
 ---
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, TodoWrite
-description: Improve code readability and formatting while preserving exact functionality
-argument-hint: [file-path] - optional file to beautify
+description: 提高代码可读性和格式化，同时保留精确的功能
+argument-hint: [file-path] - 可选美化的文件
 ---
 
-# Make It Pretty
+# 使代码更美观
 
-I'll improve code readability while preserving exact functionality.
+我将提高代码可读性，同时保留精确的功能。
 
-## Strategic Thinking Process
+## 战略性思考过程
 
-<think>
-Before making any changes, I need to consider:
+在进行任何更改之前，我需要考虑：
 
-1. **Code Analysis**
-   - What makes this code "ugly" or hard to read?
-   - Are there complex nested structures that need simplification?
-   - Is the naming unclear or inconsistent?
-   - Are there repeated patterns that could be abstracted?
+1. **代码分析**
+   - 是什么让这段代码"丑陋"或难以阅读？
+   - 是否有需要简化的复杂嵌套结构？
+   - 命名是否不清楚或不一致？
+   - 是否有可以抽象的重复模式？
 
-2. **Safety Considerations**
-   - Which changes are purely cosmetic (safe)?
-   - Which might affect behavior (risky)?
-   - Are there implicit dependencies on current structure?
-   - Could renaming break external references?
+2. **安全考虑**
+   - 哪些更改纯粹是 cosmetic（安全的）？
+   - 哪些可能会影响行为（有风险的）？
+   - 是否对当前结构有隐式依赖？
+   - 重命名是否会破坏外部引用？
 
-3. **Improvement Strategy**
-   - Priority 1: Clear naming (variables, functions, files)
-   - Priority 2: Reduce complexity (extract functions, simplify logic)
-   - Priority 3: Remove redundancy (DRY principle)
-   - Priority 4: Improve type safety (if applicable)
+3. **改进策略**
+   - 优先级 1：清晰的命名（变量、函数、文件）
+   - 优先级 2：降低复杂性（提取函数、简化逻辑）
+   - 优先级 3：消除冗余（DRY 原则）
+   - 优先级 4：提高类型安全性（如适用）
 
-4. **Validation Approach**
-   - How can I ensure functionality remains identical?
-   - What tests exist to verify behavior?
-   - Should I add temporary logging to verify flow?
-</think>
+4. **验证方法**
+   - 如何确保功能保持完全相同？
+   - 有哪些测试可以验证行为？
+   - 是否应该添加临时日志来验证流程？
 
-Based on this analysis, I'll proceed safely:
+基于此分析，我将安全地进行：
 
-**Safety First:**
-- Create git checkpoint before changes
-- Use **Write** tool to create backups
-- Track all modifications systematically
+**安全第一：**
+- 更改前创建 git 检查点
+- 使用 **Write** 工具创建备份
+- 系统性地跟踪所有修改
 
-I'll identify files to beautify based on:
-- Files you specify, or if none specified, analyze the entire application
-- Recently modified code
-- Our conversation context
+我将根据以下标准识别要美化的文件：
+- 您指定的文件，或者如果未指定，分析整个应用程序
+- 最近修改的代码
+- 我们的对话上下文
 
-**Improvements I'll Make:**
-- Variable and function names for clarity
-- Code organization and structure
-- Remove unused code and clutter
-- Simplify complex expressions
-- Group related functionality
-- Fix loose or generic type declarations
-- Add missing type annotations where supported
-- Make types more specific based on usage
+**我将进行的改进：**
+- 变量和函数命名以提高清晰度
+- 代码组织和结构
+- 删除未使用的代码和杂乱内容
+- 简化复杂表达式
+- 分组相关功能
+- 修复松散或通用的类型声明
+- 在支持的地方添加缺失的类型注释
+- 根据使用情况使类型更具体
 
-**My Approach:**
-1. Analyze current code patterns and type usage
-2. Apply consistent naming conventions
-3. Improve type safety where applicable
-4. Reorganize for better readability
-5. Remove redundancy without changing logic
+**我的方法：**
+1. 分析当前代码模式和类型使用
+2. 应用一致的命名约定
+3. 在适用的地方提高类型安全性
+4. 重新组织以提高可读性
+5. 不改变逻辑地消除冗余
 
-**Quality Assurance:**
-- All functionality remains identical
-- Tests continue to pass (if available)
-- No behavior changes occur
-- Clear commit messages for changes
+**质量保证：**
+- 所有功能保持完全相同
+- 测试继续通过（如果可用）
+- 不会发生行为更改
+- 为更改提供清晰的提交消息
 
-**Important**: I will NEVER:
-- Add "Co-authored-by" or any Claude signatures
-- Include "Generated with Claude Code" or similar messages
-- Modify git config or user credentials
-- Add any AI/assistant attribution to the commit
+**重要**：我绝不会：
+- 添加"Co-authored-by"或任何 Claude 签名
+- 包含"使用 Claude Code 生成"或类似消息
+- 修改 git 配置或用户凭据
+- 向提交添加任何 AI/助手归属
 
-This helps transform working code into maintainable code without risk.
+这有助于将工作代码转换为可维护的代码，没有风险。

@@ -1,122 +1,122 @@
 ---
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, TodoWrite
-description: Intelligently refactor and improve code quality with systematic approach
-argument-hint: [code-path] - optional path to refactor
+description: 智能重构并系统性地提高代码质量
+argument-hint: [code-path] - 可选要重构的路径
 ---
 
-# Intelligently Refactor and Improve Code Quality
+# 智能重构并提高代码质量
 
-Intelligently refactor and improve code quality
+智能重构并提高代码质量
 
-## Instructions
+## 指令
 
-Follow this systematic approach to refactor code: **$ARGUMENTS**
+遵循此系统化方法重构代码：**$ARGUMENTS**
 
-1. **Pre-Refactoring Analysis**
-   - Identify the code that needs refactoring and the reasons why
-   - Understand the current functionality and behavior completely
-   - Review existing tests and documentation
-   - Identify all dependencies and usage points
+1. **重构前分析**
+   - 识别需要重构的代码及其原因
+   - 完全理解当前功能和行为
+   - 审查现有测试和文档
+   - 识别所有依赖项和使用点
 
-2. **Test Coverage Verification**
-   - Ensure comprehensive test coverage exists for the code being refactored
-   - If tests are missing, write them BEFORE starting refactoring
-   - Run all tests to establish a baseline
-   - Document current behavior with additional tests if needed
+2. **测试覆盖率验证**
+   - 确保被重构的代码存在全面的测试覆盖
+   - 如果缺少测试，在开始重构之前编写它们
+   - 运行所有测试以建立基线
+   - 如果需要，用额外的文档记录当前行为
 
-3. **Refactoring Strategy**
-   - Define clear goals for the refactoring (performance, readability, maintainability)
-   - Choose appropriate refactoring techniques:
-     - Extract Method/Function
-     - Extract Class/Component
-     - Rename Variable/Method
-     - Move Method/Field
-     - Replace Conditional with Polymorphism
-     - Eliminate Dead Code
-   - Plan the refactoring in small, incremental steps
+3. **重构策略**
+   - 为重构定义明确的目标（性能、可读性、可维护性）
+   - 选择适当的重构技术：
+     - 提取方法/函数
+     - 提取类/组件
+     - 重命名变量/方法
+     - 移动方法/字段
+     - 用多态替换条件语句
+     - 消除死代码
+   - 以小增量步骤规划重构
 
-4. **Environment Setup**
-   - Create a new branch: `git checkout -b refactor/$ARGUMENTS`
-   - Ensure all tests pass before starting
-   - Set up any additional tooling needed (profilers, analyzers)
+4. **环境设置**
+   - 创建新分支：`git checkout -b refactor/$ARGUMENTS`
+   - 确保在开始前所有测试通过
+   - 设置任何需要的额外工具（分析器、分析工具）
 
-5. **Incremental Refactoring**
-   - Make small, focused changes one at a time
-   - Run tests after each change to ensure nothing breaks
-   - Commit working changes frequently with descriptive messages
-   - Use IDE refactoring tools when available for safety
+5. **增量重构**
+   - 一次只做小的、专注的更改
+   - 每次更改后运行测试以确保没有破坏任何内容
+   - 频繁提交有效更改并使用描述性消息
+   - 在可用时使用 IDE 重构工具以确保安全性
 
-6. **Code Quality Improvements**
-   - Improve naming conventions for clarity
-   - Eliminate code duplication (DRY principle)
-   - Simplify complex conditional logic
-   - Reduce method/function length and complexity
-   - Improve separation of concerns
+6. **代码质量改进**
+   - 改进命名约定以提高清晰度
+   - 消除代码重复（DRY 原则）
+   - 简化复杂条件逻辑
+   - 减少方法/函数长度和复杂性
+   - 改进关注点分离
 
-7. **Performance Optimizations**
-   - Identify and eliminate performance bottlenecks
-   - Optimize algorithms and data structures
-   - Reduce unnecessary computations
-   - Improve memory usage patterns
+7. **性能优化**
+   - 识别并消除性能瓶颈
+   - 优化算法和数据结构
+   - 减少不必要的计算
+   - 改进内存使用模式
 
-8. **Design Pattern Application**
-   - Apply appropriate design patterns where beneficial
-   - Improve abstraction and encapsulation
-   - Enhance modularity and reusability
-   - Reduce coupling between components
+8. **设计模式应用**
+   - 在有益的地方应用适当的设计模式
+   - 改进抽象和封装
+   - 增强模块化和可重用性
+   - 减少组件之间的耦合
 
-9. **Error Handling Improvement**
-   - Standardize error handling approaches
-   - Improve error messages and logging
-   - Add proper exception handling
-   - Enhance resilience and fault tolerance
+9. **错误处理改进**
+   - 标准化错误处理方法
+   - 改进错误消息和日志记录
+   - 添加适当的异常处理
+   - 增强弹性和容错能力
 
-10. **Documentation Updates**
-    - Update code comments to reflect changes
-    - Revise API documentation if interfaces changed
-    - Update inline documentation and examples
-    - Ensure comments are accurate and helpful
+10. **文档更新**
+    - 更新代码注释以反映更改
+    - 如果接口改变，修订 API 文档
+    - 更新内联文档和示例
+    - 确保注释准确且有帮助
 
-11. **Testing Enhancements**
-    - Add tests for any new code paths created
-    - Improve existing test quality and coverage
-    - Remove or update obsolete tests
-    - Ensure tests are still meaningful and effective
+11. **测试增强**
+    - 为创建的任何新代码路径添加测试
+    - 改进现有测试质量和覆盖率
+    - 删除或更新过时的测试
+    - 确保测试仍然有意义且有效
 
-12. **Static Analysis**
-    - Run linting tools to catch style and potential issues
-    - Use static analysis tools to identify problems
-    - Check for security vulnerabilities
-    - Verify code complexity metrics
+12. **静态分析**
+    - 运行代码检查工具以捕获样式和潜在问题
+    - 使用静态分析工具识别问题
+    - 检查安全漏洞
+    - 验证代码复杂度指标
 
-13. **Performance Verification**
-    - Run performance benchmarks if applicable
-    - Compare before/after metrics
-    - Ensure refactoring didn't degrade performance
-    - Document any performance improvements
+13. **性能验证**
+    - 如适用，运行性能基准测试
+    - 比较前/后指标
+    - 确保重构没有降低性能
+    - 记录任何性能改进
 
-14. **Integration Testing**
-    - Run full test suite to ensure no regressions
-    - Test integration with dependent systems
-    - Verify all functionality works as expected
-    - Test edge cases and error scenarios
+14. **集成测试**
+    - 运行完整测试套件以确保没有回归
+    - 测试与依赖系统的集成
+    - 验证所有功能按预期工作
+    - 测试边缘情况和错误场景
 
-15. **Code Review Preparation**
-    - Review all changes for quality and consistency
-    - Ensure refactoring goals were achieved
-    - Prepare clear explanation of changes made
-    - Document benefits and rationale
+15. **代码审查准备**
+    - 审查所有更改的质量和一致性
+    - 确保重构目标已实现
+    - 准备更改的清晰解释
+    - 记录收益和理由
 
-16. **Documentation of Changes**
-    - Create a summary of refactoring changes
-    - Document any breaking changes or new patterns
-    - Update project documentation if needed
-    - Explain benefits and reasoning for future reference
+16. **更改文档**
+    - 创建重构更改的摘要
+    - 记录任何破坏性更改或新模式
+    - 如需要，更新项目文档
+    - 解释收益和推理以便将来参考
 
-17. **Deployment Considerations**
-    - Plan deployment strategy for refactored code
-    - Consider feature flags for gradual rollout
-    - Prepare rollback procedures
-    - Set up monitoring for the refactored components
+17. **部署考虑**
+    - 为重构的代码规划部署策略
+    - 考虑功能标志以实现渐进式推出
+    - 准备回滚程序
+    - 为重构的组件设置监控
 
-Remember: Refactoring should preserve external behavior while improving internal structure. Always prioritize safety over speed, and maintain comprehensive test coverage throughout the process.
+请记住：重构应在保持外部行为的同时改进内部结构。始终优先考虑安全性而非速度，并在整个过程中保持全面的测试覆盖率。

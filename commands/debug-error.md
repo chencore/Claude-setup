@@ -1,127 +1,127 @@
 ---
 allowed-tools: Read, Glob, Grep, Bash, Write, Edit, TodoWrite
-description: Systematically debug and fix errors using comprehensive debugging methodology
-argument-hint: [error-description] - error to debug
+description: 使用全面的调试方法论系统性地调试和修复错误
+argument-hint: [error-description] - 要调试的错误
 ---
 
-# Systematically Debug and Fix Errors
+# 系统性地调试和修复错误
 
-Systematically debug and fix errors
+系统性地调试和修复错误
 
-## Instructions
+## 指令
 
-Follow this comprehensive debugging methodology to resolve: **$ARGUMENTS**
+遵循此全面的调试方法论来解决：**$ARGUMENTS**
 
-1. **Error Information Gathering**
-   - Collect the complete error message, stack trace, and error code
-   - Note when the error occurs (timing, conditions, frequency)
-   - Identify the environment where the error happens (dev, staging, prod)
-   - Gather relevant logs from before and after the error
+1. **错误信息收集**
+   - 收集完整的错误消息、堆栈跟踪和错误代码
+   - 记录错误发生的时间（时机、条件、频率）
+   - 识别错误发生的环境（开发、暂存、生产）
+   - 收集错误前后相关的日志
 
-2. **Reproduce the Error**
-   - Create a minimal test case that reproduces the error consistently
-   - Document the exact steps needed to trigger the error
-   - Test in different environments if possible
-   - Note any patterns or conditions that affect error occurrence
+2. **重现错误**
+   - 创建最小化测试用例以一致地重现错误
+   - 记录触发错误的确切步骤
+   - 如果可能，在不同环境中测试
+   - 记录影响错误发生的任何模式或条件
 
-3. **Stack Trace Analysis**
-   - Read the stack trace from bottom to top to understand the call chain
-   - Identify the exact line where the error originates
-   - Trace the execution path leading to the error
-   - Look for any obvious issues in the failing code
+3. **堆栈跟踪分析**
+   - 从下到上阅读堆栈跟踪以理解调用链
+   - 识别错误的准确行位置
+   - 追踪导致错误的执行路径
+   - 查找失败代码中的任何明显问题
 
-4. **Code Context Investigation**
-   - Examine the code around the error location
-   - Check recent changes that might have introduced the bug
-   - Review variable values and state at the time of error
-   - Analyze function parameters and return values
+4. **代码上下文调查**
+   - 检查错误位置周围的代码
+   - 检查可能引入错误的最近更改
+   - 检查错误时的变量值和状态
+   - 分析函数参数和返回值
 
-5. **Hypothesis Formation**
-   - Based on evidence, form hypotheses about the root cause
-   - Consider common causes:
-     - Null pointer/undefined reference
-     - Type mismatches
-     - Race conditions
-     - Resource exhaustion
-     - Logic errors
-     - External dependency failures
+5. **假设形成**
+   - 基于证据，形成关于根本原因的假设
+   - 考虑常见原因：
+     - 空指针/未定义引用
+     - 类型不匹配
+     - 竞争条件
+     - 资源耗尽
+     - 逻辑错误
+     - 外部依赖失败
 
-6. **Debugging Tools Setup**
-   - Set up appropriate debugging tools for the technology stack
-   - Use debugger, profiler, or logging as needed
-   - Configure breakpoints at strategic locations
-   - Set up monitoring and alerting if not already present
+6. **调试工具设置**
+   - 为技术堆栈设置适当的调试工具
+   - 根据需要使用调试器、分析器或日志记录
+   - 在战略位置配置断点
+   - 如果尚未存在，设置监控和警报
 
-7. **Systematic Investigation**
-   - Test each hypothesis methodically
-   - Use binary search approach to isolate the problem
-   - Add strategic logging or print statements
-   - Check data flow and transformations step by step
+7. **系统性调查**
+   - 系统地测试每个假设
+   - 使用二分查找方法隔离问题
+   - 添加战略性日志记录或打印语句
+   - 逐步检查数据流和转换
 
-8. **Data Validation**
-   - Verify input data format and validity
-   - Check for edge cases and boundary conditions
-   - Validate assumptions about data state
-   - Test with different data sets to isolate patterns
+8. **数据验证**
+   - 验证输入数据格式和有效性
+   - 检查边缘情况和边界条件
+   - 验证对数据状态的假设
+   - 使用不同的数据集测试以隔离模式
 
-9. **Dependency Analysis**
-   - Check external dependencies and their versions
-   - Verify network connectivity and API availability
-   - Review configuration files and environment variables
-   - Test database connections and query execution
+9. **依赖分析**
+   - 检查外部依赖及其版本
+   - 验证网络连接和 API 可用性
+   - 检查配置文件和环境变量
+   - 测试数据库连接和查询执行
 
-10. **Memory and Resource Analysis**
-    - Check for memory leaks or excessive memory usage
-    - Monitor CPU and I/O resource consumption
-    - Analyze garbage collection patterns if applicable
-    - Check for resource deadlocks or contention
+10. **内存和资源分析**
+    - 检查内存泄漏或 excessive 内存使用
+    - 监控 CPU 和 I/O 资源消耗
+    - 分析垃圾收集模式（如果适用）
+    - 检查资源死锁或争用
 
-11. **Concurrency Issues Investigation**
-    - Look for race conditions in multi-threaded code
-    - Check synchronization mechanisms and locks
-    - Analyze async operations and promise handling
-    - Test under different load conditions
+11. **并发问题调查**
+    - 查找多线程代码中的竞争条件
+    - 检查同步机制和锁
+    - 分析异步操作和 promise 处理
+    - 在不同负载条件下测试
 
-12. **Root Cause Identification**
-    - Once the cause is identified, understand why it happened
-    - Determine if it's a logic error, design flaw, or external issue
-    - Assess the scope and impact of the problem
-    - Consider if similar issues exist elsewhere
+12. **根本原因识别**
+    - 一旦确定原因，理解为什么会发生
+    - 确定它是逻辑错误、设计缺陷还是外部问题
+    - 评估问题的范围和影响
+    - 考虑是否存在类似问题
 
-13. **Solution Implementation**
-    - Design a fix that addresses the root cause
-    - Consider multiple solution approaches and trade-offs
-    - Implement the fix with appropriate error handling
-    - Add validation and defensive programming where needed
+13. **解决方案实施**
+    - 设计解决根本原因的修复方法
+    - 考虑多种解决方案方法及其权衡
+    - 实现具有适当错误处理的修复方法
+    - 在需要时添加验证和防御性编程
 
-14. **Testing the Fix**
-    - Test the fix against the original error case
-    - Test edge cases and related scenarios
-    - Run regression tests to ensure no new issues
-    - Test under various load and stress conditions
+14. **测试修复**
+    - 针对原始错误情况测试修复
+    - 测试边缘情况和相关场景
+    - 运行完整测试套件以检查回归
+    - 在各种负载和压力条件下测试
 
-15. **Prevention Measures**
-    - Add appropriate unit and integration tests
-    - Improve error handling and logging
-    - Add input validation and defensive checks
-    - Update documentation and code comments
+15. **预防措施**
+    - 添加适当的单元和集成测试
+    - 改进错误处理和日志记录
+    - 添加输入验证和防御性检查
+    - 更新文档和代码注释
 
-16. **Monitoring and Alerting**
-    - Set up monitoring for similar issues
-    - Add metrics and health checks
-    - Configure alerts for error thresholds
-    - Implement better observability
+16. **监控和警报**
+    - 设置类似问题的监控
+    - 添加指标和健康检查
+    - 配置错误阈值警报
+    - 实现更好的可观察性
 
-17. **Documentation**
-    - Document the error, investigation process, and solution
-    - Update troubleshooting guides
-    - Share learnings with the team
-    - Update code comments with context
+17. **文档**
+    - 记录错误、调查过程和解决方案
+    - 更新故障排除指南
+    - 与团队分享学习心得
+    - 用上下文更新代码注释
 
-18. **Post-Resolution Review**
-    - Analyze why the error wasn't caught earlier
-    - Review development and testing processes
-    - Consider improvements to prevent similar issues
-    - Update coding standards or guidelines if needed
+18. **事后审查**
+    - 分析为什么错误没有被及早发现
+    - 审查开发和测试过程
+    - 考虑改进以防止类似问题
+    - 如果需要，更新编码标准或指南
 
-Remember to maintain detailed notes throughout the debugging process and consider the wider implications of both the error and the fix.
+在整个调试过程中保持详细记录，并考虑错误和修复的更广泛影响。

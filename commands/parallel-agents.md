@@ -1,30 +1,30 @@
 ---
 allowed-tools: Bash, Task, Read, TodoWrite, Glob
-description: Execute tasks in parallel using git worktrees and multiple agents
-argument-hint: [task-description] - task to execute in parallel
+description: 使用 git worktrees 和多个代理并行执行任务
+argument-hint: [task-description] - 要并行执行的任务
 ---
 
-# Parallel tasks execution
+# 并行任务执行
 
-ARGUMENTS: $ARGUMENTS
+参数：$ARGUMENTS
 
-## Step 1: Setup git worktree
+## 步骤 1：设置 git worktree
 
-Let's firstly setup a few git worktrees in '.trees' folder depends on number of parallel agents needed, so we can have different sandbox environment for experimentation
-Run `git worktree add .trees/<branch-name>`
-Replace branch-with a good name that reflect the meaning
-After that, for each branch, we should go into the folder (with absolute path) and do dependency installation to setup. Always first determine the package manager, virtual environment availability details.
+首先，根据所需的并行代理数量，在 '.trees' 文件夹中设置几个 git worktree，这样我们就可以为实验提供不同的沙盒环境
+运行 `git worktree add .trees/<branch-name>`
+将 branch-name 替换为反映意义的良好名称
+之后，对于每个分支，我们应该进入该文件夹（使用绝对路径）并进行依赖安装来设置。始终首先确定包管理器、虚拟环境可用性详细信息。
 
-## Step 2: Start Parallel sub agents
+## 步骤 2：启动并行子代理
 
-We're going to create N new subagents that use the Task tool to execute in each git worktree parallel.
-This enables use to concurrently build the feature in parallel so we can test and validate each subagent's changes in isolation then pick the best changes.
-The first agent will run in trees/<branch-name-1>/
-The second agent will run in trees/<branch-name-2>/
+我们将创建 N 个新的子代理，使用 Task 工具在每个 git worktree 中并行执行。
+这使我们能够并行地并发构建功能，这样我们就可以隔离地测试和验证每个子代理的更改，然后选择最佳更改。
+第一个代理将在 trees/<branch-name-1>/ 中运行
+第二个代理将在 trees/<branch-name-2>/ 中运行
 ...
-The last agent will run in trees/<branch-name-n>/
+最后一个代理将在 trees/<branch-name-n>/ 中运行
 
-The code in each trees will be identical to the code in the current branch. It will be setup and ready for you to build the feature end to end.
-Each agent will independently implement the engineering plan based on task in their respective workspace.
-When the subagent completes it's work, have the subagent to report their final changes made in a comprehensive `RESULTS.md` file at the root of their respective workspace.
-Make sure agents don't run start.sh or any other script that would start the server or client - focus on the code changes only.
+每个树中的代码将与当前分支中的代码相同。它将被设置好，准备让您从头到尾构建功能。
+每个代理将独立地在各自的工作空间中基于任务实施工程计划。
+当子代理完成工作时，让子代理在各自工作空间的根目录中创建一个全面的 `RESULTS.md` 文件来报告其最终更改。
+确保代理不运行 start.sh 或任何其他会启动服务器或客户端的脚本 - 仅专注于代码更改。

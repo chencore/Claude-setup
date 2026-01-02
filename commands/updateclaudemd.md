@@ -1,115 +1,115 @@
 ---
-description: Clean up and optimize CLAUDE.md documentation
+description: 清理和优化 CLAUDE.md 文档
 allowed-tools: Read, Glob, Write, Bash(wc:*)
-argument-hint: (no arguments)
+argument-hint: （无参数）
 ---
 
-# Task: Update and Optimize CLAUDE.md
+# 任务：更新和优化 CLAUDE.md
 
-Maintain a clean, focused, and accurate CLAUDE.md file for this project.
+为这个项目维护一个干净、专注、准确的 CLAUDE.md 文件。
 
-## Principles
+## 原则
 
-**CLAUDE.md is shared as context in EVERY Claude Code session.**
-- Keep it under 150-250 lines for most projects
-- Focus on patterns and principles, not verbose documentation
-- Remove redundancy and one-time setup instructions
-- Prioritize actionable information that helps code effectively
+**CLAUDE.md 在每个 Claude Code 会话中共享为上下文。**
+- 大多数项目保持在 150-250 行以下
+- 专注于模式和原则，而不是冗长的文档
+- 删除冗余和一次性设置说明
+- 优先考虑有助于有效编码的可操作信息
 
-## Step 1: Read Current State
+## 第 1 步：读取当前状态
 
-Read the existing `CLAUDE.md` file to understand its current structure and content.
+读取现有的 `CLAUDE.md` 文件以了解其当前结构和内容。
 
-## Step 2: Understand the Codebase
+## 第 2 步：理解代码库
 
-Explore the project comprehensively to gather accurate knowledge:
+全面探索项目以收集准确的知识：
 
-1. **Discover the technology stack**
-   - Find and read the primary configuration file (package.json, Cargo.toml, requirements.txt, go.mod, etc.)
-   - Identify the language, framework, and runtime
-   - Note the package/dependency manager
+1. **发现技术栈**
+   - 查找并读取主配置文件（package.json、Cargo.toml、requirements.txt、go.mod 等）
+   - 识别语言、框架和运行时
+   - 记录包/依赖管理器
 
-2. **Map the project structure**
-   - Use Glob to discover source files and their extensions
-   - Identify key directories and their purposes
-   - Understand the architectural layout
+2. **映射项目结构**
+   - 使用 Glob 发现源文件及其扩展名
+   - 识别关键目录及其用途
+   - 理解架构布局
 
-3. **Identify core systems**
-   - Authentication/authorization approach
-   - Database or data layer architecture
-   - API patterns and endpoints
-   - External service integrations
+3. **识别核心系统**
+   - 身份验证/授权方法
+   - 数据库或数据层架构
+   - API 模式和端点
+   - 外部服务集成
 
-4. **Find the patterns**
-   - How are common tasks accomplished in this codebase?
-   - What are the established conventions?
-   - What design patterns are in use?
+4. **找到模式**
+   - 这个代码库中如何完成常见任务？
+   - 有什么既定的约定？
+   - 使用什么设计模式？
 
-5. **Note environment requirements**
-   - Required environment variables
-   - Configuration needs
-   - Development setup requirements
+5. **注意环境要求**
+   - 需要的环境变量
+   - 配置需求
+   - 开发设置要求
 
-## Step 3: Reconcile and Optimize
+## 第 3 步：协调和优化
 
-Compare codebase reality with current documentation:
+比较代码库现实与当前文档：
 
-**Verify accuracy:**
-- Are commands still correct?
-- Are dependencies/versions current?
-- Are file paths and structures accurate?
-- Are environment variables complete?
+**验证准确性：**
+- 命令是否仍然正确？
+- 依赖项/版本是否是最新的？
+- 文件路径和结构是否准确？
+- 环境变量是否完整？
 
-**Cut aggressively:**
-- Remove full code blocks that duplicate source files
-- Eliminate verbose explanations
-- Delete troubleshooting that's one-time setup
-- Remove checklists and detailed how-tos
-- Consolidate repetitive information
-- Cut "why this matters" philosophical sections
+**激进地删减：**
+- 删除重复源文件的完整代码块
+- 消除冗长的解释
+- 删除一次性设置的故障排除
+- 删除检查清单和详细的操作指南
+- 合并重复信息
+- 删除"为什么这很重要"的哲学部分
 
-**Keep the essentials:**
-- Architecture decisions and patterns
-- Essential development commands
-- Coding conventions and best practices
-- Common code patterns (brief examples only)
-- Critical gotchas and non-obvious behaviors
-- Design system rules (if applicable)
+**保留本质：**
+- 架构决策和模式
+- 基本的开发命令
+- 编码约定和最佳实践
+- 常见代码模式（仅简要示例）
+- 关键陷阱和非直观行为
+- 设计系统规则（如果适用）
 
-## Step 4: Structure for Scanning
+## 第 4 步：为扫描而结构化
 
-Organize into clear sections appropriate for this project type:
+组织成适合此项目类型的清晰部分：
 
-**Universal sections:**
-- Project Overview (tech stack, key philosophy)
-- Package Manager (which tool to use)
-- Development Commands (essential workflows)
-- Architecture Principles (key decisions and patterns)
-- Project Structure (directory layout)
-- Common Patterns (brief code examples)
-- Development Notes (gotchas, quirks)
-- Coding Principles (team conventions)
+**通用部分：**
+- 项目概述（技术栈、关键理念）
+- 包管理器（使用哪个工具）
+- 开发命令（基本工作流）
+- 架构原则（关键决策和模式）
+- 项目结构（目录布局）
+- 常见模式（简要代码示例）
+- 开发注意事项（陷阱、怪癖）
+- 编码原则（团队约定）
 
-**Conditional sections:**
-- Design System (if frontend project)
-- Database Schema (high-level only, reference source files)
-- Environment Variables (list required, no values)
-- Deployment Notes (if relevant to development)
+**条件部分：**
+- 设计系统（如果是前端项目）
+- 数据库架构（仅高级，引用源文件）
+- 环境变量（列出必需的，无值）
+- 部署说明（如果与开发相关）
 
-## Step 5: Write the Optimized Version
+## 第 5 步：写入优化版本
 
-Update CLAUDE.md with:
-- ✅ Scannable structure with clear headers
-- ✅ Concise, actionable content
-- ✅ Accurate reflection of current codebase
-- ✅ Focus on patterns, not verbose docs
-- ✅ Technology-appropriate guidance
-- ✅ Minimal redundancy
+更新 CLAUDE.md，包含：
+- ✅ 具有清晰标题的可扫描结构
+- ✅ 简洁、可操作的内容
+- ✅ 对当前代码库的准确反映
+- ✅ 专注于模式，而非冗长的文档
+- ✅ 适合技术的指导
+- ✅ 最少的冗余
 
-## Output Summary
+## 输出摘要
 
-Provide:
-- Line count: before → after
-- Major changes made
-- Sections removed/added
-- Key corrections applied
+提供：
+- 行数：之前 → 之后
+- 进行的主要更改
+- 删除/添加的部分
+- 应用的关键修正

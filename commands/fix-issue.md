@@ -1,91 +1,91 @@
 ---
 allowed-tools: Read, Glob, Grep, Bash, Write, Edit, TodoWrite
-description: Identify and resolve GitHub issues with systematic approach
-argument-hint: [issue-number] - GitHub issue number to fix
+description: 系统性地识别和解决 GitHub 问题
+argument-hint: [issue-number] - 要修复的 GitHub 问题编号
 ---
 
-# Fix Issue Command
+# 修复问题命令
 
-Identify and resolve code issues
+识别和解决代码问题
 
-## Instructions
+## 指令
 
-Follow this structured approach to analyze and fix issues: **$ARGUMENTS**
+遵循此结构化方法分析和修复问题：**$ARGUMENTS**
 
-1. **Issue Analysis**
-   - Use `gh issue view $ARGUMENTS` to get complete issue details
-   - Read the issue description, comments, and any attached logs/screenshots
-   - Identify the type of issue (bug, feature request, enhancement, etc.)
-   - Understand the expected vs actual behavior
+1. **问题分析**
+   - 使用 `gh issue view $ARGUMENTS` 获取完整的问题详情
+   - 阅读问题描述、评论和任何附加的日志/截图
+   - 识别问题类型（错误、功能请求、增强等）
+   - 理解预期行为与实际行为
 
-2. **Environment Setup**
-   - Ensure you're on the correct branch (usually main/master)
-   - Pull latest changes: `git pull origin main`
-   - Create a new feature branch: `git checkout -b fix/issue-$ARGUMENTS`
+2. **环境设置**
+   - 确保您在正确的分支上（通常是 main/master）
+   - 拉取最新更改：`git pull origin main`
+   - 创建一个新的功能分支：`git checkout -b fix/issue-$ARGUMENTS`
 
-3. **Reproduce the Issue**
-   - Follow the steps to reproduce described in the issue
-   - Set up the development environment if needed
-   - Run the application/tests to confirm the issue exists
-   - Document the current behavior
+3. **重现问题**
+   - 遵循问题中描述的重现步骤
+   - 如需要，设置开发环境
+   - 运行应用程序/测试以确认问题存在
+   - 记录当前行为
 
-4. **Root Cause Analysis**
-   - Search the codebase for relevant files and functions
-   - Use grep/search tools to locate the problematic code
-   - Analyze the code logic and identify the root cause
-   - Check for related issues or similar patterns
+4. **根本原因分析**
+   - 搜索代码库中的相关文件和函数
+   - 使用 grep/搜索工具定位有问题的代码
+   - 分析代码逻辑并确定根本原因
+   - 检查相关问题或类似模式
 
-5. **Solution Design**
-   - Design a fix that addresses the root cause, not just symptoms
-   - Consider edge cases and potential side effects
-   - Ensure the solution follows project conventions and patterns
-   - Plan for backward compatibility if needed
+5. **解决方案设计**
+   - 设计一个解决根本原因的解决方案，而不仅仅是症状
+   - 考虑边缘情况和潜在的副作用
+   - 确保解决方案遵循项目约定和模式
+   - 如需要，规划向后兼容性
 
-6. **Implementation**
-   - Implement the fix with clean, readable code
-   - Follow the project's coding standards and style
-   - Add appropriate error handling and logging
-   - Keep changes minimal and focused
+6. **实现**
+   - 用清晰、可读的代码实现修复
+   - 遵循项目的编码标准和风格
+   - 添加适当的错误处理和日志记录
+   - 保持更改最小化和集中
 
-7. **Testing Strategy**
-   - Write or update tests to cover the fix
-   - Ensure existing tests still pass
-   - Test edge cases and error conditions
-   - Run the full test suite to check for regressions
+7. **测试策略**
+   - 编写或更新测试以覆盖修复
+   - 确保现有测试仍然通过
+   - 测试边缘情况和错误条件
+   - 运行完整测试套件以检查回归
 
-8. **Code Quality Checks**
-   - Run linting and formatting tools
-   - Perform static analysis if available
-   - Check for security implications
-   - Ensure performance isn't negatively impacted
+8. **代码质量检查**
+   - 运行代码检查和格式化工具
+   - 如有可用，执行静态分析
+   - 检查安全影响
+   - 确保性能不受负面影响
 
-9. **Documentation Updates**
-   - Update relevant documentation if needed
-   - Add or update code comments for clarity
-   - Update changelog if the project maintains one
-   - Document any breaking changes
+9. **文档更新**
+   - 如需要，更新相关文档
+   - 添加或更新代码注释以增加清晰度
+   - 如果项目维护变更日志，则更新它
+   - 记录任何破坏性更改
 
-10. **Commit and Push**
-    - Stage the changes: `git add .`
-    - Create a descriptive commit message following project conventions
-    - Example: `fix: resolve issue with user authentication timeout (#$ARGUMENTS)`
-    - Push the branch: `git push origin fix/issue-$ARGUMENTS`
+10. **提交和推送**
+    - 暂存更改：`git add .`
+    - 创建遵循项目约定的描述性提交消息
+    - 示例：`fix: resolve issue with user authentication timeout (#$ARGUMENTS)`
+    - 推送分支：`git push origin fix/issue-$ARGUMENTS`
 
-11. **Create Pull Request**
-    - Use `gh pr create` to create a pull request
-    - Reference the issue in the PR description: "Fixes #$ARGUMENTS"
-    - Provide a clear description of the changes and testing performed
-    - Add appropriate labels and reviewers
+11. **创建拉取请求**
+    - 使用 `gh pr create` 创建拉取请求
+    - 在 PR 描述中引用问题："Fixes #$ARGUMENTS"
+    - 提供对所做更改和执行的测试的清晰描述
+    - 添加适当的标签和审查者
 
-12. **Follow-up**
-    - Monitor the PR for feedback and requested changes
-    - Address any review comments promptly
-    - Update the issue with progress and resolution
-    - Ensure CI/CD checks pass
+12. **后续跟进**
+    - 监控 PR 以获取反馈和请求的更改
+    - 及时处理任何审查评论
+    - 更新问题和进展及解决方案
+    - 确保 CI/CD 检查通过
 
-13. **Verification**
-    - Once merged, verify the fix in the main branch
-    - Close the issue if not automatically closed
-    - Monitor for any related issues or regressions
+13. **验证**
+    - 一旦合并，验证主分支中的修复
+    - 如果未自动关闭，关闭问题
+    - 监控任何相关问题或回归
 
-Remember to communicate clearly in both code and comments, and always prioritize maintainable solutions over quick fixes.
+请记住在代码和评论中清晰沟通，并始终优先选择可维护的解决方案而不是快速修复。

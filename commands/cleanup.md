@@ -1,77 +1,74 @@
 ---
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, TodoWrite
-description: Clean up development artifacts while preserving working code
-argument-hint: (no arguments)
+description: 清理开发工件同时保留工作代码
+argument-hint: (无参数)
 ---
 
-# Clean Project
+# 清理项目
 
-I'll help clean up development artifacts while preserving your working code.
+我将帮助您清理开发工件，同时保留您的工作代码。
 
-## Strategic Thinking Process
+## 战略性思考过程
 
-<think>
-Before cleaning, I need to carefully consider:
+清理之前，我需要仔细考虑：
 
-1. **Artifact Identification**
-   - What patterns indicate temporary/debug files?
-   - Which files might look temporary but are actually important?
-   - Are there project-specific conventions for temp files?
-   - What about generated files that should be kept?
+1. **工件识别**
+   - 哪些模式指示临时/调试文件？
+   - 哪些文件可能看起来临时但实际上很重要？
+   - 是否有项目特定的临时文件约定？
+   - 生成的文件应该保留吗？
 
-2. **Safety Analysis**
-   - Which deletions are definitely safe?
-   - Which require more careful inspection?
-   - Are there active processes using these files?
-   - Could removing these break the development environment?
+2. **安全性分析**
+   - 哪些删除是绝对安全的？
+   - 哪些需要更仔细的检查？
+   - 是否有使用这些文件的活跃进程？
+   - 删除这些文件会破坏开发环境吗？
 
-3. **Common Pitfalls**
-   - .env files might look like artifacts but contain config
-   - .cache directories might be needed for performance
-   - Some .tmp files might be active session data
-   - Debug logs might contain important error information
+3. **常见陷阱**
+   - .env 文件可能看起来像工件但包含配置
+   - .cache 目录可能需要用于性能
+   - 一些 .tmp 文件可能是活跃会话数据
+   - 调试日志可能包含重要的错误信息
 
-4. **Cleanup Strategy**
-   - Start with obvious artifacts (*.log, *.tmp, *~)
-   - Check file age - older files are usually safer to remove
-   - Verify with git status what's tracked vs untracked
-   - Group similar files for batch decision making
-</think>
-
-Based on this analysis, I'll create a git checkpoint for safety:
+4. **清理策略**
+   - 从明显的工件开始（*.log、*.tmp、*~）
+   - 检查文件年龄 - 较旧的文件通常更安全删除
+   - 使用 git status 验证已跟踪 vs 未跟踪的文件
+   - 对相似文件进行分组以进行批量决策
+基于此分析，我将创建一个 git 检查点以保证安全：
 ```bash
 git add -A
-git commit -m "Pre-cleanup checkpoint" || echo "No changes to commit"
+git commit -m "清理前检查点" || echo "没有要提交的更改"
 ```
 
-**Important**: I will NEVER:
-- Add "Co-authored-by" or any Claude signatures
-- Include "Generated with Claude Code" or similar messages
-- Modify git config or user credentials
-- Add any AI/assistant attribution to the commit
-- Use emojis in commits, PRs, or git-related content
+**重要**：我绝不会：
+- 添加"Co-authored-by"或任何 Claude 签名
+- 包含"使用 Claude Code 生成"或类似消息
+- 修改 git 配置或用户凭据
+- 向提交添加任何 AI/助手归属
+- 在提交、PR 或 git 相关内容中使用表情符号
 
-I'll identify cleanup targets using native tools:
-- **Glob tool** to find temporary and debug files
-- **Grep tool** to detect debug statements in code
-- **Read tool** to verify file contents before removal
+我将使用原生工具识别清理目标：
+- **Glob 工具**查找临时和调试文件
+- **Grep 工具**检测代码中的调试语句
+- **Read 工具**在删除前验证文件内容
 
-Critical directories are automatically protected:
-- .claude directory (commands and configurations)
-- .git directory (version control)
-- node_modules, vendor (dependency directories)
-- Essential configuration files
+关键目录自动受保护：
+- .claude 目录（命令和配置）
+- .git 目录（版本控制）
+- node_modules、vendor（依赖目录）
+- 基本配置文件
 
-When I find multiple items to clean, I'll create a todo list to process them systematically.
+当找到多个要清理的项目时，我将创建一个待办事项列表以系统性地处理它们。
 
-I'll show you what will be removed and why before taking action:
-- Debug/log files and temporary artifacts
-- Failed implementation attempts
-- Development-only files
-- Debug statements in code
+我将在采取行动之前向您显示将删除的内容及原因：
+- 调试/日志文件和临时工件
+- 失败的实施尝试
+- 仅开发文件
+- 代码中的调试语句
 
-After cleanup, I'll verify project integrity and report what was cleaned.
+清理后，我将验证项目完整性并报告清理的内容。
 
-If any issues occur, I can restore from the git checkpoint created at the start.
+如果出现任何问题，我可以从开始时创建的 git 检查点恢复。
 
-This keeps only clean, working code while maintaining complete safety.
+这保留了干净、可工作的代码，同时保持完全安全性。

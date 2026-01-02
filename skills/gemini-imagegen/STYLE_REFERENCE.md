@@ -1,164 +1,164 @@
-# Style Reference Lexicon
+# 风格参考词典
 
-On-demand reference for aesthetic naming. Use these names in prompts to invoke specific visual characteristics.
+按需参考美学命名。在提示中使用这些名称来唤起特定的视觉特征。
 
 ---
 
-## Film Stocks
+## 胶片
 
-| Film | Effect |
+| 胶片 | 效果 |
 |------|--------|
-| Kodak Portra 160/400/800 | Warm skin tones, pastel highlights, fine grain, nostalgic |
-| Kodak Ektar 100 | Vivid colors, high saturation, fine grain |
-| Kodak Gold 200 | Consumer warmth, golden tones, everyday nostalgia |
-| Fujifilm Pro 400H | Soft pastels, muted tones, airy highlights |
-| Fujifilm Velvia 50 | Saturated colors, high contrast, punchy greens/blues |
-| Fujifilm Superia | Consumer look, versatile, slight green cast |
-| Cinestill 50D/800T | Cinematic, halation around lights, film-set feel |
-| Ilford HP5 | B&W, medium contrast, versatile grain |
-| Ilford Delta 3200 | B&W, high ISO, pronounced grain, night scenes |
-| Kodak Tri-X 400 | B&W, classic photojournalism, gritty texture |
-| Kodak Vision3 500T | Tungsten cinema film, blue shadows, warm highlights |
+| 柯达 Portra 160/400/800 | 温暖的肤色，柔和的高光，细腻的颗粒感，怀旧 |
+| 柯达 Ektar 100 | 鲜艳的色彩，高饱和度，细腻的颗粒感 |
+| 柯达 Gold 200 | 消费者温暖，金色色调，日常怀旧 |
+| 富士 Pro 400H | 柔和的粉彩，柔和的色调，明亮的色调 |
+| 富士 Velvia 50 | 饱和的色彩，高对比度，强烈的绿/蓝色 |
+| 富士 Superia | 消费者外观，多用途，轻微的绿色调 |
+| Cinestill 50D/800T | 电影感，光源周围的晕影，片场感 |
+| Ilford HP5 | 黑白，中等对比度，多用途颗粒感 |
+| Ilford Delta 3200 | 黑白，高 ISO，明显的颗粒感，夜景 |
+| 柯达 Tri-X 400 | 黑白，经典新闻摄影，纹理感 |
+| 柯达 Vision3 500T | 钨丝电影胶片，蓝色阴影，温暖的高光 |
 
-**Modifiers**: "pushed to 1600" (more grain, contrast), "cross-processed" (color shifts)
+**修饰符**："推到 1600"（更多颗粒，对比度），"跨工艺处理"（色彩偏移）
 
 ---
 
-## Camera Systems
+## 相机系统
 
-| Camera | Association |
+| 相机 | 关联 |
 |--------|-------------|
-| Hasselblad 500C/X1D/X2D | Medium format, exceptional detail, fashion/portrait |
-| Leica M6/M10/Q2 | Street photography, micro-contrast, documentary feel |
-| Phase One IQ4 | Ultra-high resolution, commercial, studio |
-| Mamiya RZ67 | Portrait, medium format, classic rendering |
-| Contax T2/G2 | 90s aesthetic, Zeiss rendering, compact luxury |
-| Fujifilm X100V | Modern street, Fuji colors, retro design |
-| Canon AE-1 | 70s-80s consumer photography |
-| Nikon FM2 | Mechanical reliability, photojournalism |
-| Rolleiflex 2.8F | Twin-lens, square format, vintage portrait |
-| Pentax 67 | "Medium format look," portrait favorite |
+| 哈苏 500C/X1D/X2D | 中画幅，异常的细节，时尚/人像 |
+| 徕卡 M6/M10/Q2 | 街头摄影，微对比度，纪录片感 |
+| 飞思 IQ4 | 超高分辨率，商业，工作室 |
+| 玛米亚 RZ67 | 人像，中画幅，经典渲染 |
+| Contax T2/G2 | 90 年代美学，蔡司渲染，紧凑奢华 |
+| 富士 X100V | 现代街头，富士色彩，复古设计 |
+| 佳能 AE-1 | 70-80 年代消费者摄影 |
+| 尼康 FM2 | 机械可靠性，新闻摄影 |
+| 罗莱福莱克斯 2.8F | 双镜头，方形格式，复古人像 |
+| 宾得 67 | "中画幅外观"，人像最爱 |
 
 ---
 
-## Lenses
+## 镜头
 
-| Lens/Type | Effect |
+| 镜头/类型 | 效果 |
 |-----------|--------|
-| Zeiss Otus 85mm | Razor sharp, smooth bokeh, clinical precision |
-| Helios 44-2 | Swirly bokeh, vintage Soviet character |
-| Leica Summilux | Soft glow wide open, classic rendering |
-| Anamorphic | Oval bokeh, horizontal flares, cinematic 2.39:1 feel |
-| Tilt-shift | Miniature effect, selective focus plane |
+| 蔡司 Otus 85mm | 锐利，平滑的背景模糊，临床精确 |
+| Helios 44-2 | 旋转的背景模糊，复古苏联特征 |
+| 徕卡 Summilux | 全开柔和发光，经典渲染 |
+| 变形镜头 | 椭圆形背景模糊，水平光晕，电影感 2.39:1 |
+| 移轴镜头 | 微型效果，选择性焦平面 |
 
 ---
 
-## Animation & Studios
+## 动画和工作室
 
-| Reference | Style |
+| 参考 | 风格 |
 |-----------|-------|
-| Studio Ghibli | Lush nature, soft lighting, whimsical, hand-painted feel |
-| Makoto Shinkai | Hyper-detailed skies, light rays, emotional realism |
-| Spider-Verse | Ben-Day dots, chromatic aberration, comic frames |
-| Arcane (Netflix) | Painterly textures, dramatic lighting, stylized realism |
-| MAPPA/Ufotable | Modern anime, dynamic action, high production value |
-| Trigger | Exaggerated motion, bold colors, kinetic energy |
-| Disney Renaissance | Clean lines, expressive characters, rich colors |
-| Pixar | 3D polish, emotional storytelling, detailed textures |
-| Satoshi Kon | Psychological, reality-bending, adult themes |
-| Fleischer Studios | 1930s rubber hose, surreal, black and white |
-| Cartoon Network/Adult Swim | Varied, often irreverent, stylized |
+| 吉卜力工作室 | 茂密的自然，柔和的光照，异想天开，手绘感 |
+| 新海诚 | 极致的细节，光线，情感写实 |
+| 蜘蛛宇宙 | 本点，色差，漫画框架 |
+| Arcane (Netflix) | 绘画纹理，戏剧性光照，风格化写实 |
+| MAPPA/Ufotable | 现代动漫，动态动作，高制作价值 |
+| Trigger | 夸张的动作，鲜艳的色彩，动态能量 |
+| 迪士尼复兴 | 干净的线条，表现力强的角色，丰富的色彩 |
+| 皮克斯 | 3D 抛光，情感叙事，详细纹理 |
+| 今敏 | 心理，现实扭曲，成人主题 |
+| Fleischer Studios | 1930 年代橡胶软管，超现实，黑白 |
+| Cartoon Network/Adult Swim | 多样化，通常是戏谑的，风格化 |
 
 ---
 
-## Illustration & Comics
+## 插图和漫画
 
-| Artist/Style | Effect |
+| 艺术家/风格 | 效果 |
 |--------------|--------|
-| Moebius / Jean Giraud | Intricate linework, surreal sci-fi landscapes |
-| Alphonse Mucha | Art Nouveau, ornate borders, flowing forms |
-| Frank Frazetta | Fantasy, muscular figures, dramatic action |
-| Yoshitaka Amano | Ethereal, delicate lines, Final Fantasy aesthetic |
-| Kim Jung Gi | Dense, ink-heavy, no preliminary sketches |
-| Mike Mignola | Heavy shadows, angular, Hellboy style |
-| Ukiyo-e | Japanese woodblock, flat colors, bold outlines |
-| N.C. Wyeth | Golden age illustration, adventure, painterly |
+| Moebius / Jean Giraud | 复杂的线条，超现实科幻风景 |
+| Alphonse Mucha | 新艺术运动，华丽的边框，流动的形式 |
+| Frank Frazetta | 奇幻，肌肉发达的数字，戏剧性动作 |
+| Yoshitaka Amano | 空灵，精致的线条，最终幻想美学 |
+| Kim Jung Gi | 密集，墨水重，无初步草图 |
+| Mike Mignola | 重阴影，角度，地狱男孩风格 |
+| 浮世绘 | 日本木版画，平色，粗轮廓 |
+| N.C. Wyeth | 黄金时代插图，冒险，绘画感 |
 
 ---
 
-## Game Art
+## 游戏艺术
 
-| Reference | Style |
+| 参考 | 风格 |
 |-----------|-------|
-| Breath of the Wild | Soft cel-shading, painterly skies, open world |
-| Dark Souls/FromSoftware | Dark fantasy, intricate armor, oppressive mood |
-| Hollow Knight | Hand-drawn 2D, bug aesthetic, moody underground |
-| Cuphead | 1930s Fleischer, hand-drawn animation, jazz age |
-| Cyberpunk 2077 | Neon-soaked, high-tech dystopia, chrome |
-| Vanillaware | Painterly 2D, rich colors, fantasy (Odin Sphere) |
-| 16-bit SNES/Genesis | Limited palette, chunky pixels, nostalgic |
-| MS-DOS aesthetic | CGA/EGA colors, dithering, early PC |
+| 荒野之息 | 柔和的 cel 着色，绘画般的蓝天，开放世界 |
+| 黑暗之魂/FromSoftware | 黑暗奇幻，复杂的盔甲，压抑的氛围 |
+| 空之伯爵 | 手绘 2D，虫类美学，地下压抑氛围 |
+| 杯头 | 1930 年代 Fleischer，手绘动画，爵士时代 |
+| 赛博朋克 2077 | 浸泡在霓虹中，高科技反乌托邦，铬 |
+| Vanillaware | 绘画般的 2D，丰富的色彩，奇幻（奥丁 sphere） |
+| 16 位 SNES/Genesis | 有限的调色板，块状像素，怀旧 |
+| MS-DOS 美学 | CGA/EGA 颜色，抖动，早期 PC |
 
 ---
 
-## Graphic Design & Eras
+## 平面设计和时代
 
-| Movement/Era | Characteristics |
+| 运动/时代 | 特征 |
 |--------------|-----------------|
-| Swiss International Style | Grid-based, clean sans-serif, asymmetric |
-| Bauhaus | Geometric shapes, primary colors, functional |
-| Art Deco | Geometric elegance, gold/black, 1920s glamour |
-| Psychedelic 60s | Warped letterforms, vibrant, Art Nouveau influence |
-| Y2K aesthetic | Chrome, gradients, futuristic optimism |
-| Vaporwave | 80s nostalgia, pink/cyan, Roman busts, glitch |
-| Brutalist | Raw, unconventional layouts, stark typography |
+| 瑞士国际风格 | 基于网格，干净的无衬线，不对称 |
+| 包豪斯 | 几何形状，原色，功能性 |
+| 装饰艺术 | 几何优雅，金/黑，1920 年代魅力 |
+| 迷幻 60 年代 | 扭曲的字母形式，鲜艳，新艺术运动影响 |
+| Y2K 美学 | 铬，渐变，未来乐观主义 |
+| 蒸汽波 | 80 年代怀旧，粉/青色，罗马半身像，故障 |
+| 粗野主义 | 原始，非常规布局， stark 排版 |
 
 ---
 
-## Fine Art Movements
+## 美术运动
 
-| Movement | Visual Language |
+| 运动 | 视觉语言 |
 |----------|-----------------|
-| Impressionism | Visible brushstrokes, light/color focus, en plein air |
-| Post-Impressionism | Van Gogh swirls, Cézanne geometry, expressive color |
-| Art Nouveau | Organic curves, nature motifs, decorative |
-| Surrealism | Dreamlike, impossible scenes, subconscious imagery |
-| Pop Art | Bold colors, commercial imagery, Warhol/Lichtenstein |
-| Baroque/Caravaggio | Dramatic chiaroscuro, theatrical lighting |
-| Pre-Raphaelite | Vivid colors, medieval subjects, intricate detail |
-| Hudson River School | Romantic American wilderness, dramatic light |
-| De Stijl/Mondrian | Primary colors, black grid, geometric abstraction |
+| 印象派 | 可见的笔触，光线/色彩焦点，en plein air |
+| 后印象派 | 梵高漩涡，塞尚几何，表现性色彩 |
+| 新艺术运动 | 有机曲线，自然主题，装饰性 |
+| 超现实主义 | 梦幻般，不可能的场景，潜意识意象 |
+| 波普艺术 | 鲜艳的色彩，商业图像，沃霍尔/李奇登斯坦 |
+| 巴洛克/卡拉瓦乔 | 戏剧性的明暗对比，戏剧性光照 |
+| 拉斐尔前派 | 鲜艳的色彩，中世纪主题，复杂细节 |
+| 哈德逊河学派 | 浪漫的美国荒野，戏剧性光线 |
+| 风格派/蒙德里安 | 原色，黑色网格，几何抽象 |
 
 ---
 
-## Photographers & Directors
+## 摄影师和导演
 
-| Name | Known For |
+| 姓名 | 以...闻名 |
 |------|-----------|
-| Gregory Crewdson | Cinematic suburban tableaux, uncanny |
-| Annie Leibovitz | Editorial portraits, dramatic, intimate |
-| Wes Anderson | Symmetry, pastels, whimsy, centered compositions |
-| Roger Deakins | Naturalistic cinematography, atmospheric |
-| Terrence Malick | Magic hour, existential beauty, nature |
-| Junji Ito | Horror manga, spiral patterns, body horror |
-| Hiroshi Nagai | Japanese city pop, nostalgic summer, poolside |
-| Zdzisław Beksiński | Surreal, nightmarish, organic decay |
-| William Eggleston | Saturated color, mundane subjects elevated |
-| Saul Leiter | Abstract color street photography, painterly |
+| Gregory Crewdson | 电影感郊外场景，怪诞 |
+| Annie Leibovitz | 编辑人像，戏剧性，亲密 |
+| 韦斯·安德森 | 对称，粉彩，异想天开，中心构图 |
+| 罗杰·迪金斯 | 自然主义电影摄影，氛围 |
+| 泰伦斯·马利克 | 魔法时刻，存在主义之美，自然 |
+| Junji Ito | 恐怖漫画，螺旋图案，身体恐怖 |
+| Hiroshi Nagai | 日本城市流行，怀旧夏日，池边 |
+| Zdzisław Beksiński | 超现实，噩梦，有机衰败 |
+| William Eggleston | 饱和色彩，平凡的主体提升 |
+| Saul Leiter | 抽象色彩街头摄影，绘画感 |
 
 ---
 
-## Quick Combinations
+## 快速组合
 
-These patterns work well together:
+这些模式很好地协同工作：
 
 ```
-Portraits: "shot on Kodak Portra 400, Hasselblad medium format, soft window light"
-Street: "Leica M10, 35mm Summicron, Cinestill 800T at night"
-Product: "Phase One IQ4, studio softbox lighting, commercial quality"
-Fantasy: "Studio Ghibli style, Makoto Shinkai lighting"
-Horror: "Junji Ito aesthetic, high contrast black and white ink"
-Retro: "Y2K aesthetic, chrome text, gradient background"
+人像："使用柯达 Portra 400 拍摄，哈苏中画幅，柔和的窗光"
+街头："徕卡 M10，35mm Summicron，Cinestill 800T 夜晚"
+产品："飞思 IQ4，工作室柔光箱，商业质量"
+奇幻："吉卜力工作室风格，新海诚光照"
+恐怖："Junji Ito 美学，高对比度黑白墨水"
+复古："Y2K 美学，铬文本，渐变背景"
 ```
 
-The lexicon is vast—these are samples. If you know a specific name, try it directly.
+词典很广泛 - 这些是样本。如果您知道特定的名称，请直接尝试。

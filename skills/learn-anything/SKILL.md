@@ -1,42 +1,42 @@
 ---
 name: learn-anything
-description: Metalearning skill that helps master any topic efficiently by identifying critical 20% material, building expert vocabulary, and creating research-backed learning roadmaps. Auto-trigger when user says "learn [topic]", "help me learn [topic]", "I want to learn [topic]", or asks for guidance on understanding a new subject. Supports comprehensive plans, interactive guidance, or minimalist just-in-time delivery.
+description: 元学习技能，通过识别关键的 20% 材料、构建专家词汇表和创建基于研究的学习路线图来高效掌握任何主题。当用户说"学习 [主题]"，"帮助我学习 [主题]"，"我想学习 [主题]"或询问理解新主题的指导时自动触发。支持全面计划、交互式指导或简约的及时交付
 ---
 
 # Learn Anything
 
-Transform "I want to learn X" into actionable learning roadmaps using metalearning principles: identify the critical 20%, build expert vocabulary, sequence logically (why before how), prioritize current best practices.
+使用元学习原则将"我想学习 X"转化为可执行的学习路线图：识别关键的 20%，构建专家词汇表，逻辑排序（先为什么后如何），优先考虑当前最佳实践。
 
-## When to Use
+## 何时使用
 
-Activate when user:
-- Says "learn [topic]" or "help me learn [topic]"
-- Asks "how do I get started with [subject]?"
-- Requests structured approach to mastering something new
+当用户：
+- 说"学习 [主题]"或"帮助我学习 [主题]"
+- 问"我如何开始 [主题]？"
+- 请求掌握新事物的结构化方法
 
-Do NOT use when:
-- User has content and wants action plans (use ship-learn-next)
-- Request is for implementation help, not learning
+不要在以下情况使用：
+- 用户拥有内容并想要行动计划（使用 ship-learn-next）
+- 请求实施帮助，而不是学习
 
-## Core Principles
+## 核心原则
 
-1. **Pareto Focus**: Identify 20% of material delivering 80% of practical value
-2. **Logical Sequencing**: Foundations before details, why before how
-3. **Vocabulary First**: Build expert lexicon for better understanding and prompting
-4. **Practical Bias**: Optimize for applicable knowledge over comprehensive coverage
+1. **帕累托重点**：识别提供 80% 实际价值的 20% 材料
+2. **逻辑排序**：基础在细节前，为什么在如何前
+3. **词汇优先**：构建专家词汇表以获得更好的理解和提示
+4. **实用偏向**：优化适用知识而不是全面覆盖
 
-## State Management - Global ~/.learn Directory
+## 状态管理 - 全局 ~/.learn 目录
 
-All learning artifacts are saved globally in `~/.learn/[topic-slug]/`:
+所有学习工件都全局保存在 `~/.learn/[topic-slug]/`：
 
 ```
 ~/.learn/
 ├── react/
-│   ├── plan.md              # Learning plan (all modes)
-│   ├── progress.json        # State tracking (interactive/minimalist)
-│   ├── vocabulary.md        # Dependency-sequenced vocab
-│   ├── notes.md            # User's learning notes (optional)
-│   └── apps/               # Interactive app prompts (interactive/minimalist)
+│   ├── plan.md              # 学习计划（所有模式）
+│   ├── progress.json        # 状态跟踪（交互/简约）
+│   ├── vocabulary.md        # 依赖排序的词汇
+│   ├── notes.md            # 用户的学习笔记（可选）
+│   └── apps/               # 交互式应用提示（交互/简约）
 │       ├── components.md
 │       ├── hooks.md
 │       └── state-management.md
@@ -48,336 +48,335 @@ All learning artifacts are saved globally in `~/.learn/[topic-slug]/`:
 │       └── ownership.md
 ```
 
-**Benefits**: Learning state persists across all projects. Can continue learning from any directory.
+**好处**：学习状态跨所有项目持续存在。可以从任何目录继续学习。
 
-**Setup**: Create `~/.learn/` directory on first use if it doesn't exist. Use topic slug (lowercase, hyphens) for subdirectory names.
+**设置**：如果不存在，首次使用时创建 `~/.learn/` 目录。使用主题 slug（小写，连字符）作为子目录名。
 
-## Three Output Modes
+## 三种输出模式
 
-**Mode Selection**: Ask preference BEFORE research (affects how material is structured). Default to comprehensive if unclear.
+**模式选择**：在研究前询问偏好（影响材料结构）。如果不清楚，默认为全面。
 
-### Comprehensive Plan (Default)
-- **Delivery**: Save complete `plan.md` with detailed 20% starter pack and full roadmap
-- **State**: No progress tracking needed
-- **Best for**: Self-directed learners who want complete picture upfront
-- **Artifacts**: `~/.learn/[topic]/plan.md` only
+### 全面计划（默认）
+- **交付**：保存包含详细的 20% 入门包和完整路线图的完整 `plan.md`
+- **状态**：不需要进度跟踪
+- **最适合**：想要完整图片 upfront 的自导向学习者
+- **工件**：只有 `~/.learn/[topic]/plan.md`
 
-### Interactive Guide
-- **Delivery**: Present one concept at a time, validate understanding before progressing
-- **State**: Track progress in `progress.json`, update as user completes concepts
-- **Best for**: Learners wanting accountability and validation
-- **Artifacts**: `plan.md` + `progress.json` + `vocabulary.md`
-- **Flexibility**: Allow rollback, concept reordering, adding concepts mid-journey
+### 交互式指南
+- **交付**：一次呈现一个概念，在进展前验证理解
+- **状态**：在 `progress.json` 中跟踪进度，随着用户完成概念更新
+- **最适合**：想要问责和验证的学习者
+- **工件**：`plan.md` + `progress.json` + `vocabulary.md`
+- **灵活性**：允许回滚，概念重新排序，旅程中添加概念
 
-### Minimalist Just-In-Time
-- **Delivery**: Only immediate next resource and key terms
-- **State**: Track progress in `progress.json`, user returns for next step
-- **Best for**: Action-oriented learners avoiding analysis paralysis
-- **Artifacts**: `plan.md` (minimal) + `progress.json` + `vocabulary.md`
-- **Flexibility**: Allow rollback, concept reordering, adding concepts mid-journey
+### 简约及时
+- **交付**：只有下一个资源和关键术语
+- **状态**：在 `progress.json` 中跟踪进度，用户返回时获取下一步
+- **最适合**：避免分析瘫痪的行动导向学习者
+- **工件**：简约的 `plan.md` + `progress.json` + `vocabulary.md`
+- **灵活性**：允许回滚，概念重新排序，旅程中添加概念
 
-## Resuming Existing Learning
+## 恢复现有学习
 
-Before starting new learning plan, check if `~/.learn/[topic-slug]/` exists:
+开始新的学习计划前，检查 `~/.learn/[topic-slug]/` 是否存在：
 
-**If exists**:
-1. Read `progress.json` to check mode and current state
-2. Ask: "I found an existing learning plan for [topic]. Would you like to: A) Continue where you left off, B) Start fresh, C) Review your progress?"
+**如果存在**：
+1. 读取 `progress.json` 检查模式和当前状态
+2. 问："我找到了 [主题] 的现有学习计划。您想要：A) 从离开的地方继续，B) 重新开始，C) 审查您的进度？"
 
-**If continuing**:
-- Load current concept from progress.json
-- Present next step based on mode (Interactive/Minimalist) or remind them of plan (Comprehensive)
-- Reference what they've already learned when presenting new material
+**如果继续**：
+- 从 progress.json 加载当前概念
+- 基于模式（交互/简约）呈现下一步或提醒他们计划
+- 呈现新材料时引用已经学习的内容
 
-**If starting fresh**:
-- Archive old directory to `~/.learn/[topic]-archive-[timestamp]/`
-- Proceed with new learning plan
+**如果重新开始**：
+- 将旧目录归档到 `~/.learn/[topic]-archive-[timestamp]/`
+- 继续新的学习计划
 
-**If reviewing progress**:
-- Display concepts completed, current concept, vocabulary learned
-- Allow modifications: "Want to go back to any concept? Add new concepts? Continue forward?"
+**如果审查进度**：
+- 显示完成的概念、当前概念、已学习的词汇
+- 允许修改："想要回到任何概念吗？添加新概念？继续向前？"
 
-## Workflow
+## 工作流程
 
-### Step 1: Understand Intent
+### 步骤 1：理解意图
 
-Extract topic from user request, then ask 2-3 questions to understand context:
+从用户请求中提取主题，然后问 2-3 个问题以了解上下文：
 
-**Focus on intent and application:**
-- "What's driving you to learn [topic]?" (Work project / Career shift / Building something specific / Pure curiosity)
-- "Where will you apply this knowledge?" (Specific project / General skill / Professional requirement / Personal exploration)
-- "What's your current experience with [topic] or related areas?" (Complete beginner / Some exposure / Familiar with adjacent topics)
+**专注于意图和应用：**
+- "什么驱使您学习 [主题]？"（工作项目 / 职业转变 / 构建特定东西 / 纯粹好奇心）
+- "您将在哪里应用这些知识？"（特定项目 / 通用技能 / 专业要求 / 个人探索）
+- "您对 [主题] 或相关领域目前的经验是什么？"（完全初学者 / 一些接触 / 熟悉相邻主题）
 
-Use AskUserQuestion with conversational multiple choice options. Keep brief - gather just enough to tailor the plan.
+使用 AskUserQuestion 与对话式选择题。保持简短 - 收集足够信息以定制计划。
 
-### Step 2: Intelligent Research
+### 步骤 2：智能研究
 
-Conduct adaptive web searches based on topic maturity and ecosystem:
+基于主题成熟度和生态系统进行自适应网络搜索：
 
-**Search Strategy (adapt per topic):**
+**搜索策略（按主题调整）：**
 
-For established technologies/fields:
-- "[topic] official documentation"
-- "[topic] reddit" (find community discussions, real practitioner opinions)
-- "[topic] learning path" or "[topic] roadmap"
-- "getting started [topic]" (beginner resources)
-- "[topic] vs [alternative]" (understand positioning and use cases)
+对于已建立的技术/领域：
+- "[topic] 官方文档"
+- "[topic] reddit"（查找社区讨论，实际从业者意见）
+- "[topic] 学习路径"或"[topic] 路线图"
+- "入门 [topic]"（初学者资源）
+- "[topic] vs [替代]"（了解定位和用例）
 
-For emerging/niche topics:
-- "[topic] github" (find projects, examples, real usage)
-- "[topic] tutorial"
-- "what is [topic]" (understand current state)
-- "[topic] use cases" (practical applications)
+对于新兴/小众主题：
+- "[topic] github"（查找项目、示例、实际使用）
+- "[topic] 教程"
+- "[topic] 是什么"（了解当前状态）
+- "[topic] 用例"（实际应用）
 
-For academic/theoretical topics:
-- "[topic] course"
-- "[topic] textbook recommendation"
-- "[topic] explained" (accessible introductions)
+对于学术/理论主题：
+- "[topic] 课程"
+- "[topic] 教材推荐"
+- "[topic] 解释"（可访问的介绍）
 
-**Research Goals:**
-1. Current state and recent developments (what's modern vs outdated)
-2. Highest-impact resources (official docs, respected courses, definitive guides)
-3. Expert vocabulary (terms, jargon, acronyms used casually)
-4. Learning dependencies (prerequisites, logical sequencing)
-5. Common pitfalls and confusing concepts
+**研究目标：**
+1. 当前状态和最近发展（什么现代 vs 过时）
+2. 最高影响资源（官方文档，受尊重的课程， definitive 指南）
+3. 专家词汇（术语，行话，缩写）
+4. 学习依赖（先决条件，逻辑排序）
+5. 常见陷阱和令人困惑的概念
 
-**Resource Quality Signals:**
-- Official/maintained documentation
-- Community consensus (upvotes, recommendations)
-- Recent publication (relevance to current practices)
-- Beginner-friendly vs advanced (match user level)
-- Free and accessible
+**资源质量信号：**
+- 官方/维护的文档
+- 社区共识（upvotes，推荐）
+- 最近发布（与当前实践的相关性）
+- 初学者友好 vs 高级（匹配用户级别）
+- 免费和可访问
 
-Run 4-6 searches adapting to what you discover. Don't follow template blindly.
+运行 4-6 次搜索，根据发现的内容调整。不要盲目遵循模板。
 
-### Step 3: Identify Critical 20%
+### 步骤 3：识别关键 20%
 
-Analyze research to extract 3-7 core topics providing maximum foundation.
+分析研究以提取提供最大基础的 3-7 个核心主题。
 
-**Selection Criteria:**
-- Unlocks understanding of other concepts
-- Used frequently in practice
-- Foundational vs nice-to-know
-- Current best practices (skip legacy/deprecated)
+**选择标准：**
+- 解锁对其他概念的理解
+- 在实践中经常使用
+- 基础 vs 好知道
+- 当前的最佳实践（跳过过时的/弃用的）
 
-For each core topic:
-- Why it matters (conceptual foundation)
-- 1-2 highest-impact resources
-- 5-10 key vocabulary terms
-- Time estimate
-- Concrete capability gained
+对于每个核心主题：
+- 为什么重要（概念基础）
+- 1-2 个最高影响资源
+- 5-10 个关键词汇术语
+- 时间估计
+- 获得的具体能力
 
-**Example (React):**
-- 20%: Components, JSX, Props/State, Hooks, Event Handling
-- NOT 20%: Class components (outdated), advanced patterns, SSR (later), testing (later)
+**示例（React）：**
+- 20%：组件、JSX、Props/State、Hooks、事件处理
+- 不是 20%：类组件（过时），高级模式，SSR（稍后），测试（稍后）
 
-### Step 4: Build Full Roadmap
+### 步骤 4：构建完整路线图
 
-Sequence remaining topics into Foundation → Intermediate → Advanced.
+将剩余主题排序为基础 → 中级 → 高级。
 
-For each topic beyond 20%:
-- Brief description
-- Why it matters
-- One highest-impact resource
-- Mark optional vs essential
+对于 20% 之外的每个主题：
+- 简短描述
+- 为什么重要
+- 一个最高影响资源
+- 标记可选 vs 必需
 
-Keep lean. This is a map, not detailed instructions.
+保持精益。这是地图，不是详细说明。
 
-### Step 5: Compile Vocabulary
+### 步骤 5：编译词汇表
 
-Build **dependency-based vocabulary sequence** - order terms by conceptual dependencies, not arbitrary tiers.
+构建**基于依赖的词汇序列** - 按概念依赖而不是任意层级排序术语。
 
-**Sequencing Principle**: Learn foundational terms before terms that depend on them.
+**排序原则**：在学习依赖它们的术语之前先学习基础术语。
 
-Example (React):
-1. **Component** (foundation - needed for everything)
-2. **JSX** (syntax - needed to write components)
-3. **Props** (component inputs - builds on component understanding)
-4. **State** (component data - parallel to props)
-5. **Hook** (function for state/effects - builds on state concept)
-6. **useState** (specific hook - builds on hook concept)
-7. **useEffect** (specific hook - builds on hook + component lifecycle)
+示例（React）：
+1. **组件**（基础 - 需要一切）
+2. **JSX**（语法 - 需要编写组件）
+3. **Props**（组件输入 - 构建在组件理解上）
+4. **State**（组件数据 - 与 props 平行）
+5. **Hook**（用于状态/效果的函数 - 构建在状态概念上）
+6. **useState**（特定 hook - 构建在 hook 概念上）
+7. **useEffect**（特定 hook - 构建在 hook + 组件生命周期上）
 
-**Coverage**: Identify 10-30 terms covering the 20% material. If dependencies require more terms, include them. Always start from first principles.
+**覆盖**：识别覆盖 20% 材料的 10-30 个术语。如果依赖需要更多术语，包含它们。总是从第一原理开始。
 
-**Format for each term**:
+**每个术语的格式**：
 ```
-**Term**: Definition (1 sentence) + why it matters/when you'll use it
-Dependencies: [terms you need to know first, if any]
+**术语**：定义（1 句）+ 为什么重要/何时使用
+依赖：[如果需要，先知道的术语]
 ```
 
-**For Interactive/Minimalist modes**: Pre-sequence vocabulary to match concept order. As each concept is introduced, present only its terms and dependencies (building on previously learned terms).
+**对于交互/简约模式**：将词汇预排序以匹配概念顺序。当每个概念介绍时，仅呈现其术语和依赖（构建在已学习的术语上）。
 
-**For Comprehensive mode**: Present full sequenced vocabulary list in plan.md.
+**对于全面模式**：在 plan.md 中呈现完整的排序词汇列表。
 
-**Save to**: `~/.learn/[topic]/vocabulary.md` with dependency indicators.
+**保存到**：`~/.learn/[topic]/vocabulary.md` 并带依赖指示器。
 
-### Step 6: Generate Interactive App Prompts (When Beneficial)
+### 步骤 6：生成交互式应用提示（当有益时）
 
-For Interactive and Minimalist modes, generate creative app prompts for concepts where hands-on practice significantly enhances learning.
+对于交互和简约模式，为显著增强学习的概念生成创意应用提示。
 
-**When to generate app prompts:**
-- Visual/spatial concepts (UI components, layouts, animations, data structures)
-- Algorithmic concepts (sorting, searching, recursion, state machines)
-- Interactive patterns (event handling, state management, user flows)
-- Abstract concepts that benefit from visualization (closures, async, memory management)
-- **Skip for**: Pure theory, historical context, simple definitions, tool installation
+**何时生成应用提示：**
+- 视觉/空间概念（UI 组件、布局、动画、数据结构）
+- 算法概念（排序、搜索、递归、状态机）
+- 交互模式（事件处理、状态管理、用户流程）
+- 从可视化中受益的抽象概念（闭包、异步、内存管理）
+- **跳过**：纯理论，历史背景，简单定义，工具安装
 
-**App Design Principles:**
+**应用设计原则：**
 
-Generate fully custom app ideas that maximize learning through interaction. Consider:
+生成最大化通过交互学习的完全自定义应用想法。考虑：
 
-1. **Active Learning**: User manipulates, builds, or experiments (not just reads/watches)
-2. **Immediate Feedback**: Visual/interactive responses show concept in action
-3. **Progressive Complexity**: Start simple, allow exploration of edge cases
-4. **Concept Isolation**: Focus on one core concept, avoid overwhelming with related topics
-5. **Playful Discovery**: Make it fun - games, challenges, creative tools over dry drills
+1. **主动学习**：用户操作、构建或实验（不仅仅是阅读/观看）
+2. **即时反馈**：视觉/交互响应显示概念的实际作用
+3. **渐进复杂性**：从简单开始，允许探索边缘情况
+4. **概念隔离**：专注于一个核心概念，避免被相关主题压垮
+5. **游戏化发现**：使其有趣 - 游戏、挑战、创意工具超过枯燥的练习
 
-**Creative App Types** (examples, not templates):
-- **Builders**: "Build your own X" - construct the concept from components
-- **Simulators**: Interactive simulation showing concept behavior
-- **Visualizers**: Animate or visualize abstract concepts in real-time
-- **Playgrounds**: Sandbox for experimentation with instant visual feedback
-- **Games**: Gamified learning (e.g., "sort the array faster", "catch the bug")
-- **Explorers**: Interactive documentation where user explores concept space
-- **Challenges**: Puzzle/problem-solving that requires applying the concept
+**创意应用类型**（示例，不是模板）：
+- **构建器**："构建你自己的 X" - 从组件构建概念
+- **模拟器**：显示概念行为的交互模拟
+- **可视化器**：实时动画或可视化抽象概念
+- **沙盒**：具有即时视觉反馈的实验沙盒
+- **游戏**：游戏化学习（例如，"更快地排序数组"，"捕获错误"）
+- **探索器**：用户探索概念空间的交互式文档
+- **挑战**：需要应用概念的谜题/问题解决
 
-**Prompt Generation Process:**
+**提示生成过程**：
 
-For each concept needing an app:
+对于每个需要应用的概念：
 
-1. **Identify core learning goal**: What should user viscerally understand after using this app?
-2. **Design interaction**: How will user interact? What will they build/manipulate/explore?
-3. **Determine requirements**: Need image generation? LLM for dynamic content? Neither?
-4. **Write concise prompt** (50-150 words):
-   - App name and core idea
-   - What user does (interaction model)
-   - What they learn through interaction
-   - Tech requirements: "Requires: Image generation" or "Requires: LLM for dynamic examples" or "Static interactive UI only"
+1. **识别核心学习目标**：使用此应用后用户应该从 visceral 上理解什么？
+2. **设计交互**：用户将如何交互？他们将构建/操作/探索什么？
+3. **确定要求**：需要图像生成吗？需要 LLM 进行动态内容吗？都不需要？
+4. **编写简洁提示**（50-150 字）：
+   - 应用名称和核心想法
+   - 用户做什么（交互模型）
+   - 他们通过交互学到什么
+   - 技术要求："要求：图像生成"或"要求：LLM 用于动态示例"或"仅静态交互 UI"
 
-**Prompt Format:**
+**提示格式：**
 
 ```markdown
-### Interactive Learning App: [Concept Name]
+### 交互式学习应用：[概念名称]
 
-**App Idea**: [Creative name - 2-4 words]
+**应用想法**：[创意名称 - 2-4 个词]
 
-[2-3 sentence description of the app and what user does]
+[应用和用户做什么的 2-3 句描述]
 
-**Learning Goal**: [What concept becomes clear through interaction]
+**学习目标**：[通过交互变得清晰的概念]
 
-**Requirements**: [Image generation / LLM / Neither - just interactive UI]
+**要求**：[图像生成 / LLM / 都不 - 仅交互式 UI]
 
-**Google AI Studio Prompt**:
+**Google AI Studio 提示**：
 ---
-[Concise 50-150 word prompt describing the app to build]
+[描述要构建的应用的简洁 50-150 字提示]---
+```
+
+**示例：**
+
+对于"React 组件"：
+```
+**应用想法**：组件构建器
+
+通过拖放视觉元素并实时查看 JSX 代码生成来构建 React 组件。点击组件查看 props，修改值以重新渲染。有意破坏事物以理解组件边界。
+
+**学习目标**：通过视觉操作理解组件组成、props 流和重新渲染。
+
+**要求**：仅静态交互式 UI
+
+**Google AI Studio 提示**：
+---
+创建一个交互式网络应用，用户在其中可视化构建 React 组件。左侧：拖放元素（按钮、输入、div、文本）。右侧：实时 JSX 代码生成。用户可以点击任何组件编辑 props，查看更改如何传播。包含一个"破坏它"按钮，引入常见错误（缺少键，错误的 prop 类型）以学习调试。实时视觉更新。使其有趣和多彩。
 ---
 ```
 
-**Examples:**
-
-For "React Components":
+对于"排序算法"：
 ```
-**App Idea**: Component Constructor
+**应用想法**：排序竞赛可视化器
 
-Build React components by dragging visual elements and see the JSX code generate in real-time. Click components to see props, modify values to see re-renders. Break things intentionally to understand component boundaries.
+观看不同排序算法在彩色条表示的数组上实时竞争。调整速度、数组大小和初始顺序。查看比较和交换。预测哪种算法在不同数据模式中获胜。
 
-**Learning Goal**: Understand component composition, props flow, and re-rendering through visual manipulation.
+**学习目标**：通过视觉竞赛直观理解算法性能。
 
-**Requirements**: Static interactive UI only
+**要求**：仅静态交互式 UI
 
-**Google AI Studio Prompt**:
+**Google AI Studio 提示**：
 ---
-Create an interactive web app where users build React components visually. Left side: drag-and-drop elements (button, input, div, text). Right side: live JSX code generation. Users can click any component to edit props, see how changes propagate. Include a "break it" button that introduces common mistakes (missing keys, wrong prop types) to learn debugging. Real-time visual updates as they build. Make it playful and colorful.
+构建排序算法竞赛可视化器。显示 3-4 个算法（气泡、快速、归并、插入）同时运行在相同的数组上，表示为彩色条。动画每个比较和交换，具有平滑过渡。控件：速度滑块，数组大小，初始顺序（随机，排序，反转）。显示实时统计：比较，交换，时间。添加"竞赛模式"让算法竞争。使其感觉像具有兴奋动画和声音效果（可选）的游戏。用户通过发现模式来学习。
 ---
 ```
 
-For "Sorting Algorithms":
+对于"JavaScript 闭包"：
 ```
-**App Idea**: Sort Race Visualizer
+**应用想法**：闭包工厂探索器
 
-Watch different sorting algorithms compete in real-time with animated array bars. Adjust speed, array size, and initial order. See comparison counts and swaps. Predict which algorithm wins for different data patterns.
+创建"记住"值的函数。通过锁定变量构建闭包，然后用不同输入调用它们以查看哪些数据持续 vs 更改。视觉内存框显示捕获的作用域。
 
-**Learning Goal**: Intuitively understand algorithm performance through visual competition.
+**学习目标**：通过交互式函数构建理解词法作用域和变量捕获。
 
-**Requirements**: Static interactive UI only
+**要求**：LLM 用于动态代码生成和解释
 
-**Google AI Studio Prompt**:
+**Google AI Studio 提示**：
 ---
-Build a sorting algorithm race visualizer. Show 3-4 algorithms (bubble, quick, merge, insertion) running simultaneously on the same array, represented as colored bars. Animate every comparison and swap with smooth transitions. Controls: speed slider, array size, initial order (random, sorted, reversed). Display live stats: comparisons, swaps, time. Add "race mode" where algorithms compete. Make it feel like a game with exciting animations and sound effects (optional). Users discover performance patterns through play.
----
-```
-
-For "JavaScript Closures":
-```
-**App Idea**: Closure Factory Explorer
-
-Create functions that "remember" values. Build closures by locking in variables, then invoke them with different inputs to see which data persists vs changes. Visual memory boxes show captured scope.
-
-**Learning Goal**: Understand lexical scope and variable capture through interactive function building.
-
-**Requirements**: LLM for dynamic code generation and explanations
-
-**Google AI Studio Prompt**:
----
-Create an interactive closure explorer. Users write simple functions that capture variables from outer scope. App shows visual "memory boxes" representing scopes - outer and inner. When function is invoked, highlight which variables come from where. Generate diverse examples on-demand using an LLM (simple counter, event handlers, private data patterns). Let users modify code and see scope visualization update. Explain closure behavior in plain language as they experiment. Make the invisible visible.
+创建一个交互式闭包探索器。用户编写从外部作用域捕获变量的简单函数。应用显示表示作用域的视觉"内存框" - 外部和内部。当函数被调用时，突出显示来自何处哪些变量。使用 LLM（简单的计数器、事件处理程序、私有数据模式）生成多样示例。让用户修改代码并看到作用域可视化更新。用普通语言解释闭包行为。使不可见的东西可见。
 ---
 ```
 
-**Storage and Delivery:**
+**存储和交付：**
 
-1. Save app prompt to `~/.learn/[topic]/apps/[concept-slug].md`
-2. Display inline in conversation when presenting the concept
-3. Treat as optional supplementary material (don't gate progress)
+1. 将应用提示保存到 `~/.learn/[topic]/apps/[concept-slug].md`
+2. 在对话中呈现概念时显示内联
+3. 将其视为可选补充材料（不要阻止进度）
 
-**In Interactive Mode**: Show app prompt after presenting resource, before understanding check
-**In Minimalist Mode**: Show app prompt with the resource link and vocabulary
+**在交互模式中**：在呈现资源后，理解检查前显示应用提示
+**在简约模式中**：与资源链接和词汇一起显示应用提示
 
-### Step 7: Generate Output
+### 步骤 7：生成输出
 
-#### Mode 1: Comprehensive Plan
+#### 模式 1：全面计划
 
-Save to `~/.learn/[topic]/plan.md` with structure:
+保存到 `~/.learn/[topic]/plan.md` 与结构：
 
 ```markdown
-# Learning Plan: [Topic]
+# 学习计划：[主题]
 
-**Context**: [Current level] | [Goal/Application] | Generated: [date]
+**上下文**：[当前级别] | [目标/应用] | 生成：[日期]
 
-## First 20% - Starter Pack
+## 前 20% - 入门包
 
-### 1. [Core Topic]
-**Why**: [Conceptual explanation]
-**Vocabulary**: [Terms with dependencies]
-**Resource**: [URL] - [Why valuable] - Time: [Estimate]
-**After this**: [Capability gained]
+### 1. [核心主题]
+**为什么**：[概念解释]
+**词汇**：[带依赖的术语]
+**资源**：[URL] - [为什么有价值] - 时间：[估计]
+**之后**：[获得的能力]
 
-[Repeat for 3-7 core topics]
+[对 3-7 个核心主题重复]
 
-## Full Roadmap
-### Intermediate: [Topics with brief descriptions + resources]
-### Advanced: [Topics with brief descriptions + resources]
-### Optional: [When needed]
+## 完整路线图
+### 中级：[主题带简短描述 + 资源]
+### 高级：[主题带简短描述 + 资源]
+### 可选：[需要时]
 
-## Vocabulary Reference
-[Dependency-sequenced terms with definitions - from vocabulary.md]
+## 词汇参考
+[依赖排序的术语与定义 - 来自 vocabulary.md]
 
-## Learning Tips
-[3-5 tips: pitfalls, best practices, communities]
+## 学习提示
+[3-5 个提示：陷阱，最佳实践，社区]
 
-## Next Steps
-Start with topic 1, learn vocabulary as you go, complete resource, assess next direction.
+## 下一步
+从主题 1 开始，学习词汇，完成资源，评估下一步。
 ```
 
-After saving: Confirm location, summarize 20%, encourage action.
+保存后：确认位置，总结 20%，鼓励行动。
 
-#### Mode 2: Interactive Guide
+#### 模式 2：交互式指南
 
-**Initial Setup**:
-1. Create `~/.learn/[topic]/` directory
-2. Save `plan.md` with full learning plan (for reference)
-3. Save `vocabulary.md` with dependency-sequenced terms
-4. Initialize `progress.json`:
+**初始设置**：
+1. 创建 `~/.learn/[topic]/` 目录
+2. 保存具有完整学习计划的 `plan.md`（供参考）
+3. 保存依赖排序术语的 `vocabulary.md`
+4. 初始化 `progress.json`：
 
 ```json
 {
@@ -398,148 +397,148 @@ After saving: Confirm location, summarize 20%, encourage action.
 }
 ```
 
-**Delivery Flow**:
+**交付流程**：
 
-**First interaction** - Present current concept:
+**首次交互** - 呈现当前概念：
 ```
-📚 Learning React - Concept 1/5: Components
+📚 学习 React - 概念 1/5：组件
 
-**Why this matters**: [Conceptual explanation]
+**为什么这很重要**：[概念解释]
 
-**Vocabulary for this concept**:
-- **Component**: [Definition + usage]
-  Dependencies: None (foundational)
-- **Render**: [Definition + usage]
-  Dependencies: Component
+**此概念的词汇**：
+- **组件**：[定义 + 用法]
+  依赖：无（基础）
+- **渲染**：[定义 + 用法]
+  依赖：组件
 
-**Resource**: [Name + URL]
-Why this resource: [What makes it valuable]
-Time: [Estimate]
+**资源**：[名称 + URL]
+为什么这个资源有价值：[什么使其有价值]
+时间：[估计]
 
-[If concept benefits from interactive app, display app prompt here:]
+[如果概念从交互应用中受益，在此处显示应用提示：]
 
-**🎮 Interactive Learning App**: [App Name]
-[Description and learning goal]
-[Google AI Studio prompt in code block]
-Saved to: ~/.learn/react/apps/components.md
+**🎮 交互式学习应用**：[应用名称]
+[描述和学习目标]
+[Google AI Studio 提示在代码块中]
+保存到： ~/.learn/react/apps/components.md
 
-**After completing**: Return and I'll check your understanding before moving to JSX.
+**完成后**：返回后我会在移到 JSX 前检查您的理解。
 
-Progress saved to: ~/.learn/react/progress.json
-```
-
-**When user returns** - Check understanding:
-```
-Welcome back! Let's validate your understanding of Components.
-
-Quick check:
-- What is a component in your own words?
-- How does rendering work?
-
-[Based on response:]
-✓ Great understanding → Update progress.json, move to concept 2
-⚠ Some gaps → Clarify misconceptions, offer supplementary resource
-✗ Struggling → Suggest re-doing resource or different approach, keep on concept 1
+进度已保存到： ~/.learn/react/progress.json
 ```
 
-**State Updates**:
-- Mark concept completed, update `vocabulary_progress.learned`
-- Set next concept to "in_progress"
-- Add to `history` array
-- Save progress.json
-
-**Flexibility Commands** (user can say these anytime):
-- "Go back to [concept]" → Rollback, set that concept to "in_progress", add to history
-- "I want to review [concept]" → Allow re-learning, build on what was taught before
-- "Add a concept about [topic]" → Insert into concepts array, update sequence
-- "Skip to [concept]" → Mark current as completed, jump ahead (allow but discourage)
-- "Show my progress" → Display current state from progress.json
-
-**Conversation Style**: One concept at a time, validate before progressing, adaptive pacing, encouraging tone. Build on previously learned vocabulary when introducing new terms.
-
-#### Mode 3: Minimalist Just-In-Time
-
-**Initial Setup**:
-1. Create `~/.learn/[topic]/` directory
-2. Save minimal `plan.md` (just concept list + brief descriptions)
-3. Save `vocabulary.md` with dependency-sequenced terms
-4. Initialize `progress.json` (same structure as Interactive mode)
-
-**Delivery Flow**:
-
-**First interaction** - Minimal, actionable:
+**当用户返回时** - 检查理解：
 ```
-🎯 Learning React - Step 1/5: Components
+欢迎回来！让我们验证您对组件的理解。
 
-Start here: [Resource name + URL]
-Time: ~2 hours
+快速检查：
+- 用您自己的话，什么是组件？
+- 渲染如何工作？
 
-Key terms to understand:
-- **Component**: [Definition]
-  Dependencies: None
-- **Render**: [Definition]
-  Dependencies: Component
-
-[If concept benefits from interactive app:]
-
-🎮 Optional Interactive App: [App Name]
-[Google AI Studio prompt - concise version]
-Full prompt saved: ~/.learn/react/apps/components.md
-
-Return when done for the next step.
-
-Progress: ~/.learn/react/progress.json
+[基于响应：]
+✓ 理解很好 → 更新 progress.json，移动到概念 2
+⚠ 一些差距 → 澄清误解，提供补充资源
+✗ 在挣扎 → 建议重做资源或不同方法，保持在概念 1
 ```
 
-**When user returns** - Brief check + next step:
+**状态更新**：
+- 将概念标记为已完成，更新 `vocabulary_progress.learned`
+- 将下一个概念设置为 "in_progress"
+- 添加到 `history` 数组
+- 保存 progress.json
+
+**灵活性命令**（用户随时可以说这些）：
+- "回到 [概念]" → 回滚，将该概念设置为 "in_progress"，添加到历史
+- "我想复习 [概念]" → 允许重新学习，构建在之前教授的内容上
+- "添加关于 [主题] 的概念" → 插入到 concepts 数组，更新序列
+- "跳到 [概念]" → 将当前标记为已完成，跳 ahead（允许但不鼓励）
+- "显示我的进度" → 从 progress.json 显示当前状态
+
+**对话风格**：一次一个概念，验证前验证，自适应节奏，鼓励的语气。引入新术语时构建在已学习的词汇上。
+
+#### 模式 3：简约及时
+
+**初始设置**：
+1. 创建 `~/.learn/[topic]/` 目录
+2. 保存简约 `plan.md`（仅概念列表 + 简短描述）
+3. 保存依赖排序术语的 `vocabulary.md`
+4. 初始化 `progress.json`（与交互模式相同结构）
+
+**交付流程**：
+
+**首次交互** - 简约，可操作：
 ```
-Welcome back!
+🎯 学习 React - 步骤 1/5：组件
 
-Quick: What's one key thing you learned about components?
+从这里开始：[资源名称 + URL]
+时间：约 2 小时
 
-[Based on response - acknowledge briefly]
+要理解的关键术语：
+- **组件**：[定义]
+  依赖：无
+- **渲染**：[定义]
+  依赖：组件
 
-Next step: JSX (Step 2/5)
-Resource: [URL]
-Time: ~1 hour
+[如果概念受益于交互应用：]
 
-New vocabulary (builds on what you know):
-- **JSX**: [Definition]
-  Dependencies: Component, Render
-- **Element**: [Definition]
-  Dependencies: JSX
+🎮 可选交互应用：[应用名称]
+[Google AI Studio 提示 - 简洁版本]
+完整提示保存： ~/.learn/react/apps/components.md
 
-Return when done.
+完成后返回。
+
+进度： ~/.learn/react/progress.json
 ```
 
-**State Updates**: Same as Interactive mode - mark completed, update vocabulary progress, save to progress.json.
+**当用户返回时** - 简短检查 + 下一步：
+```
+欢迎回来！
 
-**Flexibility Commands**: Same as Interactive mode - allow rollback, review, add concepts, show progress.
+快速：您关于组件学到了什么关键事情？
 
-**Key Difference from Interactive**: No understanding validation checks. Trust user to self-assess. Focus on momentum and just-in-time information delivery.
+[基于响应 - 简要承认]
 
-## Quality Standards
+下一步：JSX（步骤 2/5）
+资源：[URL]
+时间：约 1 小时
 
-Regardless of mode:
+新词汇（构建在您知道的内容上）：
+- **JSX**：[定义]
+  依赖：组件，渲染
+- **元素**：[定义]
+  依赖：JSX
 
-✅ Research is current (prioritize recent resources when topic evolves rapidly)
-✅ Resources are accessible (prefer free, high-quality, maintained)
-✅ Vocabulary is practical (actual usage, not exhaustive lists)
-✅ Sequencing is logical (foundation → advanced, why → how)
-✅ 20% is truly impactful (each topic unlocks significant understanding)
-✅ Resources are vetted (recommend best, not first search results)
-✅ Explanations are clear (intelligent but unfamiliar audience)
+完成后返回。
+```
 
-## Edge Cases & Guidelines
+**状态更新**：与交互模式相同 - 标记完成，更新词汇进度，保存到 progress.json。
 
-**Broad topic**: Narrow via AskUserQuestion before research. "AI covers ML, NLP, computer vision - which interests you?"
+**灵活性命令**：与交互模式相同 - 允许回滚，复习，添加概念，显示进度。
 
-**Niche topic**: Deeper research needed. If resources limited, start with fundamentals before specialization.
+**与交互的关键区别**：没有理解检查。信任用户自我评估。专注于势头和及时信息交付。
 
-**User has resource**: Research quality. Build around if good, suggest alternatives if outdated. Provide vocabulary/sequencing regardless.
+## 质量标准
 
-**Mode switch**: Adapt from current state using progress.json. No re-interview needed.
+无论模式如何：
 
-**What NOT to do**: Passive study plans, exhaustive vocabulary (50+ terms), skip research, broad 20% (10+ topics), mechanical interview questions.
+✅ 研究是当前的（当主题快速演变时优先考虑最近的资源）
+✅ 资源是可访问的（偏好免费、高质量、维护的资源）
+✅ 词汇是实用的（实际使用，不是详尽的列表）
+✅ 排序是逻辑的（基础 → 高级，为什么 → 如何）
+✅ 20% 确实有影响力（每个主题解锁显著的理解）
+✅ 资源经验证（推荐最好的，不是第一个搜索结果）
+✅ 解释是清晰的（智能但不熟悉的受众）
 
-**Success criteria**: Clear 20%, current research-backed resources, dependency-sequenced vocabulary, logical sequencing, realistic estimates, applicable knowledge focus. After 20%, can user engage independently?
+## 边缘情况和指导原则
+
+**广泛主题**：通过 AskUserQuestion 在研究前缩小范围。"AI 涵盖 ML、NLP、计算机视觉 - 哪个让您感兴趣？"
+
+**小众主题**：需要更深入的研究。如果资源有限，在专业化前从基础开始。
+
+**用户有资源**：研究质量。如果好，围绕它构建；如果过时，建议替代方案。无论如何提供词汇/排序。
+
+**模式切换**：使用 progress.json 从当前状态适应。不需要重新采访。
+
+**不要做什么**：被动学习计划，详尽的词汇（50+ 术语），跳过研究，广泛的 20%（10+ 主题），机械采访问题。
+
+**成功标准**：清晰的 20%，当前基于研究的资源，依赖排序的词汇，逻辑排序，现实的估计，适用知识焦点。 20% 后，用户可以独立参与吗？

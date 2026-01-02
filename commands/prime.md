@@ -1,41 +1,41 @@
-# Enhanced AI Mode for Complex Tasks
+# 复杂任务的增强 AI 模式
 
-Enhanced AI mode for complex tasks
+用于复杂任务的增强 AI 模式
 
-*Command originally created by IndyDevDan (YouTube: https://www.youtube.com/@indydevdan) / DislerH (GitHub: https://github.com/disler)*
+*命令最初由 IndyDevDan (YouTube: https://www.youtube.com/@indydevdan) / DislerH (GitHub: https://github.com/disler) 创建*
 
-## Instructions
+## 指令
 
-Initialize a new Claude Code session with comprehensive project context:
+使用全面的项目上下文初始化新的 Claude Code 会话：
 
-1. **Analyze Codebase Structure**
-   - Run `git ls-files` to understand file organization and project layout
-   - Execute directory tree commands (if available) for visual structure
-   - Identify key directories and their purposes
-   - Note the technology stack and frameworks in use
+1. **分析代码库结构**
+   - 运行 `git ls-files` 来理解文件组织和项目布局
+   - 执行目录树命令（如果可用）以获得可视化结构
+   - 识别关键目录及其用途
+   - 注意使用的技术栈和框架
 
-2. **Read Project Documentation**
-   - Read README.md for project overview and setup instructions
-   - Check for any additional documentation in docs/ or ai_docs/
-   - Review any CONTRIBUTING.md or development guides
-   - Look for architecture or design documents
+2. **阅读项目文档**
+   - 阅读 README.md 了解项目概述和设置说明
+   - 检查 docs/ 或 ai_docs/ 中的任何其他文档
+   - 审阅任何 CONTRIBUTING.md 或开发指南
+   - 查找架构或设计文档
 
-3. **Understand Project Context**
-   - Identify the project's primary purpose and goals
-   - Note any special setup requirements or dependencies
-   - Check for environment configuration needs
-   - Review any CI/CD configuration files
+3. **理解项目上下文**
+   - 识别项目的主要目的和目标
+   - 记录任何特殊的设置要求或依赖项
+   - 检查环境配置需求
+   - 审阅任何 CI/CD 配置文件
 
-4. **Provide Concise Overview**
-   - Summarize the project's purpose in 2-3 sentences
-   - List the main technologies and frameworks
-   - Highlight any important setup steps
-   - Note key areas of the codebase
+4. **提供简洁概述**
+   - 用 2-3 句话总结项目的目的
+   - 列出主要技术和框架
+   - 强调任何重要的设置步骤
+   - 注意代码库的关键区域
 
-This command helps establish context quickly when:
-- Starting work on a new project
-- Returning to a project after time away
-- Onboarding new team members
-- Preparing for deep technical work
+此命令在以下情况下帮助快速建立上下文：
+- 开始新项目的工作
+- 在一段时间后返回项目
+- 让新团队成员加入
+- 准备深入的技术工作
 
-The goal is to "prime" the AI assistant with essential project knowledge for more effective assistance.
+目标是为 AI 助手提供基本的项目知识，以便提供更有效的帮助。

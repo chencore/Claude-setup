@@ -1,337 +1,337 @@
 ---
 allowedTools: Read, Write, Edit, Glob, Grep, WebFetch, TodoWrite, WebSearch, Task, Skill, SlashCommand, AskUserQuestion
-description: Intelligent prompt generator with specialized routing. Creates general prompts directly; routes Claude Code features (plugins, agents, skills, hooks, MCP, commands) to specialized tools.
-argument-hint: [feature-type] [feature-name] - Optional: plugin, agent, skill, hook, mcp, command, or leave empty to investigate
+description: 智能提示生成器，具有专业路由功能。直接创建通用提示；将 Claude Code 功能（插件、代理、技能、钩子、MCP、命令）路由到具有深度领域知识的专用工具。
+argument-hint: [feature-type] [feature-name] - 可选：plugin、agent、skill、hook、mcp、command，或留空进行调查
 ---
 
-# Prompt Generator
+# 提示生成器
 
-Intelligent prompt generator with specialized tool routing. Routes Claude Code features (plugins, agents, skills, hooks, MCP, commands) to specialized tools with deep domain knowledge. Handles general AI prompts directly with meta-evaluation.
+智能提示生成器，具有专用工具路由功能。将 Claude Code 功能（插件、代理、技能、钩子、MCP、命令）路由到具有深度领域知识的专用工具。直接处理通用 AI 提示并进行元评估。
 
-## Context Engineering Principles
+## 上下文工程原则
 
-Context engineering is curating the optimal set of tokens during LLM inference. Every generated prompt must embody these principles:
+上下文工程是在 LLM 推理过程中优化令牌集合。每个生成的提示必须体现这些原则：
 
-**Context is Finite**
-- LLMs have limited attention budget; performance degrades as context grows
-- Every token depletes capacity—treat context as precious
-- Goal: smallest possible set of high-signal tokens that maximize outcomes
+**上下文是有限的**
+- LLM 有有限的注意力预算；随着上下文增长，性能会下降
+- 每个令牌都会消耗容量——将上下文视为宝贵资源
+- 目标：以尽可能小的、高信噪比令牌集合来最大化结果
 
-**Optimize Signal-to-Noise**
-- Clear, direct language over verbose explanations
-- Remove redundant information ruthlessly
-- Focus on high-value tokens that drive behavior
+**优化信噪比**
+- 使用清晰、直接的语言而非冗长的解释
+- 无情地删除冗余信息
+- 专注于驱动行为的高价值令牌
 
-**Progressive Discovery**
-- Use lightweight identifiers vs full data dumps
-- Load detailed info dynamically when needed
-- Just-in-time information > front-loaded context
+**渐进式发现**
+- 使用轻量级标识符而非完整的数据转储
+- 在需要时动态加载详细信息
+- 即时信息 > 预加载的上下文
 
-**Writing Style**
+**写作风格**
 
-| Pattern | ✅ Good | ❌ Bad |
+| 模式 | ✅ 好 | ❌ 坏 |
 |---------|---------|--------|
-| Clarity over completeness | "Validate input before processing" | "You should always make sure to validate..." |
-| Be direct | "Use calculate_tax tool with amount and jurisdiction" | "You might want to consider using..." |
-| Imperative voice | "Analyze the response" | "I will analyze the response" |
-| Structured constraints | Bulleted list of requirements | Paragraph of buried requirements |
+| 清晰胜过完整 | "处理前验证输入" | "你应该总是确保验证..." |
+| 直接 | "使用 calculate_tax 工具和金额、司法管辖区" | "你可能想考虑使用..." |
+| 祈使语气 | "分析响应" | "我将分析响应" |
+| 结构化约束 | 要求的带项目符号列表 | 包含要求的长段落 |
 
-## Execution Flow
+## 执行流程
 
-### Phase 1: Context Discovery
+### 第 1 阶段：上下文发现
 
-**If argument provided ($ARGUMENTS):**
-Parse for feature type and optional name. Recognized types:
-- **Routed**: plugin, agent, skill, hook, mcp, command (redirected to specialized tools)
-- **Direct**: general AI prompts (handled by promptcraft)
+**如果提供了参数 ($ARGUMENTS)：**
+解析功能类型和可选名称。识别的类型：
+- **路由**：plugin、agent、skill、hook、mcp、command（重定向到专用工具）
+- **直接**：通用 AI 提示（由 promptcraft 处理）
 
-**If no argument:**
-Determine from user's request whether this is:
-- Claude Code feature (plugin, agent, skill, hook, mcp, command)
-- Generic AI prompt
+**如果没有参数：**
+根据用户的请求确定这是：
+- Claude Code 功能（plugin、agent、skill、hook、mcp、command）
+- 通用 AI 提示
 
-**For Claude Code features:**
-first always fetch claude /docs <feature-type> to load current documentation and best practices.
+**对于 Claude Code 功能：**
+首先始终 fetch claude /docs <feature-type> 以加载当前文档和最佳实践。
 
-**Always ask 3-5 targeted questions using AskUserQuestion tool** to understand:
-- Primary objective and success criteria
-- Target use cases and constraints
-- Expected inputs/outputs
-- Complexity level and scope
-- Tool requirements (if applicable)
+**始终使用 AskUserQuestion 工具提出 3-5 个针对性问题** 来了解：
+- 主要目标和成功标准
+- 目标用例和约束
+- 预期的输入/输出
+- 复杂性级别和范围
+- 工具要求（如果适用）
 
-### Phase 1.5: Specialized Tool Routing
+### 第 1.5 阶段：专用工具路由
 
-After identifying feature type, check if specialized tooling provides better results. Route to specialized tools for complex features; continue with promptcraft for simpler ones.
+识别功能类型后，检查是否有专用工具可以提供更好的结果。将复杂功能路由到专用工具；较简单的功能继续使用 promptcraft。
 
-**Routing Decision Table:**
+**路由决策表：**
 
-| Feature Type | Route To | Method | Reason |
+| 功能类型 | 路由到 | 方法 | 原因 |
 |--------------|----------|--------|--------|
-| **Plugin** | `/plugin-dev:create-plugin` | SlashCommand | Complete 8-phase workflow with validation |
-| **Agent** | `plugin-dev:agent-creator` agent | Task | Claude Code's generation pattern with `<example>` blocks |
-| **Skill** | `plugin-dev:skill-development` skill | Skill | Progressive disclosure, third-person descriptions |
-| **Command** | `plugin-dev:command-development` skill | Skill | Frontmatter, arguments, bash execution patterns |
-| **Complex Hook** | `plugin-dev:hook-development` skill | Skill | Deep API knowledge, 9 events, security patterns |
-| **Simple Hook** | `/hookify:hookify` | SlashCommand | Quick behavioral rules, no coding |
-| **MCP Server** | `plugin-dev:mcp-integration` skill | Skill | Server types, authentication, .mcp.json config |
-| **General Prompt** | Continue here | — | Promptcraft core use case |
+| **Plugin** | `/plugin-dev:create-plugin` | SlashCommand | 包含验证的完整 8 阶段工作流 |
+| **Agent** | `plugin-dev:agent-creator` agent | Task | Claude Code 的生成模式，带有 `<example>` 块 |
+| **Skill** | `plugin-dev:skill-development` skill | Skill | 渐进式揭示，第三人称描述 |
+| **Command** | `plugin-dev:command-development` skill | Skill | frontmatter、参数、bash 执行模式 |
+| **Complex Hook** | `plugin-dev:hook-development` skill | Skill | 深度 API 知识，9 个事件，安全模式 |
+| **Simple Hook** | `/hookify:hookify` | SlashCommand | 快速行为规则，无需编码 |
+| **MCP Server** | `plugin-dev:mcp-integration` skill | Skill | 服务器类型、身份验证、.mcp.json 配置 |
+| **General Prompt** | 继续在这里 | — | promptcraft 核心用例 |
 
-**Routing Logic:**
+**路由逻辑：**
 
-| Feature | Action | Tool Call |
+| 功能 | 操作 | 工具调用 |
 |---------|--------|-----------|
-| Plugin | Always redirect | `SlashCommand: /plugin-dev:create-plugin [description]` |
-| Agent | Always redirect | `Task: subagent_type=plugin-dev:agent-creator` |
-| Skill | Always redirect | `Skill: plugin-dev:skill-development` |
-| Command | Always redirect | `Skill: plugin-dev:command-development` |
-| MCP Server | Always redirect | `Skill: plugin-dev:mcp-integration` |
-| Hook | Ask complexity first | See below |
-| General Prompt | Continue to Phase 2 | — |
+| Plugin | 始终重定向 | `SlashCommand: /plugin-dev:create-plugin [description]` |
+| Agent | 始终重定向 | `Task: subagent_type=plugin-dev:agent-creator` |
+| Skill | 始终重定向 | `Skill: plugin-dev:skill-development` |
+| Command | 始终重定向 | `Skill: plugin-dev:command-development` |
+| MCP Server | 始终重定向 | `Skill: plugin-dev:mcp-integration` |
+| Hook | 首先询问复杂性 | 见下文 |
+| General Prompt | 继续到第 2 阶段 | — |
 
-**For Hooks**: Use AskUserQuestion to determine complexity:
-- "Simple warning/block rule" → `SlashCommand: /hookify:hookify [description]`
-- "Complex hook with validation" → `Skill: plugin-dev:hook-development`
-- "I don't know" → Suggest `/hookify:hookify` (analyzes conversation for patterns)
+**对于 Hooks**：使用 AskUserQuestion 确定复杂性：
+- "简单的警告/阻止规则" → `SlashCommand: /hookify:hookify [description]`
+- "带有验证的复杂钩子" → `Skill: plugin-dev:hook-development`
+- "我不知道" → 建议 `/hookify:hookify`（分析会话中的模式）
 
-**After routing:**
-- If redirected: Let specialized tool complete the task, then proceed to **Phase 4** for optimization review
-- If continuing (general prompts): Proceed to Phase 2
+**路由后：**
+- 如果重定向：让专用工具完成任务，然后继续 **第 4 阶段** 进行优化审查
+- 如果继续（通用提示）：继续到第 2 阶段
 
-### Phase 2: Prompt Architecture (General Prompts Only)
+### 第 2 阶段：提示架构（仅通用提示）
 
-**Skip if routed in Phase 1.5.** For general AI prompts, analyze requirements:
-- Identify core objective
-- Determine complexity (simple/moderate/complex)
-- Map required capabilities to available tools
-- Structure appropriate format
+**如果在第 1.5 阶段路由则跳过。** 对于通用 AI 提示，分析需求：
+- 识别核心目标
+- 确定复杂性（简单/中等/复杂）
+- 将所需能力映射到可用工具
+- 结构化适当的格式
 
-**Tool Intelligence** (for Claude Code features):
-Based on prompt requirements, suggest tools:
-- **Bash**: If system commands, testing, or git operations needed
-- **Read/Write/Edit**: For file operations
-- **Grep/Glob**: For code search and navigation
-- **WebSearch/WebFetch**: For research or documentation lookup
-- **Task**: For delegating to subagents
-- SlashCommand, AskUserQuestion, and others.
-- be generous with tool access for the feature, no need to be conservative
+**工具智能**（针对 Claude Code 功能）：
+基于提示要求，建议工具：
+- **Bash**：如果需要系统命令、测试或 git 操作
+- **Read/Write/Edit**：用于文件操作
+- **Grep/Glob**：用于代码搜索和导航
+- **WebSearch/WebFetch**：用于研究或文档查找
+- **Task**：用于委派给子代理
+- SlashCommand、AskUserQuestion 等。
+- 对于功能，慷慨地授予工具访问权限，无需保守
 
-Present tool selection with rationale:
-"Selected tools: Read, Grep, Bash(git:*), Bash(pytest:*), AskUserQuestion
-Rationale: Code analysis requires file reading and search; testing requires git and pytest commands.
-Modify this selection? [show what was excluded and why]"
+显示工具选择及其理由：
+"选择的工具：Read、Grep、Bash(git:*)、Bash(pytest:*)、AskUserQuestion
+理由：代码分析需要文件阅读和搜索；测试需要 git 和 pytest 命令。
+要修改此选择吗？[显示排除的内容及原因]"
 
-**Format Adaptation:**
-- **Simple prompts**: Direct instructions, minimal structure, no sections
-- **Moderate prompts**: Light organization with ## headers where clarity benefits
-- **Complex prompts**: Structured sections, clear hierarchy, process steps
+**格式适配**：
+- **简单提示**：直接指令，最小结构，无章节
+- **中等提示**：轻量级组织，在需要清晰性的地方使用 ## 标题
+- **复杂提示**：结构化章节，清晰的层次结构，过程步骤
 
-### Phase 3: Prompt Generation (General Prompts Only)
+### 第 3 阶段：提示生成（仅通用提示）
 
-**Skip if routed in Phase 1.5.** For general AI prompts:
+**如果在第 1.5 阶段路由则跳过。** 对于通用 AI 提示：
 
-**Semantic Section Structure**
+**语义章节结构**
 
-Organize prompt bodies using these semantic sections (include only what's needed):
+使用这些语义章节组织提示正文（只包含需要的部分）：
 
-| Section | Purpose | When to Include |
+| 章节 | 目的 | 何时包含 |
 |---------|---------|-----------------|
-| **Background** | Minimal essential context | Only when task requires domain knowledge |
-| **Instructions** | Core directives, imperative voice | Always |
-| **Examples** | Show don't tell, concise, representative | When behavior needs demonstration |
-| **Constraints** | Boundaries, limitations, success criteria | When ambiguity exists |
+| **Background** | 最小基本上下文 | 仅当任务需要领域知识时 |
+| **Instructions** | 核心指令，祈使语气 | 总是 |
+| **Examples** | 展示而非讲述，简洁，代表性 | 当行为需要演示时 |
+| **Constraints** | 边界、限制、成功标准 | 当存在歧义时 |
 
-**Format Templates:**
+**格式模板：**
 
-**Commands** (frontmatter + body):
+**Commands**（frontmatter + body）：
 ```markdown
 ---
-allowedTools: <intelligently selected per Phase 4.5>
-description: <concise—user-triggered, no auto-trigger needed>
-argument-hint: [arg] - description
+allowedTools: <根据第 4.5 阶段智能选择>
+description: <简洁—用户触发，无需自动触发>
+argument-hint: [arg] - 描述
 ---
 
-<semantic sections as needed>
+<根据需要包含语义章节>
 ```
 
-**Agents** (frontmatter + body):
+**Agents**（frontmatter + body）：
 ```markdown
 ---
 name: <agent-name>
-description: <trigger conditions with varied phrases + capability>
-tools: <tool names per Phase 4.5>
+description: <触发条件和变化短语 + 能力>
+tools: <根据第 4.5 阶段的工具名称>
 model: sonnet
 ---
 
-<semantic sections as needed>
+<根据需要包含语义章节>
 ```
 
-**Skills** (SKILL.md + optional references/):
+**Skills**（SKILL.md + 可选 references/）：
 ```markdown
 ---
-description: <trigger-rich with varied examples—"use when user asks to X", "Y", "Z", or mentions "A", "B">
+description: <丰富的触发条件和变化示例—"当用户要求 X 时使用"，"Y"，"Z"，或提及"A"，"B">
 ---
 
-<progressive disclosure: core instructions first, details later>
+<渐进式揭示：核心指令优先，细节在后>
 ```
 
-**Generic Prompts**: No frontmatter. Pure instruction body.
+**Generic Prompts**：无 frontmatter。纯指令正文。
 
-**Construction Rules:**
-- State objective explicitly in first sentence
-- Use imperative voice ("Analyze", "Generate", "Identify")
-- No first-person narrative ("I will", "I am")
-- Context only when necessary for understanding
-- XML tags only for complex structured data
-- Examples only when they clarify expectations
-- Every word must earn its place
+**构建规则**：
+- 在第一句中明确说明目标
+- 使用祈使语气（"分析"、"生成"、"识别"）
+- 无第一人称叙述（"我将"、"我是"）
+- 仅在理解需要时提供上下文
+- 仅在复杂结构化数据时使用 XML 标签
+- 仅在澄清期望时提供示例
+- 每个词都必须有其存在价值
 
-### Phase 4: Feature Optimization (All Claude Code Features)
+### 第 4 阶段：功能优化（所有 Claude Code 功能）
 
-**Apply after routed workflow completes OR after Phase 3 for general prompts.** This phase ensures progressive disclosure and frontmatter optimization.
+**在重定向的工作流完成后或第 3 阶段后应用于通用提示。** 此阶段确保渐进式揭示和 frontmatter 优化。
 
-#### Frontmatter Priority
+#### Frontmatter 优先级
 
-Frontmatter is **first in model attention**—optimize ruthlessly. Different features need different strategies:
+Frontmatter **首先获得模型注意力**—无情地优化。不同功能需要不同的策略：
 
-| Feature | Description Strategy | Trigger Design |
+| 功能 | 描述策略 | 触发设计 |
 |---------|---------------------|----------------|
-| **Command** | Concise, action-focused | User-triggered (no auto-trigger) |
-| **Skill** | Trigger-rich with varied phrases | High auto-trigger desired |
-| **Agent** | Clear conditions + capability | Moderate auto-trigger |
-| **Hook** | Event-specific clarity | Event-driven |
+| **Command** | 简洁、以行动为中心 | 用户触发（无自动触发） |
+| **Skill** | 丰富的触发条件和变化短语 | 高度期望自动触发 |
+| **Agent** | 清晰的条件 + 能力 | 中度自动触发 |
+| **Hook** | 事件特定的清晰性 | 事件驱动 |
 
-**Command Frontmatter:**
-- `description`: Concise action summary (under 60 chars)—users see this in `/help`
-- `allowedTools`: Scope appropriately (see below)
-- `argument-hint`: Document expected arguments clearly
-- Commands are instructions FOR Claude, not messages TO user
+**Command Frontmatter**：
+- `description`：简洁的行动摘要（少于 60 个字符）—用户在 `/help` 中看到
+- `allowedTools`：适当限制范围（见下文）
+- `argument-hint`：清晰记录预期参数
+- Commands 是 Claude 的指令，不是给用户的消息
 
-**Skill/Agent Trigger Optimization:**
-- Include varied trigger phrases, not exact keywords
-  - Good: "create an agent", "build a new agent", "make me an agent that...", "agent for..."
-  - Bad: Only "create agent"
-- Balance token cost vs. trigger accuracy
-- More examples = higher auto-trigger probability
-- Use AskUserQuestion: "How often should this trigger automatically vs. explicitly?"
+**Skill/Agent 触发优化**：
+- 包含变化的触发短语，而非精确的关键词
+  - 好："创建一个代理"，"构建一个新代理"，"为我创建一个代理..."，"用于...的代理"
+  - 坏：只有"create agent"
+- 平衡令牌成本与触发准确性
+- 更多示例 = 更高的自动触发概率
+- 使用 AskUserQuestion："这个应该自动触发还是明确触发的频率如何？"
 
-#### allowedTools Strategy
+#### allowedTools 策略
 
-**Default lenient, restrict only high-risk operations.**
+**默认宽松，仅限制高风险操作。**
 
-| Tool | Default | Restrict When |
+| 工具 | 默认 | 何时限制 |
 |------|---------|---------------|
-| Read, Glob, Grep | Always allow | Never |
-| Edit, Write | Allow | Writing to system paths |
-| WebSearch, WebFetch | Allow | Offline-only features |
-| Task | Allow | Sandboxed features |
-| **Bash** | Use patterns | Always scope: `Bash(git:*)`, `Bash(npm:*)`, `Bash(pytest:*)` |
-| **KillShell** | Omit | Only include if explicitly needed |
-| AskUserQuestion | **Required** | Never omit when interviewing/confirming |
-| SlashCommand | **Required** | Never omit when delegating to workflows |
-| Skill | Allow | When delegation opportunities exist |
+| Read, Glob, Grep | 总是允许 | 从不 |
+| Edit, Write | 允许 | 写入系统路径时 |
+| WebSearch, WebFetch | 允许 | 仅限离线功能时 |
+| Task | 允许 | 沙盒功能时 |
+| **Bash** | 使用模式 | 始终限制：`Bash(git:*)`，`Bash(npm:*)`，`Bash(pytest:*)` |
+| **KillShell** | 省略 | 仅在明确需要时包含 |
+| AskUserQuestion | **必需** | 当进行访谈/确认时从不省略 |
+| SlashCommand | **必需** | 当委派给工作流时从不省略 |
+| Skill | 允许 | 当存在委派机会时 |
 
-**Mandatory inclusions:**
-- If prompt has ANY user interaction/confirmation → include `AskUserQuestion`
-- If prompt delegates to other features → include `SlashCommand` and/or `Skill`
-- Explicitly instruct when to use: "Use AskUserQuestion tool to confirm..." or "Use SlashCommand: /commit"
+**必需包含：**
+- 如果提示有任何用户交互/确认 → 包含 `AskUserQuestion`
+- 如果提示委派给其他功能 → 包含 `SlashCommand` 和/或 `Skill`
+- 明确指导何时使用："使用 AskUserQuestion 工具确认..." 或 "使用 SlashCommand: /commit"
 
-#### Delegation & Modularization
+#### 委派和模块化
 
-Before finalizing, scan for delegation opportunities:
+在最终确定前，扫描委派机会：
 
 ```
-Review available: skills, commands, agents, MCPs
-For each workflow step, ask: "Do we already have this?"
+查看可用的：skills、commands、agents、MCPs
+对于每个工作流步骤，问："我们已经有了这个吗？"
 ```
 
-**Common delegation patterns:**
-- Git commits → `SlashCommand: /commit`
-- Code review → `SlashCommand: /code-review`
-- Plugin creation → `SlashCommand: /plugin-dev:create-plugin`
-- Hook creation → `Skill: plugin-dev:hook-development`
-- Command creation → `Skill: plugin-dev:command-development`
-- Documentation lookup → `SlashCommand: /docs [topic]`
+**常见委派模式：**
+- Git 提交 → `SlashCommand: /commit`
+- 代码审查 → `SlashCommand: /code-review`
+- 插件创建 → `SlashCommand: /plugin-dev:create-plugin`
+- 钩子创建 → `Skill: plugin-dev:hook-development`
+- 命令创建 → `Skill: plugin-dev:command-development`
+- 文档查找 → `SlashCommand: /docs [topic]`
 
-**Always use fully qualified names:**
-- `Skill: plugin-dev:hook-development` (not just "hook-development")
-- `SlashCommand: /plugin-dev:create-plugin` (not just "create-plugin")
+**始终使用完整限定名称：**
+- `Skill: plugin-dev:hook-development`（不仅仅是"hook-development"）
+- `SlashCommand: /plugin-dev:create-plugin`（不仅仅是"create-plugin"）
 - `Task: subagent_type=plugin-dev:agent-creator`
 
-#### Body Review Checklist
+#### 正文审查清单
 
-| Issue | Fix |
+| 问题 | 修复 |
 |-------|-----|
-| Verbose code blocks | Pattern out, provide general instructions that adapt to edge cases |
-| Exact keyword matching | Replace with intent-based language (Claude extrapolates) |
-| Hardcoded paths/values | Use variables or let Claude infer |
-| Redundant examples | Keep 2-3 representative cases, remove similar ones |
-| Over-specified process | Trust Claude's intelligence—provide direction not dictation |
+| 冗长的代码块 | 提供模式，提供适应边缘情况的一般指令 |
+| 精确的关键词匹配 | 替换为基于意图的语言（Claude 推断） |
+| 硬编码的路径/值 | 使用变量或让 Claude 推断 |
+| 冗余示例 | 保留 2-3 个代表性案例，移除相似的 |
+| 过度指定的过程 | 相信 Claude 的智能—提供指导而非指令 |
 
-**Key principle:** Claude is smart and extrapolates well—nudge precisely, don't over-specify.
+**关键原则**：Claude 很聪明且善于推断—精确引导，不要过度指定。
 
-### Phase 5: Meta-Evaluation
+### 第 5 阶段：元评估
 
-**Evaluate the generated/optimized prompt:**
+**评估生成/优化的提示：**
 
-| Dimension | Criteria |
+| 维度 | 标准 |
 |-----------|----------|
-| **Clarity (0-10)** | Instructions unambiguous, objective clear |
-| **Precision (0-10)** | Appropriate specificity without over-constraint |
-| **Efficiency (0-10)** | Token economy—maximum value per token |
-| **Completeness (0-10)** | Covers requirements without gaps or excess |
-| **Usability (0-10)** | Practical, actionable, appropriate for target use |
+| **清晰度 (0-10)** | 指令清晰明确，目标清楚 |
+| **精确度 (0-10)** | 适当的特异性，不过度约束 |
+| **效率 (0-10)** | 令牌经济性—每个令牌的最大价值 |
+| **完整性 (0-10)** | 涵盖需求，无缺口或过剩 |
+| **可用性 (0-10)** | 实用、可操作，适合目标用途 |
 
-**Target: 9.0/10.0**
+**目标：9.0/10.0**
 
-Present evaluation, then:
-- If < 9.0: Refine addressing weakness, re-evaluate once
-- If ≥ 9.0: Proceed to delivery
+显示评估，然后：
+- 如果 < 9.0：解决弱点进行改进，重新评估一次
+- 如果 ≥ 9.0：继续交付
 
-### Phase 6: Delivery
+### 第 6 阶段：交付
 
-**Determine output location:**
+**确定输出位置：**
 - Commands → `~/.claude/commands/<name>.md`
 - Agents → `~/.claude/agents/<name>.md`
 - Skills → `~/.claude/skills/<name>/SKILL.md`
 - Hooks → `~/.claude/hooks/<name>.md`
-- Generic/unspecified → `./<name>_prompt.md` (project root)
-- User-specified path → as provided
+- Generic/unspecified → `./<name>_prompt.md`（项目根目录）
+- 用户指定的路径 → 按提供的位置
 
-**Before writing:**
-"Writing prompt to: [path]
-This will [create new/overwrite existing] file.
-Proceed?"
+**写入前：**
+"将提示写入：[路径]
+这将 [创建新/覆盖现有] 文件。
+继续吗？"
 
-**After writing:**
-Confirm creation and provide usage instructions if applicable (e.g., invoke with `/command-name` for commands).
+**写入后：**
+确认创建并提供使用说明（如果适用，例如命令使用 `/command-name` 调用）。
 
-## Quality Standards
+## 质量标准
 
-Apply Context Engineering Principles (see above). Additionally:
+应用上下文工程原则（见上文）。另外：
 
-**Format Economy:**
-- Simple task → direct instruction, no sections
-- Moderate task → light organization with headers
-- Complex task → full semantic structure
+**格式经济性：**
+- 简单任务 → 直接指令，无章节
+- 中等任务 → 轻量级组织，带有标题
+- 复杂任务 → 完整语义结构
 
-**Balance Flexibility with Precision:**
-- Loose enough for creative exploration
-- Tight enough to prevent ambiguity
+**平衡灵活性与精确性：**
+- 足够宽松以支持创造性探索
+- 足够紧密以避免歧义
 
-**Remove ruthlessly:** Filler phrases, obvious implications, redundant framing, excessive politeness
+**无情地删除**：填充短语、明显含义、冗余框架、过度礼貌
 
-## Error Handling
+## 错误处理
 
-| Issue | Action |
+| 问题 | 操作 |
 |-------|--------|
-| Missing context | Ask for clarification |
-| Unclear requirements | Request examples or constraints |
-| Tool conflicts | Explain limitation, suggest alternatives |
-| Path issues | Verify directory, create with confirmation |
+| 缺少上下文 | 请求澄清 |
+| 不明确的需求 | 要求示例或约束 |
+| 工具冲突 | 解释限制，建议替代方案 |
+| 路径问题 | 验证目录，在确认下创建 |
 
-## Success Criteria
+## 成功标准
 
-Generated prompt must: achieve objective when used, score ≥9.0/10 on meta-evaluation, be immediately usable without modification.
+生成的提示必须：在使用时实现目标，在元评估中得分 ≥9.0/10，无需修改即可立即使用。
 
-Execute phases sequentially. Complete each before proceeding.
+顺序执行阶段。完成每个阶段后再继续。

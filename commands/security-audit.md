@@ -1,68 +1,68 @@
-# Security Audit Command
+# 安全审计命令
 
-Perform comprehensive security assessment
+执行全面的安全评估
 
-## Instructions
+## 指令
 
-Perform a systematic security audit following these steps:
+遵循以下步骤进行系统化的安全审计：
 
-1. **Environment Setup**
-   - Identify the technology stack and framework
-   - Check for existing security tools and configurations
-   - Review deployment and infrastructure setup
+1. **环境设置**
+   - 识别技术栈和框架
+   - 检查现有的安全工具和配置
+   - 审查部署和基础设施设置
 
-2. **Dependency Security**
-   - Scan all dependencies for known vulnerabilities
-   - Check for outdated packages with security issues
-   - Review dependency sources and integrity
-   - Use appropriate tools: `npm audit`, `pip check`, `cargo audit`, etc.
+2. **依赖项安全**
+   - 扫描所有依赖项的已知漏洞
+   - 检查具有安全问题的过时包
+   - 审查依赖项来源和完整性
+   - 使用适当的工具：`npm audit`、`pip check`、`cargo audit` 等
 
-3. **Authentication & Authorization**
-   - Review authentication mechanisms and implementation
-   - Check for proper session management
-   - Verify authorization controls and access restrictions
-   - Examine password policies and storage
+3. **身份验证和授权**
+   - 审查身份验证机制和实现
+   - 检查适当的会话管理
+   - 验证授权控制和访问限制
+   - 检查密码策略和存储
 
-4. **Input Validation & Sanitization**
-   - Check all user input validation and sanitization
-   - Look for SQL injection vulnerabilities
-   - Identify potential XSS (Cross-Site Scripting) issues
-   - Review file upload security and validation
+4. **输入验证和清理**
+   - 检查所有用户输入验证和清理
+   - 查找 SQL 注入漏洞
+   - 识别潜在的 XSS（跨站脚本）问题
+   - 审查文件上传安全和验证
 
-5. **Data Protection**
-   - Identify sensitive data handling practices
-   - Check encryption implementation for data at rest and in transit
-   - Review data masking and anonymization practices
-   - Verify secure communication protocols (HTTPS, TLS)
+5. **数据保护**
+   - 识别敏感数据处理实践
+   - 检查静态和传输中数据的加密实现
+   - 审查数据掩蔽和匿名化实践
+   - 验证安全通信协议（HTTPS、TLS）
 
-6. **Secrets Management**
-   - Scan for hardcoded secrets, API keys, and passwords
-   - Check for proper secrets management practices
-   - Review environment variable security
-   - Identify exposed configuration files
+6. **密钥管理**
+   - 扫描硬编码的密钥、API 密钥和密码
+   - 检查适当的密钥管理实践
+   - 审查环境变量安全性
+   - 识别暴露的配置文件
 
-7. **Error Handling & Logging**
-   - Review error messages for information disclosure
-   - Check logging practices for security events
-   - Verify sensitive data is not logged
-   - Assess error handling robustness
+7. **错误处理和日志记录**
+   - 审查错误消息以检查信息泄露
+   - 检查安全事件的日志记录实践
+   - 验证敏感数据未被记录
+   - 评估错误处理健壮性
 
-8. **Infrastructure Security**
-   - Review containerization security (Docker, etc.)
-   - Check CI/CD pipeline security
-   - Examine cloud configuration and permissions
-   - Assess network security configurations
+8. **基础设施安全**
+   - 审查容器化安全（Docker 等）
+   - 检查 CI/CD 管道安全性
+   - 检查云配置和权限
+   - 评估网络安全配置
 
-9. **Security Headers & CORS**
-   - Check security headers implementation
-   - Review CORS configuration
-   - Verify CSP (Content Security Policy) settings
-   - Examine cookie security attributes
+9. **安全标头和 CORS**
+   - 检查安全标头实现
+   - 审查 CORS 配置
+   - 验证 CSP（内容安全策略）设置
+   - 检查 cookie 安全属性
 
-10. **Reporting**
-    - Document all findings with severity levels (Critical, High, Medium, Low)
-    - Provide specific remediation steps for each issue
-    - Include code examples and file references
-    - Create an executive summary with key recommendations
+10. **报告**
+    - 记录所有发现及其严重级别（关键、高、中、低）
+    - 为每个问题提供具体的修复步骤
+    - 包含代码示例和文件引用
+    - 创建具有关键建议的执行摘要
 
-Use automated security scanning tools when available and provide manual review for complex security patterns.
+尽可能使用自动化安全扫描工具，并为复杂的安全模式提供人工审查。
